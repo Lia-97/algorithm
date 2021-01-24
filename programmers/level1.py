@@ -33,7 +33,7 @@
 #     return answer
 #
 # print(solution(5,3))
-#
+
 # # 두 정수 사이의 합 (또 다른 풀이)
 #
 # def solution(a, b):
@@ -41,5 +41,73 @@
 #         a, b = b, a
 #     return sum(range(a, b+1))
 
-# 문자열 내 마음대로 정렬하기
+# # 같은 숫자는 싫어
+#
+# def solution(arr):
+#     answer = []
+#     pre = 10
+#     for a in arr:
+#         if a != pre:
+#             answer.append(a)
+#             pre = a
+#         else:
+#             continue
+#
+#     return answer
+#
+# # 어떻게 동작?
+# def no_continuous(s):
+#     a = []
+#     for i in s:
+#         if a[-1:] == [i]: continue
+#         a.append(i)
+#     return a
+#
+# # 아래는 테스트로 출력해 보기 위한 코드입니다.
+# print( no_continuous( "133303" ))
 
+# # 수박수박수박수박수박수?
+#
+# def solution(n):
+#     if n % 2 == 0:
+#         answer = '수박' * (n // 2)
+#     else:
+#         answer = '수박' * (n // 2) + '수'
+#
+#     return answer
+#
+# print(solution(4))
+
+# # 자릿수 더하기
+#
+# def solution(n):
+#     total = 0
+#     for i in str(n):
+#         total += int(i)
+#     return total
+
+# # 시저 암호
+# # A = 65, a = 97
+# # Z = 90, z = 122
+#
+# def solution(s, n):
+#     answer = ''
+#     large_al = [chr(i) for i in range(65, 91)]
+#     small_al = [chr(i) for i in range(97, 123)]
+#     for i in str(s):
+#         if i in large_al:
+#             if ord(i) + n > 90:
+#                 answer = answer + chr(64 + (ord(i) + n) % 90)
+#             else:
+#                 answer = answer + chr(ord(i) + n)
+#         elif i in small_al:
+#             if ord(i) + n > 122:
+#                 answer = answer + chr(96 + (ord(i) + n) % 122)
+#             else:
+#                 answer = answer + chr(ord(i) + n)
+#         elif i == ' ':
+#             answer += ' '
+#
+#     return answer
+#
+# print(solution("a B z", 4))
