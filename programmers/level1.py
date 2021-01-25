@@ -111,3 +111,63 @@
 #     return answer
 #
 # print(solution("a B z", 4))
+
+# # 소수 찾기
+#
+# def solution(n):
+#     cnt = 0
+#     num = 0
+#     for i in range(1, n+1):
+#         for j in range(1, i+1):
+#             if i % j == 0:
+#                 cnt += 1
+#                 if cnt == 2:
+#                     num += 1
+#     return num
+#
+# print(solution(10))
+# print(solution(5))
+
+# # 문자열 다루기 기본
+#
+# def solution(s):
+#     if len(s) == 4 or len(s) == 6:
+#         try:
+#             int(s)
+#         except ValueError:
+#             return False
+#         else:
+#             return True
+#     else:
+#         return False
+#
+# print(solution('a234'))
+# print(solution('1234'))
+
+# # 문자열 다루기 isdigit() 함수 사용해보기
+# # isdigit() => 주어진 문자열이 숫자로 되어있는지 검사하는 함수
+# def alpha_string46(s):
+#     return s.isdigit() and len(s) in (4, 6)
+#
+# # 아래는 테스트로 출력해 보기 위한 코드입니다.
+# print( alpha_string46("a234") )
+# print( alpha_string46("1234") )
+#
+# a = '12345678'
+# # True 를 반환한다.
+# print(a.isdigit())
+
+# # 정수 내림차순으로 배치하기
+#
+# def solution(n):
+#     reverse_int = ''
+#     for i in sorted(list(str(n))):
+#         reverse_int = i + reverse_int
+#     return int(reverse_int)
+#
+# print(solution(118372))
+#
+# def solution(n):
+#     ls = list(str(n))
+#     ls.sort(reverse = True)
+#     return int("".join(ls))
