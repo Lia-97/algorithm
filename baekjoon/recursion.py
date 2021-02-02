@@ -20,6 +20,4 @@
 #
 # print(fibo(x))
 
-# 2447번 (별 찍기 - 10)
-def star(N):
-    print('*' * N)
+

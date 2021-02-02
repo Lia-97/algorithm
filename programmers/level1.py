@@ -121,8 +121,9 @@
 #         for j in range(1, i+1):
 #             if i % j == 0:
 #                 cnt += 1
-#                 if cnt == 2:
-#                     num += 1
+#         if cnt == 2:
+#             num += 1
+#
 #     return num
 #
 # print(solution(10))
@@ -171,3 +172,62 @@
 #     ls = list(str(n))
 #     ls.sort(reverse = True)
 #     return int("".join(ls))
+
+# # 신규 아이디 추천
+# import re
+# def solution(new_id):
+#     answer = ''
+#     new_id = new_id.lower()
+#     new_id.sub('[a-z]')
+#     return answer
+
+# # 서울에서 김서방 찾기
+# def solution(seoul):
+#     for s in enumerate(seoul):
+#         if s[1] == 'Kim':
+#             place = s[0]
+#             return f'김서방은 {place}에 있다.'
+# print(solution(['Jane', 'Kim']))
+
+# # 약수의 합
+#
+# def solution(n):
+#     answer = 0
+#     for i in range(1, n+1):
+#         if n % i == 0:
+#             answer += i
+#
+#     return answer
+#
+# print(solution(12))
+# print(solution(5))
+
+# # 내적
+# def solution(a, b):
+#     answer = 0
+#     for i in range(len(a)):
+#         answer += a[i]*b[i]
+#     return answer
+#
+# print(solution([1,2,3,4], [-3,-1,0,2]))
+
+# # 문자열 내림차순으로 배치하기
+# def solution(s):
+#     answer = []
+#     result = ''
+#     for i in s:
+#         answer.append(ord(i))
+#     sorted_answer = sorted(answer, reverse=True)
+#     for s in sorted_answer:
+#         result += chr(s)
+#
+#     return result
+#
+# print(solution("Zbcdefg	"))
+
+# 이상한 문자 만들기
+
+def solution(s):
+    s_list = s.split(' ')
+    for s in s_list:
+        
