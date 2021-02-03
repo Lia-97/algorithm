@@ -112,23 +112,6 @@
 #
 # print(solution("a B z", 4))
 
-# # 소수 찾기
-#
-# def solution(n):
-#     cnt = 0
-#     num = 0
-#     for i in range(1, n+1):
-#         for j in range(1, i+1):
-#             if i % j == 0:
-#                 cnt += 1
-#         if cnt == 2:
-#             num += 1
-#
-#     return num
-#
-# print(solution(10))
-# print(solution(5))
-
 # # 문자열 다루기 기본
 #
 # def solution(s):
@@ -172,14 +155,6 @@
 #     ls = list(str(n))
 #     ls.sort(reverse = True)
 #     return int("".join(ls))
-
-# # 신규 아이디 추천
-# import re
-# def solution(new_id):
-#     answer = ''
-#     new_id = new_id.lower()
-#     new_id.sub('[a-z]')
-#     return answer
 
 # # 서울에서 김서방 찾기
 # def solution(seoul):
@@ -225,9 +200,59 @@
 #
 # print(solution("Zbcdefg	"))
 
-# 이상한 문자 만들기
+# # 이상한 문자 만들기
+#
+# def solution(s):
+#     s_list = s.split(' ')
+#     result=[]
+#     for i in s_list:
+#         word = ''
+#         for j in enumerate(i):
+#             if j[0] % 2:
+#                 word += j[1].lower()
+#             else:
+#                 word += j[1].upper()
+#         result.append(word)
+#     return ' '.join(result)
+#
+# print(solution('try hello world'))
 
-def solution(s):
-    s_list = s.split(' ')
-    for s in s_list:
-        
+# # 신규 아이디 추천
+# import re
+# def solution(new_id):
+#     answer = ''
+#     new_id = new_id.lower()
+#     new_id.sub('[a-z]')
+#     return answer
+
+# # 짝수와 홀수
+#
+# def solution(num):
+#
+#     return "Odd" if num % 2 else "Even"
+
+# # 평균 구하기
+#
+# def solution(arr):
+#     return sum(arr)/len(arr)
+
+# # 3진법 뒤집기
+#
+# def recur(n):
+#     if n == 2:
+#         return str(2)
+#     if n == 1:
+#         return str(1)
+#
+#     return recur(n // 3) + str(n % 3)
+#
+# def solution(n):
+#     number = recur(n)
+#     new_number = number[::-1]
+#     answer = 0
+#     for i in range(len(new_number)):
+#         answer += int(new_number[i]) * (3 ** (len(new_number)-(i+1)))
+#
+#     return answer
+#
+# print(solution(45))
