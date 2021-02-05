@@ -1,4 +1,4 @@
-# # K번째수
+# K번째수
 # def solution(array, commands):
 #     answer = []
 #     for command in commands:
@@ -9,7 +9,7 @@
 #
 # print(solution([1, 5, 2, 6, 3, 7, 4], [[2, 5, 3], [4, 4, 1], [1, 7, 3]]))
 
-# # 문자열 내 p와 y의 개수
+# 문자열 내 p와 y의 개수
 #
 # def solution(s):
 #     sentence = s.lower()
@@ -20,7 +20,7 @@
 #
 # print(solution('Pyy'))
 
-# # 두 정수 사이의 합
+# 두 정수 사이의 합
 #
 # def solution(a, b):
 #     answer = 0
@@ -34,14 +34,14 @@
 #
 # print(solution(5,3))
 
-# # 두 정수 사이의 합 (또 다른 풀이)
+# 두 정수 사이의 합 (또 다른 풀이)
 #
 # def solution(a, b):
 #     if a > b:
 #         a, b = b, a
 #     return sum(range(a, b+1))
 
-# # 같은 숫자는 싫어
+# 같은 숫자는 싫어
 #
 # def solution(arr):
 #     answer = []
@@ -66,7 +66,7 @@
 # # 아래는 테스트로 출력해 보기 위한 코드입니다.
 # print( no_continuous( "133303" ))
 
-# # 수박수박수박수박수박수?
+# 수박수박수박수박수박수?
 #
 # def solution(n):
 #     if n % 2 == 0:
@@ -78,7 +78,7 @@
 #
 # print(solution(4))
 
-# # 자릿수 더하기
+# 자릿수 더하기
 #
 # def solution(n):
 #     total = 0
@@ -86,7 +86,7 @@
 #         total += int(i)
 #     return total
 
-# # 시저 암호
+# 시저 암호
 # # A = 65, a = 97
 # # Z = 90, z = 122
 #
@@ -112,7 +112,7 @@
 #
 # print(solution("a B z", 4))
 
-# # 문자열 다루기 기본
+# 문자열 다루기 기본
 #
 # def solution(s):
 #     if len(s) == 4 or len(s) == 6:
@@ -128,7 +128,7 @@
 # print(solution('a234'))
 # print(solution('1234'))
 
-# # 문자열 다루기 isdigit() 함수 사용해보기
+# 문자열 다루기 isdigit() 함수 사용해보기
 # # isdigit() => 주어진 문자열이 숫자로 되어있는지 검사하는 함수
 # def alpha_string46(s):
 #     return s.isdigit() and len(s) in (4, 6)
@@ -141,7 +141,7 @@
 # # True 를 반환한다.
 # print(a.isdigit())
 
-# # 정수 내림차순으로 배치하기
+# 정수 내림차순으로 배치하기
 #
 # def solution(n):
 #     reverse_int = ''
@@ -156,7 +156,7 @@
 #     ls.sort(reverse = True)
 #     return int("".join(ls))
 
-# # 서울에서 김서방 찾기
+# 서울에서 김서방 찾기
 # def solution(seoul):
 #     for s in enumerate(seoul):
 #         if s[1] == 'Kim':
@@ -164,7 +164,7 @@
 #             return f'김서방은 {place}에 있다.'
 # print(solution(['Jane', 'Kim']))
 
-# # 약수의 합
+# 약수의 합
 #
 # def solution(n):
 #     answer = 0
@@ -177,7 +177,7 @@
 # print(solution(12))
 # print(solution(5))
 
-# # 내적
+# 내적
 # def solution(a, b):
 #     answer = 0
 #     for i in range(len(a)):
@@ -186,7 +186,7 @@
 #
 # print(solution([1,2,3,4], [-3,-1,0,2]))
 
-# # 문자열 내림차순으로 배치하기
+# 문자열 내림차순으로 배치하기
 # def solution(s):
 #     answer = []
 #     result = ''
@@ -200,7 +200,7 @@
 #
 # print(solution("Zbcdefg	"))
 
-# # 이상한 문자 만들기
+# 이상한 문자 만들기
 #
 # def solution(s):
 #     s_list = s.split(' ')
@@ -217,7 +217,7 @@
 #
 # print(solution('try hello world'))
 
-# # 신규 아이디 추천
+# 신규 아이디 추천
 # import re
 # def solution(new_id):
 #     answer = ''
@@ -225,18 +225,18 @@
 #     new_id.sub('[a-z]')
 #     return answer
 
-# # 짝수와 홀수
+# 짝수와 홀수
 #
 # def solution(num):
 #
 #     return "Odd" if num % 2 else "Even"
 
-# # 평균 구하기
+# 평균 구하기
 #
 # def solution(arr):
 #     return sum(arr)/len(arr)
 
-# # 3진법 뒤집기
+# 3진법 뒤집기
 #
 # def recur(n):
 #     if n == 2:
@@ -256,3 +256,25 @@
 #     return answer
 #
 # print(solution(45))
+
+# 제일 작은 수 제거하기
+#
+# def solution(arr):
+#     if len(arr) == 1:
+#         return [-1]
+#     else:
+#         new_arr = sorted(arr)
+#         minimum = new_arr[0]
+#         arr.remove(minimum)
+#         return arr
+#
+# print(solution([4,3,2,1]))
+
+# 정수 제곱근 판별
+# def solution(n):
+#     if (n ** (1/2)).is_integer():
+#         return (n ** (1/2) +1) ** 2
+#     else:
+#         return -1
+#
+# print(solution(121))
