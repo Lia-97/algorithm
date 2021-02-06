@@ -278,3 +278,29 @@
 #         return -1
 #
 # print(solution(121))
+
+# 가운데 글자 가져오기
+# def solution(s):
+#     if len(s) % 2:
+#         return s[len(s)//2]
+#     else:
+#         return s[len(s)//2 - 1:len(s)//2 + 1]
+#
+# print(solution("abcde"))
+
+# 히샤드 수
+# def solution(x):
+#     str_x = str(x)
+#     lis = []
+#     for i in range(len(str_x)):
+#         lis.append(str_x[i])
+#     num = sum(list(map(int,lis)))
+#     if x % num == 0:
+#         return True
+#     else:
+#         return False
+# print(solution(10))
+
+# 하샤드 수 2
+# def solution(n):
+#     return n % sum([int(c) for c in str(n)]) == 0
