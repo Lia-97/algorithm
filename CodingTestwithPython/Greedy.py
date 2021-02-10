@@ -37,8 +37,29 @@
 
 N, M, K = map(int, input().split())
 data = list(map(int, input().split()))
+data.sort()
+first = data[-1]
+second = data[-2]
+result = 0
 
-if len(max(data)) >= 2:
-    print(max(data) * M)
+if first == second:
+    result = first * M
 else:
-    pass
+    while True:
+        if M == 0:
+            break
+        for _ in range(K):
+            result += first
+            M -= 1
+            if M == 0:
+                break
+        result += second
+        M -= 1
+
+print(result)
+
+
+
+
+
+
