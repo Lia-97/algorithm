@@ -170,3 +170,59 @@
 #     result = ' '.join(map(str, zero_list))
 #     print(f'#{tc} {result}')
 
+# 두 개의 숫자열 _ 정석
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split())
+#     result = []
+#     if N > M:
+#         fix = list(map(int, input().split()))
+#         move = list(map(int, input().split()))
+#     if M > N:
+#         move = list(map(int, input().split()))
+#         fix = list(map(int, input().split()))
+
+# 두 개의 숫자열 _ [0]*N 
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split())
+#     max_val = []
+#     A = list(map(int, input().split()))
+#     B = list(map(int, input().split()))
+#     if N > M:
+#         for i in range(N-M+1):
+#             result = [0] * N
+#             result[i:i+M] = (b for b in B)
+#             total = 0
+#             for j in range(N):
+#                 total += result[j] * A[j]
+#             max_val.append(total)
+#
+#     if M > N:
+#         for i in range(M-N+1):
+#             result = [0] * M
+#             result[i:i+N] = (a for a in A)
+#             total = 0
+#             for j in range(M):
+#                 total += result[j] * B[j]
+#             max_val.append(total)
+#
+#     answer = max_val[0]
+#     for m in max_val:
+#         if m > answer:
+#             answer = m
+#     print(f'#{tc} {answer}')
+
+# 숫자를 정렬하자
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     numbers = list(map(int, input().split()))
+#     for i in range(N-1):
+#         for j in range(i+1, N):
+#             if numbers[i] > numbers[j]:
+#                 numbers[i], numbers[j] = numbers[j], numbers[i]
+#     numbers = list(map(str, numbers))
+#     result = ' '.join(numbers)
+#     print(f'#{tc} {result}')
