@@ -179,11 +179,12 @@
 #     if N > M:
 #         fix = list(map(int, input().split()))
 #         move = list(map(int, input().split()))
-#     if M > N:
+#     else:
+#         N, M = M, N
 #         move = list(map(int, input().split()))
 #         fix = list(map(int, input().split()))
 
-# 두 개의 숫자열 _ [0]*N 
+# 두 개의 숫자열 _ [0]*N
 # T = int(input())
 # for tc in range(1, T+1):
 #     N, M = map(int, input().split())
@@ -214,6 +215,33 @@
 #             answer = m
 #     print(f'#{tc} {answer}')
 
+# 두 개의 숫자열 _ 원재
+#
+# def arr_mul(a,b):
+#     ans=0
+#     for n,m in zip(a,b):
+#         ans+=n*m
+#     return ans
+#
+# T=int(input())
+# for tc in range(1,T+1):
+#     N, M= map(int,input().split())
+#     A=list(map(int,input().split()))
+#     B=list(map(int,input().split()))
+#
+#     # A가 더 작으면 A의 list가 더 큰걸로 바꿔준다.
+#     if N < M :
+#         N,M=M,N
+#         A,B=B,A
+#
+#     max_sum=float('-inf')
+#     for i in range(N-M+1):
+#         sub_sum=arr_mul(A[i:i+M],B)
+#         if max_sum < sub_sum:
+#             max_sum=sub_sum
+#
+#     print(f'#{tc} {max_sum}')
+
 # 숫자를 정렬하자
 # T = int(input())
 # for tc in range(1, T+1):
@@ -226,3 +254,47 @@
 #     numbers = list(map(str, numbers))
 #     result = ' '.join(numbers)
 #     print(f'#{tc} {result}')
+
+# 삼성시의 버스 노선
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     result = []
+#     setting = [0] * 5001
+#     for n in range(N):
+#         A, B = map(int, input().split())
+#         for i in range(A,B+1):
+#             setting[i] += 1
+#     P = int(input())
+#     for _ in range(P):
+#         j = int(input())
+#         result.append(str(setting[j]))
+#
+#     result = ' '.join(result)
+#     print(f'#{tc} {result}')
+
+# Flatten
+# for tc in range(1, 11):
+#     dump = int(input())
+#     height = list(map(int, input().split()))
+#     for _ in range(dump):
+#         max_val = height[0]
+#         min_val = height[0]
+#         for h in height:
+#             if h > max_val:
+#                 max_val = h
+#             if h < min_val:
+#                 min_val = h
+#         max_index = height.index(max_val)
+#         min_index = height.index(min_val)
+#         height[max_index] -= 1
+#         height[min_index] += 1
+#
+#     max_ans = height[0]
+#     min_ans = height[0]
+#     for h in height:
+#         if h > max_ans:
+#             max_ans = h
+#         if h < min_ans:
+#             min_ans = h
+#     print(f'#{tc} {max_ans - min_ans}')
