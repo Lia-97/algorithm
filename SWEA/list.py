@@ -298,3 +298,94 @@
 #         if h < min_ans:
 #             min_ans = h
 #     print(f'#{tc} {max_ans - min_ans}')
+
+# Flatten _ while 문으로 풀기 (원재)
+# T=10
+# for tc in range(1,T+1):
+#     dump=int(input())
+#     boxes=list(map(int,input().split()))
+#
+#     while dump > 0:
+#         # (index, val)
+#         min_val=boxes[0]
+#         max_val=boxes[0]
+#         # 최고, 최저 탐색
+#         for val in boxes:
+#             if max_val < val:
+#                 max_val=val
+#             if min_val > val:
+#                 min_val=val
+#         boxes[boxes.index(max_val)]-=1
+#         boxes[boxes.index(min_val)]+=1
+#         dump-=1
+#
+#         max_ans=boxes[0]
+#         min_ans=boxes[0]
+#         for box in boxes:
+#             if max_ans<box:
+#                 max_ans=box
+#             if min_ans>box:
+#                 min_ans=box
+#         if max_ans - min_ans<=1:
+#             break
+#     print(f'#{tc} {max_ans-min_ans}')
+
+# 당근 수확
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     carrot = list(map(int, input().split()))
+#     result = []
+#     for i in range(N):
+#         a = sum(carrot[:i+1])
+#         b = sum(carrot[i+1:])
+#         result.append((i+1, abs(a-b)))
+#     work = 0
+#     diff = float('inf')
+#     for r in result:
+#         if r[1] < diff:
+#             work = r[0]
+#             diff = r[1]
+#     print(f'#{tc} {work} {diff}')
+
+# 당근 수확 _ 2
+# T = int(input())
+#
+# for tc in range(1, T + 1):
+#     N = int(input())
+#     # 일꾼 a, b의 수확량
+#     a, b = 0, 0
+#
+#     carrot_list = list(map(int, input().split()))
+#
+#     for carrot in carrot_list:
+#         b += carrot
+#
+#     min_diff = abs(b - a)
+#     for i in range(N):
+#         a += carrot_list[i]
+#         b -= carrot_list[i]
+#         if abs(b - a) > min_diff:
+#             break
+#         else:
+#             min_diff = abs(b - a)
+#
+#     # i-1번째 인덱스가 첫 번째 일꾼의 최종 구역. 다만 정답은 1 번째부터 세므로 그대로 i 출력
+#
+#     print(f'#{tc} {i} {min_diff}')
+
+# 당근밭 옆 고구마밭
+T = int(input())
+for tc in range(1, T+1):
+    N = int(input())
+    numbers = [-1] + list(map(int, input().split()))
+    cnt = 0
+    sweet_potato_cnt = 0
+    long = 0
+    for i in range(len(numbers)):
+        if numbers[i] > numbers[i-1]:
+            a.append(i)
+            long += 1
+        elif numbers[i] < numbers[i-1]:
+            cnt += 1
+            sweet_potato_cnt = 0

@@ -81,6 +81,32 @@
 #
 #     print(f'#{tc} {len(result)}')
 
+# [S/W 문제해결 기본] 3일차 - 회문1 (전치 행렬)
+# def check(word):
+#     global ans
+#     for i in range(8-length+1):
+#         origin=word[i:i+length]
+#         reverse=origin[::-1]
+#         if origin == reverse:
+#             ans+=1
+#
+# T=10
+# for tc in range(1,T+1):
+#     length=int(input())
+#     board=[]
+#     ans=0
+#
+#     for _ in range(8):
+#         board.append(input())
+#     # 전치 행렬
+#     T_board=list(zip(*board))
+#
+#     for i in range(8):
+#         check(board[i])
+#         check(T_board[i])
+#
+#     print(f'#{tc} {ans}')
+
 # 원재의 메모리 복구하기
 # T = int(input())
 # for tc in range(1, T+1):
