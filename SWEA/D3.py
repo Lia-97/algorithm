@@ -131,9 +131,17 @@
 #             cnt+=1
 #     print(f'#{tc} {cnt}')
 
-# [S/W 문제해결 기본] 8일차 - 암호문3
+# [S/W 문제해결 기본] 7일차 - 암호생성기
 for tc in range(1, 11):
-    N = int(input())
-    password = list(map(int, input().split()))
-    num = int(input())
-    control = list(map())
+    input()
+    numbers = list(map(int, input().split()))
+    while numbers[-1] > 0:
+        for i in range(1, 6):
+            move = numbers.pop(0)
+            if move - i > 0:
+                numbers.append(move-i)
+            else:
+                numbers.append(0)
+                break
+    result = ' '.join(map(str,numbers))
+    print(f'#{tc} {result}')

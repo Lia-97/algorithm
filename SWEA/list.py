@@ -374,18 +374,89 @@
 #
 #     print(f'#{tc} {i} {min_diff}')
 
-# 당근밭 옆 고구마밭
-T = int(input())
-for tc in range(1, T+1):
-    N = int(input())
-    numbers = [-1] + list(map(int, input().split()))
-    cnt = 0
-    sweet_potato_cnt = 0
-    long = 0
-    for i in range(len(numbers)):
-        if numbers[i] > numbers[i-1]:
-            a.append(i)
-            long += 1
-        elif numbers[i] < numbers[i-1]:
-            cnt += 1
-            sweet_potato_cnt = 0
+# 당근밭 옆 고구마밭 _ 미완
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     numbers = [-1] + list(map(int, input().split())) + [-1]
+#     root_len = 0
+#     total = 0
+#     result = []
+#     for i in range(1, len(numbers)):
+#         if numbers[i] > numbers[i-1]:
+#             root_len += 1
+#             total += numbers[i]
+#         else:
+#             result.append((root_len, total))
+#             if numbers[i] == -1:
+#                 break
+#             else:
+#                 if numbers[i] < numbers[i+1]:
+#                     root_len = 1
+#                     total = numbers[i]
+#                 else:
+#                     root_len = 0
+#                     total = 0
+#     print(result)
+#
+#     # cnt = 0
+#     # max = 0
+#     # for i in result:
+#     #     if i[0] != 0:
+#     #         cnt += 1
+#     #     if i[0] > max:
+#     #         max = i[0]
+#
+#     # cnt = 0
+#     # max = float('-inf')
+#     # for i in result:
+#     #     if i[0] != 0:
+#     #         cnt += 1
+#     #     if i[1] > max:
+#     #         max = i[1]
+#     # print(f'#{tc} {cnt} {max}')
+
+# 당근의 개수
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     numbers = list(map(int, input().split()))
+#     max = float('-inf')
+#     order = 0
+#     for number in enumerate(numbers):
+#         if number[1] > max:
+#             order = number[0]
+#             max = number[1]
+#     print(f'#{tc} {order+1} {max}')
+
+# 연속한 1의 개수
+# T= int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     numbers = input()
+#     cnt = 0
+#     max_cnt = 0
+#     for number in numbers:
+#         if number == '1':
+#             cnt += 1
+#             if cnt > max_cnt:
+#                 max_cnt = cnt
+#         else:
+#             cnt = 0
+#     print('#{} {}'.format(tc, max_cnt))
+
+# 점점 커지는 당근의 개수
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     carrots = list(map(int, input().split()))
+#     cnt = 1
+#     max_cnt = 1
+#     for i in range(1, N):
+#         if carrots[i] > carrots[i-1]:
+#             cnt += 1
+#             if cnt > max_cnt:
+#                 max_cnt = cnt
+#         else:
+#             cnt = 1
+#     print('#{} {}'.format(tc, max_cnt))
