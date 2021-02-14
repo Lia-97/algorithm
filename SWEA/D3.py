@@ -132,16 +132,64 @@
 #     print(f'#{tc} {cnt}')
 
 # [S/W 문제해결 기본] 7일차 - 암호생성기
-for tc in range(1, 11):
-    input()
-    numbers = list(map(int, input().split()))
-    while numbers[-1] > 0:
-        for i in range(1, 6):
-            move = numbers.pop(0)
-            if move - i > 0:
-                numbers.append(move-i)
-            else:
-                numbers.append(0)
-                break
-    result = ' '.join(map(str,numbers))
-    print(f'#{tc} {result}')
+# for tc in range(1, 11):
+#     input()
+#     numbers = list(map(int, input().split()))
+#     while numbers[-1] > 0:
+#         for i in range(1, 6):
+#             move = numbers.pop(0)
+#             if move - i > 0:
+#                 numbers.append(move-i)
+#             else:
+#                 numbers.append(0)
+#                 break
+#     result = ' '.join(map(str,numbers))
+#     print(f'#{tc} {result}')
+
+# 소득 불균형
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     numbers = list(map(int, input().split()))
+#     total = 0
+#     long = 0
+#     for number in numbers:
+#         total += number
+#         long += 1
+#     avg = total / long
+#     cnt = 0
+#     for number in numbers:
+#         if number <= avg:
+#             cnt += 1
+#     print('#{} {}'.format(tc, cnt))
+
+# [Professional] 쥬스 나누기
+# T= int(input())
+# for tc in range(1, T+1):
+#     N = input()
+#     print(f'#{tc}', end=' ')
+#     print(('1/'+N+' ') * int(N))
+
+# [S/W 문제해결 기본] 3일차 - String
+# for tc in range(1, 11):
+#     input()
+#     search = input()
+#     sentence = input()
+#     cnt = 0
+#     for i in range(len(sentence)-len(search)+1):
+#         if sentence[i:i+len(search)] == search:
+#             cnt += 1
+#     print(f'#{tc} {cnt}')
+
+# 제곱 팰린드롬 수
+# T = int(input())
+# for tc in range(1, T+1):
+#     A, B = map(int, input().split())
+#     cnt = 0
+#     for num in range(A, B+1):
+#         if str(num) == str(num)[::-1]:
+#             root = num ** (1/2)
+#             if root % 1 == 0:
+#                 if str(int(root)) == str(int(root))[::-1]:
+#                     cnt += 1
+#     print(f'#{tc} {cnt}')
