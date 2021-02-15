@@ -193,3 +193,22 @@
 #                 if str(int(root)) == str(int(root))[::-1]:
 #                     cnt += 1
 #     print(f'#{tc} {cnt}')
+
+# [S/W 문제해결 기본] 10일차 - 비밀번호
+# for tc in range(1, 11):
+#     long, words = input().split()
+#     words_list = list(words)
+#     result = [-1]
+#     while len(words_list) != 0:
+#         last = words_list.pop()
+#         if last != result[-1]:
+#             result.append(last)
+#         else:
+#             result.pop()
+#     result = result[::-1]
+#     result = result[:len(result)-1]
+#
+#     ans = ''.join(list(map(str, result)))
+#     print(f'#{tc} {ans}')
+
+#

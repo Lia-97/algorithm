@@ -460,3 +460,113 @@
 #         else:
 #             cnt = 1
 #     print('#{} {}'.format(tc, max_cnt))
+
+# 이웃한 요소와의 차의 절댓값의 합
+# T = int(input())
+# dir1 = [0,0,1,-1]
+# dir2 = [1,-1,0,0]
+# for tc in range(1, T+1):
+#     num = int(input())
+#     arr = []
+#     total = 0
+#     for _ in range(num):
+#         lis = arr.append(list(map(int, input().split())))
+#     for i in range(num):
+#         for j in range(num):
+#             for l in range(4):
+#                 r = i + dir1[l]
+#                 c = j + dir2[l]
+#                 if 0 <= r < num and 0<= c < num:
+#                     total += abs(arr[i][j] - arr[r][c])
+#     print(f'#{tc} {total}')
+
+# 부분집합의 합이 0 이 되는 프로그램
+# T = int(input())
+# for tc in range(1, T+1):
+#     arr = list(map(int, input().split()))
+#     n = len(arr)
+#     for i in range(1<<n):
+#         ans = []
+#         for j in range(n):
+#             if i & (1<<j):
+#                 ans.append(arr[j])
+#         if sum(ans) == 0 and len(ans) != 0:
+#             result = 1
+#             break
+#         else:
+#             result = 0
+#     print(f'#{tc} {result}')
+
+# 달팽이 숫자
+# T = int(input())
+# dr = [0,1,0,-1]
+# dc = [1,0,-1,0]
+# for tc in range(1, T+1):
+#     num = int(input())
+#     arr = []
+#     for _ in range(num):
+#         arr.append([0] * num)
+#     i = 0
+#     j = -1
+#     k = 0
+#     change = 1
+#     while change <= num * num:
+#         r = i + dr[k]
+#         c = j + dc[k]
+#         if 0 <= r < num and 0 <= c < num and arr[r][c] == 0:
+#             i = r
+#             j = c
+#             arr[i][j] = change
+#             change += 1
+#         else:
+#             k = (k+1) % 4
+#     print(arr)
+
+
+
+
+
+# [S/W 문제해결 기본] 2일차 - Sum
+# for tc in range(1, 11):
+#     input()
+#     arr = []
+#     for _ in range(100):
+#         arr.append(list(map(int, input().split())))
+#
+#     result = []
+#     result2 = []
+#     total3 = 0
+#     total4 =0
+#     for i in range(len(arr)):
+#         total = 0
+#         total2 = 0
+#         for j in range(len(arr[i])):
+#             total += arr[i][j]
+#             total2 += arr[j][i]
+#             if i == j:
+#                 total3 += arr[i][j]
+#             if j == len(arr)-1-i:
+#                 total4 += arr[i][j]
+#
+#         result.append(total)
+#         result2.append(total2)
+#
+#     max_val1 = 0
+#     for r in result:
+#         if r > max_val1:
+#             max_val1 = r
+#     max_val2 = 0
+#     for r2 in result2:
+#         if r2 > max_val2:
+#             max_val2 = r2
+#     ans = 0
+#     for i in [max_val1, max_val2, total3, total4]:
+#         if i > ans:
+#             ans = i
+#     print(f'#{tc} {ans}')
+
+# [S/W 문제해결 기본] 2일차 - Sum
+# 가장 큰 수 구하는 함수 정의하기
+# def Max_Sum():
+#     pass
+# input 받아서 위에서 정의한 함수 사용하기
