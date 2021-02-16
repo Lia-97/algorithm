@@ -520,11 +520,9 @@
 #             change += 1
 #         else:
 #             k = (k+1) % 4
-#     print(arr)
-
-
-
-
+#     print(f'#{tc}')
+#     for array in arr:
+#         print(' '.join(map(str, array)))
 
 # [S/W 문제해결 기본] 2일차 - Sum
 # for tc in range(1, 11):
@@ -570,3 +568,191 @@
 # def Max_Sum():
 #     pass
 # input 받아서 위에서 정의한 함수 사용하기
+
+# [파이썬 S/W 문제해결 기본] 2일차 - 색칠하기
+# T = int(input())
+# for tc in range(1, T+1):
+#     num = int(input())
+#     for _ in range(num):
+#         int
+
+# [파이썬 S/W 문제해결 기본] 2일차 - 이진탐색
+# def search(long, find):
+#     start = 1
+#     end = long
+#     cnt = 0
+#     while start <= end:
+#         middle = (start + end)//2
+#         if middle == find:
+#             cnt += 1
+#             break
+#         elif middle > find:
+#             end = middle
+#             cnt += 1
+#         else:
+#             start = middle
+#             cnt += 1
+#     return cnt
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     P, A, B = map(int, input().split())
+#     cnt_A = search(P, A)
+#     cnt_B = search(P, B)
+#     if cnt_A < cnt_B:
+#         ans = 'A'
+#     elif cnt_A > cnt_B:
+#         ans = 'B'
+#     else:
+#         ans = 0
+#     print('#{} {}'.format(tc, ans))
+
+# [파이썬 S/W 문제해결 기본] 2일차 - 특별한 정렬
+# T= int(input())
+# for tc in range(1, T+1):
+#     long = int(input())
+#     numbers = list(map(int, input().split()))
+#     # 선택정렬로 작은 수부터 오름차순으로 정렬한다.
+#     for i in range(long-1):
+#         min_idx = i
+#         for j in range(i+1, long):
+#             if numbers[j] < numbers[min_idx]:
+#                 min_idx = j
+#         numbers[i], numbers[min_idx] = numbers[min_idx], numbers[i]
+#
+#     # 내림차순 정렬된 새로운 리스트를 만든다.
+#     reverse_numbers = numbers[::-1]
+#     # long 길이를 가지는 임의의 리스트를 만든다. (값을 바꿔나갈 예정)
+#     result = [0] * long
+#     half = long // 2
+#     # result 의 짝수번째 인덱스에 큰 값부터 넣어준다.
+#     for i in range(0,half):
+#         result[2*i] = reverse_numbers[i]
+#     # result 의 홀수번째 인덱스에 작은 값부터 넣어준다.
+#     for j in range(0,long-half):
+#         result[2*j+1] = numbers[j]
+#
+#     ans = result[:10]
+#     ans = ' '.join(list(map(str, ans)))
+#     print('#{} {}'.format(tc, ans))
+
+# [파이썬 S/W 문제해결 기본] 2일차 - 부분집합의 합
+# def sum_val(lis):
+#     total = 0
+#     for l in lis:
+#         total += l
+#     return total
+#
+# def len_val(lis):
+#     long = 0
+#     for l in lis:
+#         long += 1
+#     return long
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, K = map(int, input().split())
+#     A = [i for i in range(1, 13)]
+#     cnt = 0
+#     for i in range(1 << len(A)):
+#         sub = []
+#         for j in range(len(A)):
+#             if i & 1 << j:
+#                 sub.append(A[j])
+#         if len_val(sub) == N and sum_val(sub) == K:
+#             cnt += 1
+#     print('#{} {}'.format(tc, cnt))
+
+# [S/W 문제해결 기본] 2일차 - Ladder1
+# for tc in range(1, 11):
+#     int(input())
+#     arr = []
+#     for _ in range(100):
+#         arr.append(list(input().split()))
+#     for a in arr[99]:
+#         if a == '2':
+#             two = arr[99].index(a)
+#     dr = [-1, 0, 0]
+#     dc = [0, -1, 1]
+#     r = 99
+#     c = two
+#     while r > 0:
+#         r = r + dr[0]
+#         c = c + dc[0]
+#
+#         if 0 <= c-1 <100 and arr[r][c-1] == '1':
+#             while arr[r][c-1] == '1':
+#                 r = r + dr[1]
+#                 c = c + dc[1]
+#                 if arr[r-1][c] == '1':
+#                     break
+#
+#         elif 0 <= c+1 <100 and arr[r][c+1] == '1':
+#             while arr[r][c+1] == '1':
+#                 r = r + dr[2]
+#                 c = c + dc[2]
+#                 if arr[r-1][c] == '1':
+#                     break
+#     print(f'#{tc} {c}')
+
+# 파리 퇴치
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split())
+#     arr = []
+#     for _ in range(N):
+#         arr.append(list(map(int, input().split())))
+#         result = []
+#     for i in range(N-M+1):
+#         for j in range(N-M+1):
+#             total = 0
+#             max_val = 0
+#             for l in range(i, i+M):
+#                 total += sum(arr[l][j:j+M])
+#             if max_val < total:
+#                 max_val = total
+#             result.append(max_val)
+#
+#     ans = result[0]
+#     for r in result:
+#         if r > ans:
+#             ans = r
+#
+#     print(f'#{tc} {ans}')
+
+# 어디에 단어가 들어갈 수 있을까
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, K = map(int, input().split())
+#     arr = []
+#     cnt = 0
+#     for _ in range(N):
+#         arr.append(list(input().split()))
+#
+#     for i in range(N):
+#         long = 0
+#         long2 = 0
+#         for j in range(N):
+#             if arr[i][j] == '1' and j != N-1:
+#                 long += 1
+#             elif arr[i][j] == '1' and j == N-1:
+#                 long += 1
+#                 if long == K:
+#                     cnt += 1
+#             elif arr[i][j] == '0':
+#                 if long == K:
+#                     cnt += 1
+#                 long = 0
+#
+#             if arr[j][i] == '1' and i != N-1:
+#                 long2 += 1
+#             elif arr[j][i] == '1' and i == N-1:
+#                 long2 += 1
+#                 if long2 == K:
+#                     cnt += 1
+#             elif arr[j][i] == '0':
+#                 if long2 == K:
+#                     cnt += 1
+#                 long2 = 0
+#
+#     print(f'#{tc} {cnt}')

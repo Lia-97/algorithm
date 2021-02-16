@@ -211,4 +211,24 @@
 #     ans = ''.join(list(map(str, result)))
 #     print(f'#{tc} {ans}')
 
+# 농작물 수확하기
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     arr = []
+#     for _ in range(N):
+#         arr.append(list(map(int, input())))
 #
+#     total = 0
+#     for i in range(N):
+#         total += sum(arr[i][abs(N//2-i) : N-abs(N//2-i)])
+#     print(f'#{tc} {total}')
+
+# 보충학습과 평균
+# T = int(input())
+# for tc in range(1, T+1):
+#     score = list(map(int, input().split()))
+#     for i in range(len(score)):
+#         if score[i] < 40:
+#             score[i] = 40
+#     print(f'#{tc} {int(sum(score)/len(score))}')
