@@ -695,6 +695,53 @@
 #                     break
 #     print(f'#{tc} {c}')
 
+# [S/W 문제해결 기본] 2일차 - Ladder1 _ 원재의 솔루션 1
+# T=10
+# for tc in range(1,T+1):
+#     # tc 번호 받기
+#     input()
+#     ladder=[]
+#     for _ in range(100):
+#         ladder.append(['0']+input().split()+['0'])
+#     r,c=99,ladder[99].index('2')
+#
+#     while r > 0:
+#         # 위로 올라가기
+#         r=r-1
+#         if ladder[r][c-1] !='0':
+#             # 왼쪽 방향으로
+#             while ladder[r][c-1] !='0':
+#                 c=c-1
+#             continue
+#         # 오른쪽 방향으로
+#         while ladder[r][c+1] !='0':
+#             c=c+1
+#     print(f'#{tc} {c-1}')
+
+# [S/W 문제해결 기본] 2일차 - Ladder1 _ 원재의 솔루션(flag)
+# T=10
+# for tc in range(1,T+1):
+#     # tc 번호 받기
+#     input()
+#     ladder=[]
+#     for _ in range(100):
+#         ladder.append(['0']+input().split()+['0'])
+#     r,c=99,ladder[99].index('2')
+#
+#     while r > 0:
+#         # 위로 올라가기
+#         r=r-1
+#         flag = False
+#         if ladder[r][c-1] !='0': flag=True
+#         # 왼쪽 방향으로
+#         while ladder[r][c-1] !='0':
+#             c=c-1
+#         if flag: continue
+#         # 오른쪽 방향으로
+#         while ladder[r][c+1] !='0':
+#             c=c+1
+#     print(f'#{tc} {c-1}')
+
 # 파리 퇴치
 # T = int(input())
 # for tc in range(1, T+1):
@@ -702,7 +749,7 @@
 #     arr = []
 #     for _ in range(N):
 #         arr.append(list(map(int, input().split())))
-#         result = []
+#     result = []
 #     for i in range(N-M+1):
 #         for j in range(N-M+1):
 #             total = 0
@@ -756,3 +803,59 @@
 #                 long2 = 0
 #
 #     print(f'#{tc} {cnt}')
+
+# 어디에 단어가 들어갈 수 있을까_슬라이싱으로 풀어보기
+pass
+
+# 당근 수확 3
+
+# 파리 퇴치 - 다시 풀기
+
+
+# 사각형 찾기
+# T=int(input())
+# for tc in range(1,T+1):
+#     N=int(input())
+#     square=[]
+#     for _ in range(N):
+#         square.append(input().split())
+#
+#     size=0
+#     for i in range(N):
+#         for j in range(N):
+#             if square[i][j] == '1':
+#                 sub_size=0
+#                 for m in range(i,N):
+#                     if square[m][j] == '0':
+#                         break
+#                         for n in range(j,N):
+#                             if square[m][n] =='1':
+#                                 sub_size+=1
+#                                 square[m][n]='0'
+#                             else:
+#                                 break
+#                 if size < sub_size:
+#                     size=sub_size
+#     print(f'#{tc} {size}')
+
+# 사각형 찾기 - 다시 풀기
+
+# 색칠하기
+# T=int(input())
+# for tc in range(1,T+1):
+#     area = [[0] * 10 for _ in range(10)]
+#     N=int(input())
+#     for _ in range(N):
+#         r1,c1,r2,c2,color=map(int,input().split())
+#         for r in range(r1,r2+1):
+#             for c in range(c1,c2+1):
+#                 if area[r][c]==0:
+#                     area[r][c]=color
+#                 elif area[r][c] != color:
+#                     area[r][c]=3
+#     ans=0
+#     for a in area:
+#         ans+=a.count(3)
+#     print('#{} {}'.format(tc, ans))
+
+
