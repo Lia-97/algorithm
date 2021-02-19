@@ -13,30 +13,30 @@
 #     print(f'#{x} {max(lis)}')
 
 # view
-# T = 10
-# # 10번의 테스트케이스
-# for tc in range(1, T+1):
-#     n = input()
-#     # n 개의 길이를 갖는 list인 floor
-#     floor = list(map(int, input().split()))
-#     cnt = 0
-#     # floor[2] 부터 floor[len(floor)-2] 를 순회한다.
-#     for i in range(2, len(floor) - 2):
-#         max_val = 0
-#         # 특정 세대의 앞 2개, 뒤 2개 중 가장 높은 세대의 층을 구한다.
-#         for j in floor[i-2:i+3]:
-#             if j > max_val:
-#                 max_val = j
-#         # 5개 세대 중에서 가운데 있는 세대의 층이 가장 높다면
-#         if max_val == floor[i]:
-#             second_max_val = 0
-#             # 두번째로 높은 세대의 층을 구해서
-#             for l in [floor[i - 2], floor[i - 1], floor[i + 1], floor[i + 2]]:
-#                 if l > second_max_val:
-#                     second_max_val = l
-#             # 그 차 만큼 cnt 에 더해준다.
-#             cnt += floor[i] - second_max_val
-#     print(f'#{tc} {cnt}')
+T = 10
+# 10번의 테스트케이스
+for tc in range(1, T+1):
+    n = input()
+    # n 개의 길이를 갖는 list인 floor
+    floor = list(map(int, input().split()))
+    cnt = 0
+    # floor[2] 부터 floor[len(floor)-2] 를 순회한다.
+    for i in range(2, len(floor) - 2):
+        max_val = 0
+        # 특정 세대의 앞 2개, 뒤 2개 중 가장 높은 세대의 층을 구한다.
+        for j in floor[i-2:i+3]:
+            if j > max_val:
+                max_val = j
+        # 5개 세대 중에서 가운데 있는 세대의 층이 가장 높다면
+        if max_val == floor[i]:
+            second_max_val = 0
+            # 두번째로 높은 세대의 층을 구해서
+            for l in [floor[i - 2], floor[i - 1], floor[i + 1], floor[i + 2]]:
+                if l > second_max_val:
+                    second_max_val = l
+            # 그 차 만큼 cnt 에 더해준다.
+            cnt += floor[i] - second_max_val
+    print(f'#{tc} {cnt}')
 
 # 구간합
 # T = int(input())
@@ -773,44 +773,72 @@
 #     N, K = map(int, input().split())
 #     arr = []
 #     cnt = 0
+#     arr.append([0]*(N+2))
 #     for _ in range(N):
-#         arr.append(list(input().split()))
+#         arr.append([0] + list(map(int, input().split())) + [0])
+#     arr.append([0]*(N+2))
+#     reverse_arr = list(zip(*arr))
 #
-#     for i in range(N):
-#         long = 0
-#         long2 = 0
-#         for j in range(N):
-#             if arr[i][j] == '1' and j != N-1:
-#                 long += 1
-#             elif arr[i][j] == '1' and j == N-1:
-#                 long += 1
-#                 if long == K:
-#                     cnt += 1
-#             elif arr[i][j] == '0':
-#                 if long == K:
-#                     cnt += 1
-#                 long = 0
+#     for i in range(1, N+1):
+#         for j in range(1, N-K+2):
+#             if sum(arr[i][j:j+K]) == K and arr[i][j-1] == 0 and arr[i][j+K] == 0:
+#                 cnt +=1
 #
-#             if arr[j][i] == '1' and i != N-1:
-#                 long2 += 1
-#             elif arr[j][i] == '1' and i == N-1:
-#                 long2 += 1
-#                 if long2 == K:
-#                     cnt += 1
-#             elif arr[j][i] == '0':
-#                 if long2 == K:
-#                     cnt += 1
-#                 long2 = 0
+#     for i in range(1, N+1):
+#         for j in range(1, N-K+2):
+#             if sum(reverse_arr[i][j:j+K]) == K and reverse_arr[i][j-1] == 0 and reverse_arr[i][j+K] == 0:
+#                 cnt +=1
 #
 #     print(f'#{tc} {cnt}')
 
-# 어디에 단어가 들어갈 수 있을까_슬라이싱으로 풀어보기
-pass
+# 어디에 단어가 들어갈 수 있을까 _ 원재의 솔루션
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, K = map(int, input().split())
+#     arr = []
+#     cnt = 0
+#     arr.append([0]*(N+2))
+#     for _ in range(N):
+#         arr.append([0] + list(map(int, input().split())) + [0])
+#     arr.append([0]*(N+2))
+#     reverse_arr = list(zip(*arr))
+#
+#     for i in range(1, N+1):
+#         for j in range(1, N-K+2):
+#             if sum(arr[i][j:j+K]) == K and arr[i][j-1] == 0 and arr[i][j+K] == 0:
+#                 cnt +=1
+#             if sum(reverse_arr[i][j:j + K]) == K and reverse_arr[i][j - 1] == 0 and reverse_arr[i][j + K] == 0:
+#                 cnt+=1
+#     print(cnt)
+
+# 어디에 단어가 들어갈 수 있을까 _ 원재의 솔루션2
+# T=int(input())
+# for tc in range(1,T+1):
+#     N,K= map(int,input().split())
+#     puzzle=[]
+#
+#     # dummy 계산
+#     puzzle.append(['0']*(N+2))
+#     for _ in range(N):
+#         puzzle.append(['0']+input().split()+['0'])
+#     puzzle.append(['0'] * (N + 2))
+#     T_puzzle = list(zip(*puzzle))
+#
+#     ans=0
+#     search='0'+'1'*K+'0'
+#
+#     for i in range(1,N+1):
+#         for j in range(1,N-K+2):
+#
+#             for k in range(j-1,j+K+1):
+#                 if puzzle[i][k] != search[k-(j-1)]:
+#                     break
+#             else:
+#                 ans += 1
 
 # 당근 수확 3
 
 # 파리 퇴치 - 다시 풀기
-
 
 # 사각형 찾기
 # T=int(input())
@@ -857,5 +885,3 @@ pass
 #     for a in area:
 #         ans+=a.count(3)
 #     print('#{} {}'.format(tc, ans))
-
-
