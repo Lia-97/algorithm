@@ -360,15 +360,7 @@
 #     print('#{} {}'.format(tc, ans))
 
 # list2_연습2 (부분집합의 합이 0이 되는 문제. 비트연산자 모르겠음..)
-# T = int(input())
-# for tc in range(1, T+1):
-#     nums = list(map(int, input().split()))
-#     N = len(nums)
-#     for i in range(1 << N):
-#         print(i)
-#         for j in range(1 << i):
-#             if j == i:
-#                 pass
+
 
 # 달팽이 숫자
 # T = int(input())
@@ -591,3 +583,95 @@
 #             if sub_sum > max_sum:
 #                 max_sum = sub_sum
 #     print('#{} {}'.format(tc, max_sum))
+
+# 영준이의 카드 카운팅
+# def sum_v(lis):
+#     total = 0
+#     for l in lis:
+#         total += l
+#     return total
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     cards = input()
+#     card = []
+#     # 각 카드가 13개씩 있어야 한다.
+#     match = {'S': [0]*13, 'D':[0]*13, 'H': [0]*13, 'C':[0]*13}
+#     # input을 입력받으면 3자리씩 잘라서 card 라는 리스트에 넣는다.
+#     for i in range(len(cards)//3):
+#         card.append(cards[i*3:(i+1)*3])
+#     # card 리스트의 원소의 0 인덱스는 카드의 모양, 뒤 두자리는 카드의 번호이기 때문에 딕셔너리에서 해당 카드 번호에 1을 더해준다.
+#     for c in card:
+#         match.get(c[0])[int(c[1:3])-1] += 1
+#
+#     ans = []
+#     for v in match.values():
+#         flag = False
+#         # match 딕셔너리의 value 값의 원소의 합을 13에서 빼주면 부족한 카드의 갯수를 구할 수 있다.
+#         ans.append(13 - sum_v(v))
+#         # value 리스트의 원소가 1 보다 크면 ans 에 error 를 저장하고 반복문을 탈출한다.
+#         for i in v:
+#             if i > 1:
+#                 ans = 'ERROR'
+#                 flag = True
+#             if flag: break
+#         if flag:break
+#
+#     # ans 의 타입이 리스트라는 것은 에러가 아니라는 뜻이므로 문자열로 변환해 출력한다.
+#     if type(ans) == list:
+#         ans = map(str, ans)
+#         ans = ' '.join(ans)
+#
+#     print('#{} {}'.format(tc, ans))
+
+# 오목 판정
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     arr = [input() for _ in range(N)]
+#     for i in range(N):
+#         for j in range(N):
+#             std = arr[i][j]
+
+# 퍼펙트 셔플
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     half = N // 2
+#     cards = list(input().split())
+#     ans = []
+#     # 홀수일때
+#     if N%2:
+#         # 먼저 놓는 쪽에 한장 더 많게 분배
+#         up = cards[:half+1]
+#         down = cards[half+1:]
+#         # up 과 down 에서 앞에서부터 하나씩 ans에 더한다.
+#         for i in range(half+1):
+#             ans.append(up[i])
+#             # 인덱스 에러 방지하기 위해 i 가 down 인덱스를 초과하면 pass 하도록 조건문
+#             if i < len(down):
+#                 ans.append(down[i])
+#
+#     # 짝수일때
+#     else:
+#         up = cards[:half]
+#         down = cards[half:]
+#         for i in range(half):
+#             ans.append(up[i])
+#             ans.append(down[i])
+#
+#     ans = ' '.join(ans)
+#     print('#{} {}'.format(tc, ans))
+
+# 원재의 메모리 복구하기
+# T = int(input())
+# for tc in range(1, T+1):
+#     bit = input()
+#     cnt = 0 # 수정 횟수
+#     std = '0' # 비교할 문자
+#     for i in range(len(bit)):
+#         # 기준 문자와 다르면 수정이 일어났다는 의미이므로 cnt +1
+#         if bit[i] != std:
+#             cnt += 1
+#             std = bit[i] # 해당 문자로 기준 문자를 변경한다.
+#     print('#{} {}'.format(tc,cnt))

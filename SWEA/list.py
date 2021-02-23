@@ -569,12 +569,6 @@ for tc in range(1, T+1):
 #     pass
 # input 받아서 위에서 정의한 함수 사용하기
 
-# [파이썬 S/W 문제해결 기본] 2일차 - 색칠하기
-# T = int(input())
-# for tc in range(1, T+1):
-#     num = int(input())
-#     for _ in range(num):
-#         int
 
 # [파이썬 S/W 문제해결 기본] 2일차 - 이진탐색
 # def search(long, find):

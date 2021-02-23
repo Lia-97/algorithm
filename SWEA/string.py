@@ -215,28 +215,28 @@
 #     print(f'#{tc} {ans}')
 
 # [S/W 문제해결 기본] 3일차 - 회문2 (flag)_원재가 좀 더 간단하게 만들어봄
-for tc in range(1, 11):
-    input()
-    arr = []
-    for _ in range(100):
-        arr.append(input())
-    T_arr = list(zip(*arr))
-    ans = 0
-    flag=False
-
-    for long in range(100,-1,-1):
-        for i in range(100):
-            for j in range(100-long+1):
-                pat1 = arr[i][j:j+long]
-                pat2 = T_arr[i][j:j+long]
-                if pat1==pat1[::-1] or pat2 == pat2[::-1]:
-                    ans=long
-                    flag=True
-                    break
-            if flag: break
-        if flag: break
-
-    print(f'#{tc} {ans}')
+# for tc in range(1, 11):
+#     input()
+#     arr = []
+#     for _ in range(100):
+#         arr.append(input())
+#     T_arr = list(zip(*arr))
+#     ans = 0
+#     flag=False
+#
+#     for long in range(100,-1,-1):
+#         for i in range(100):
+#             for j in range(100-long+1):
+#                 pat1 = arr[i][j:j+long]
+#                 pat2 = T_arr[i][j:j+long]
+#                 if pat1==pat1[::-1] or pat2 == pat2[::-1]:
+#                     ans=long
+#                     flag=True
+#                     break
+#             if flag: break
+#         if flag: break
+#
+#     print(f'#{tc} {ans}')
 
 # [S/W 문제해결 기본] 3일차 - 회문2 (def)
 # for tc in range(1, 11):
@@ -374,38 +374,38 @@ for tc in range(1, 11):
 #     print('#{} {}'.format(tc, ans))
 
 # 의석이의 세로로 말해요 _ 처음 시도했을 때 풀이
-T = int(input())
-for tc in range(1,T+1):
-    arr = []
-    arr2 = []
-    for _ in range(5):
-        arr.append(input())
-    # arr 에 더해준 리스트 중에서 가장 긴 길이가 무엇인지 구한다.
-    longest = 0
-    for i in arr:
-        if len(i)> longest:
-            longest = len(i)
-    # arr 의 행 길이가 longest 와 같으면 변화 없이 arr2에 appebd하고, 짧으면 임의의 문자 *을 빈 자리만큼 추가해 append 한다.
-    for i in arr:
-        if len(i) == longest:
-            arr2.append(i)
-        elif len(i) < longest:
-            arr2.append(i + '*'*(longest-len(i)))
-
-    # arr2 의 전치행렬을 만든다
-    T_arr = list(zip(*arr2))
-    result = []
-    # 행의 길이는 T_arr 의 길이, j 는 각 행의 길이로 놓고 각 원소를 순회하면서
-    for i in range(len(T_arr)):
-        for j in range(len(T_arr[i])):
-            # 빈 result 리스트에 더한다.
-            result.append(T_arr[i][j])
-    # 필요없는 문자 * 을 제거한다.
-    ans = ''
-    for i in result:
-        if i != '*':
-            ans += i
-    print(f'#{tc} {ans}')
+# T = int(input())
+# for tc in range(1,T+1):
+#     arr = []
+#     arr2 = []
+#     for _ in range(5):
+#         arr.append(input())
+#     # arr 에 더해준 리스트 중에서 가장 긴 길이가 무엇인지 구한다.
+#     longest = 0
+#     for i in arr:
+#         if len(i)> longest:
+#             longest = len(i)
+#     # arr 의 행 길이가 longest 와 같으면 변화 없이 arr2에 appebd하고, 짧으면 임의의 문자 *을 빈 자리만큼 추가해 append 한다.
+#     for i in arr:
+#         if len(i) == longest:
+#             arr2.append(i)
+#         elif len(i) < longest:
+#             arr2.append(i + '*'*(longest-len(i)))
+#
+#     # arr2 의 전치행렬을 만든다
+#     T_arr = list(zip(*arr2))
+#     result = []
+#     # 행의 길이는 T_arr 의 길이, j 는 각 행의 길이로 놓고 각 원소를 순회하면서
+#     for i in range(len(T_arr)):
+#         for j in range(len(T_arr[i])):
+#             # 빈 result 리스트에 더한다.
+#             result.append(T_arr[i][j])
+#     # 필요없는 문자 * 을 제거한다.
+#     ans = ''
+#     for i in result:
+#         if i != '*':
+#             ans += i
+#     print(f'#{tc} {ans}')
 
 
 # 의석이의 세로로 말해요 _ try-except 로 풀어보기
