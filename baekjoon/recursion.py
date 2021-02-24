@@ -20,4 +20,10 @@
 #
 # print(fibo(x))
 
+# 별 찍기
+def star(k):
+    if k == 0:
+        return '*'
+    return star(k-1) * 3+'\n'+star(k-1)+' '+star(k-1)+'\n'+star(k-1)*3
 
+print(star(2))

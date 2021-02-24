@@ -624,15 +624,6 @@
 #
 #     print('#{} {}'.format(tc, ans))
 
-# 오목 판정
-# T = int(input())
-# for tc in range(1, T+1):
-#     N = int(input())
-#     arr = [input() for _ in range(N)]
-#     for i in range(N):
-#         for j in range(N):
-#             std = arr[i][j]
-
 # 퍼펙트 셔플
 # T = int(input())
 # for tc in range(1, T+1):
@@ -675,3 +666,18 @@
 #             cnt += 1
 #             std = bit[i] # 해당 문자로 기준 문자를 변경한다.
 #     print('#{} {}'.format(tc,cnt))
+
+# 숫자 배열 회전
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     arr = [list(map(int, input().split())) for _ in range(N)]
+#     arr_90 = list(map(lambda x:x[::-1],zip(*arr)))
+#     arr_180 = list(map(lambda x:x[::-1],zip(*arr_90)))
+#     arr_270 = list(map(lambda x:x[::-1],zip(*arr_180)))
+#
+#     print('#{}'.format(tc))
+#     for i in range(N):
+#         print(''.join(map(str, arr_90[i])), ''.join(map(str, arr_180[i])), ''.join(map(str, arr_270[i])))
+
+

@@ -177,9 +177,116 @@
 
 
 # 길 찾기 _ 런타임 에러를 없애보자.
-for tc in range(11):
-    tc, N = map(int, input().split())
+# for tc in range(11):
+#     tc, N = map(int, input().split())
+#     arr = [[]*100]
+#     nums = input()
+#     for i in range(N):
+#         arr[nums[i*2]] = nums[(i*2)+1]
 
+# 그래프 경로 _ 혼자서 풀어보기
+# def graph(s, g, v):
+#     stack = []
+#     visited = [0] * (v+1)
+#     stack.append(s)
+#     visited[s] = 1
+#     while stack:
+#         l = stack.pop()
+#         if l == g:
+#             return 1
+#         for i in range(1, v+1):
+#             if arr[l][i] == 1 and visited[i] == 0:
+#                 stack.append(i)
+#                 visited[i] = 1
+#     return 0
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     v, e = map(int, input().split())
+#     arr = [[0]*(v+1) for _ in range(v+1)]
+#
+#     for _ in range(e):
+#         n, m = map(int, input().split())
+#         arr[n][m] = 1
+#
+#     s, g = map(int, input().split())
+#
+#     ans = graph(s, g, v)
+#
+#     print('#{} {}'.format(tc, ans))
 
+# 재귀로 부분집합 풀기
+# N = 3
+# arr = [1, 2, 3]  # 우리가 활용할 데이터
+# sel = [0] * N  # arr의 각 자리의 해당 원소를 뽑았는지 체크하는 리스트(부분집합을 의미함)
+#
+#
+# def powerset(idx):
+#     if idx == N:
+#         print(sel, ':', end='')
+#         for i in range(N):
+#             if sel[i]:
+#                 print(arr[i], end='')
+#         print()
+#
+#         return
+#
+#     # idx 자리의 원소를 뽑고 간다.
+#     sel[idx] = 1
+#     powerset(idx + 1)
+#     # idx 자리를 안뽑고 간다.
+#     sel[idx] = 0
+#     powerset(idx + 1)
+#
+# powerset(0)
 
+# 연습문제1
+# lis = list(map(str, input()))
+# stack = []
+# result = []
+# while lis:
+#     for l in lis:
+#         if l in ['+', '-', '*', '/']:
+#             stack.append(lis.pop())
+#         else:
+#             result.append(lis.pop())
+# while result:
+#     a = result.pop()
+#     lis.append(a)
+#
+# lis.extend(stack)
+#
+# lis = ' '.join(lis)
+#
+# print(lis)
 
+# 연습문제1 - 두번째 방법
+# lis = list(map(str, input()))
+# stack = []
+# result = []
+# while lis:
+#     for l in lis:
+#         if l in ['+', '-', '*', '/']:
+#             stack.append(lis.pop())
+#         else:
+#             result.append(lis.pop())
+#
+# result = result[::-1]
+# result.extend(stack)
+#
+# result = ' '.join(result)
+# print(result)
+
+# 연습문제1 - 세번째 방법
+# lis = list(map(str, input()))
+# stack = []
+# ans = []
+# for l in lis:
+#     if l in ['+', '-', '*', '/']:
+#         stack.append(l)
+#     else:
+#         ans.append(l)
+# while stack:
+#     ans.append(stack.pop())
+# ans = ' '.join(ans)
+# print(ans)
