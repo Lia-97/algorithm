@@ -212,6 +212,12 @@
 #     print(f'#{tc} {ans}')
 
 # 농작물 수확하기
+# def sum_v(lis):
+#     total = 0
+#     for l in lis:
+#         total += l
+#     return total
+#
 # T = int(input())
 # for tc in range(1, T+1):
 #     N = int(input())
@@ -221,7 +227,7 @@
 #
 #     total = 0
 #     for i in range(N):
-#         total += sum(arr[i][abs(N//2-i) : N-abs(N//2-i)])
+#         total += sum_v(arr[i][abs(N//2-i) : N-abs(N//2-i)])
 #     print(f'#{tc} {total}')
 
 # 보충학습과 평균

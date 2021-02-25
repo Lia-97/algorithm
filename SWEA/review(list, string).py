@@ -680,4 +680,202 @@
 #     for i in range(N):
 #         print(''.join(map(str, arr_90[i])), ''.join(map(str, arr_180[i])), ''.join(map(str, arr_270[i])))
 
+# 백만 장자 프로젝트 (stack 없이 풀기)
+# def max_v(lis):
+#     ans = float('-inf')
+#     for l in lis:
+#         if l > ans:
+#             ans = l
+#     return ans
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     arr = list(map(int, input().split()))
+#     result = 0
+#     while arr:
+#         cnt = 0
+#         total = 0
+#         for i in range(arr.index(max_v(arr))):
+#             total += arr[i]
+#             cnt += 1
+#         result += max_v(arr) * cnt - total
+#         arr = arr[arr.index(max_v(arr))+1:]
+#     print('#{} {}'.format(tc,result))
 
+# 백만 장자 프로젝트 (1차원 배열로 풀어보기)
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     arr = list(map(int, input().split()))
+#     # 주어진 리스트의 가장 마지막 원소를 max 값으로 설정한다.
+#     max_v = arr[N-1]
+#     result = 0
+#     # 뒤에서 부터 탐색하면서
+#     for i in range(N-1, -1, -1):
+#         # max 값보다 작거나 같으면 그 차를 result 에 더해준다.
+#         if arr[i] <= max_v:
+#             result += max_v - arr[i]
+#         # max 값보다 큰 경우 해당 값을 max 값으로 저장한다.
+#         else:
+#             max_v = arr[i]
+#     print('#{} {}'.format(tc, result))
+
+# 재미있는 오셀로 게임 _ 미완
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split())
+#     arr = [[0]*N for _ in range(N)]
+#     if N == 4:
+#         arr[1][1], arr[2][2], arr[1][2], arr[2][1]= 'W', 'W', 'B', 'B'
+#     elif N == 6:
+#         arr[2][2], arr[2][3], arr[3][2], arr[3][3] = 'W', 'W', 'B', 'B'
+#     elif N == 8:
+#         arr[3][3], arr[3][4], arr[4][3], arr[4][4] = 'W', 'W', 'B', 'B'
+#
+#     for _ in range(M):
+#         row, col, color = map(int, input().split())
+#         r = row - 1
+#         c = col - 1
+#
+#         dr1 = [-2, -2, -2, 0, 0, 2, 2, 2]
+#         dc1 = [-2, 0, 2, -2, 2, -2, 0, 2]
+#
+#         dr2 = [-1, -1, -1, 0, 0, 1, 1, 1]
+#         dc2 = [-1, 0, 1, -1, 1, -1, 0, 1]
+#
+#         if color == 1:
+#             arr[r][c] = 'B'
+#             for i in range(8):
+#                 if 0 <= r + dr1[i] < N and 0 <= c + dc1[i] < N:
+#                     if arr[r + dr1[i]][c + dc1[i]] == 'B' and arr[r + dr2[i]][c + dc2[i]] == 'W':
+#                         arr[r + dr2[i]][c + dc2[i]] = 'B'
+#         elif color == 2:
+#             arr[r][c] = 'A'
+#             for i in range(8):
+#                 if 0 <= r + dr1[i] < N and 0 <= c + dc1[i] < N:
+#                     if arr[r + dr1[i]][c + dc1[i]] == 'A' and arr[r + dr2[i]][c + dc2[i]] == 'B':
+#                         arr[r + dr2[i]][c + dc2[i]] = 'A'
+#
+#     print(arr)
+
+# 재미있는 오셀로 게임
+
+
+# 자기 방으로 돌아가기 _ 틀림
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     arr = []
+#     for _ in range(N):
+#         arr.append(list(map(int, input().split())))
+#     cnt = 1
+#     # 겹치는 것을 어떻게 찾아낼 것인가
+#     for i in range(N-1):
+#         if arr[i][0] > arr[i][1]:
+#             arr[i][1], arr[i][0] = arr[i][0], arr[i][1]
+#         check = list(range(arr[i][0], arr[i][1]))
+#         check.extend(list(range(arr[i+1][0], arr[i+1][1])))
+#         # print(check)
+#         if len(check) != len(set(check)):
+#             cnt += 1
+#
+#     print('#{} {}'.format(tc, cnt))
+
+# 스도쿠 검증
+# T = int(input())
+# for tc in range(1, T+1):
+#     arr = [list(map(int, input().split())) for _ in range(9)]
+#     ans = 0
+#
+#     # 겹치는 숫자가 있는지 없는지 판별하는 함수
+#     def sudoku():
+#         global ans
+#         for i in range(9):
+#             # 카운팅 정렬을 하기 위함
+#             count1 = [0] * 10
+#             count2 = [0] * 10
+#             # 가로와 세로에 등장하는 숫자를 가지는 인덱스에 +1
+#             for j in range(9):
+#                 count1[arr[i][j]] += 1
+#                 count2[arr[j][i]] += 1
+#             # 카운트 리스트를 돌면서 1보다 크면 중복된 값이 있다는거니까 ans 에 변화없이 반환
+#             for l in count1:
+#                 if l > 1:
+#                     return ans
+#             for l in count2:
+#                 if l > 1:
+#                     return ans
+#
+#         # 마찬가지로 3*3 배열에 겹치는 값이 있는지 확인
+#         for l in range(1, 4):
+#             count3 = [0] * 10
+#             for i in range(3*(l-1), 3*l):
+#                 for j in range(3*(l-1), 3*l):
+#                     count3[arr[i][j]] += 1
+#             for l in count3:
+#                 if l > 1:
+#                     return ans
+#         # 리턴되지 않고 끝까지 for문을 돌면 중복이 없다는 뜻이므로 ans 를 1로 바꾸고 반환
+#         ans = 1
+#         return ans
+#
+#     print('#{} {}'.format(tc, sudoku()))
+
+# 진기의 최고급 붕어빵 _ 1000개 중 998개 정답. 다른 방법을ㅠㅠ
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M, K = map(int, input().split())
+#     customer = list(map(int, input().split()))
+#     # customer 정렬 (오름차순)
+#     for i in range(N-1, -1, -1):
+#         for j in range(i+1, N):
+#             if customer[i] > customer[j]:
+#                 customer[i], customer[j] = customer[j], customer[i]
+#     # 변수 초기화
+#     time = 0
+#     cnt = 0
+#     ans = 'Possible'
+#     # 첫번째 방문 고객이 붕어빵이 만들어지기 전에 오면 무조건 impossible
+#     if customer[0] < M * (time + 1):
+#         ans = 'Impossible'
+#     # 첫번째 고객이 올때 몇번째 붕어빵을 굽고 있는지 확인한다. (몇초를 지나고 있는지, 몇개 만들었는지 확인 위해)
+#     else:
+#         while not M * time <= customer[0] < M * (time+1):
+#             time += 1
+#             cnt += K
+#         # 첫번째 고객이 방문했을 때부터 붕어빵의 개수에 -1을 한다.
+#         for i in range(N):
+#             if M * time <= customer[i] < M * (time+1):
+#                 cnt -= 1
+#             # 붕어빵의 개수가 0 보다 작아지면 ans 를 impossible 로 바꾼다.
+#             if cnt < 0:
+#                 ans = 'Impossible'
+#                 break
+#
+#     print('#{} {}'.format(tc, ans))
+
+# 사각형 찾기
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     arr = [list(map(int, input().split())) for _ in range(N)]
+#     max_size = 0
+#     for i in range(N):
+#         for j in range(N):
+#             width = 0
+#             height = 0
+#             if arr[i][j] == 1:
+#                 for l in range(j,N):
+#                     if arr[i][l] == 1:
+#                         width += 1
+#                     else: break
+#                 for m in range(i,N):
+#                     if arr[m][j] == 1:
+#                         height += 1
+#                     else: break
+#                 if max_size < width * height:
+#                     max_size = width * height
+#     print('#{} {}'.format(tc, max_size))
+
+# 진기의 최고급 붕어빵

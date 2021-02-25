@@ -216,10 +216,29 @@
 #     print('#{} {}'.format(tc, ans))
 
 # 재귀로 부분집합 풀기
+# def recur(n, k):
+#     if n == k:
+#         print(bit) # 전체 부분집합 출력
+#         for i in range(k):
+#             if bit[i]:
+#                 print(A[i], end = ' ')
+#         print()
+#         return
+#     else:
+#         bit[n] = 0
+#         recur(n+1, k)
+#         bit[n] = 1
+#         recur(n+1, k)
+#
+# A = [10, 20, 30]
+# N = len(A)
+# bit = [0] * N
+# recur(0, N) # 0번 원소부터 복사, 원소의 수 N개
+
+# 백트래킹으로 부분집합 풀기
 # N = 3
 # arr = [1, 2, 3]  # 우리가 활용할 데이터
 # sel = [0] * N  # arr의 각 자리의 해당 원소를 뽑았는지 체크하는 리스트(부분집합을 의미함)
-#
 #
 # def powerset(idx):
 #     if idx == N:
@@ -290,3 +309,79 @@
 #     ans.append(stack.pop())
 # ans = ' '.join(ans)
 # print(ans)
+
+# powerset 재귀
+# N = 3
+# arr = [1, 2, 3]  # 우리가 활용할 데이터
+# sel = [0] * N  # arr의 각 자리의 해당 원소를 뽑았는지 체크하는 리스트(부분집합을 의미함)
+#
+# def powerset(idx):
+#     if idx == N:
+#         print(sel, ':', end='')
+#         for i in range(N):
+#             if sel[i]:
+#                 print(arr[i], end='')
+#         print()
+#
+#         return
+#
+#     # idx 자리의 원소를 뽑고 간다.
+#     sel[idx] = 1
+#     powerset(idx + 1)
+#     # idx 자리를 안뽑고 간다.
+#     sel[idx] = 0
+#     powerset(idx + 1)
+#
+# powerset(0)
+
+# 그래프 경로 (재귀로 풀기)
+# def dfs(node):
+#     global ans
+#     visited[node]=1
+#     if node == G:
+#         ans = 1
+#         return
+#
+#     for next_node in graph[node]:
+#         if visited[next_node] ==0:
+#             dfs(next_node)
+#         if ans == 1:
+#             return
+#
+# from collections import defaultdict
+# T=int(input())
+# for tc in range(1,T+1):
+#     graph=defaultdict(list)
+#     V,E=map(int,input().split())
+#     visited=[0]*(V+1)
+#     ans=0
+#
+#     for _ in range(E):
+#         a,b=map(int,input().split())
+#         graph[a].append(b)
+#     S,G=map(int,input().split())
+#     dfs(S)
+#
+#     print(f'#{tc} {ans}')
+
+# 계산기2
+operator = {'+': 1,
+            '-': 1,
+            '*': 2,
+            '/': 2}
+
+for tc in range(1, 11):
+    long = input()
+    words = input()
+    result = []
+    stack = []
+    for w in words:
+        if w in operator:
+            if operator[w] <= operator[stack[-1]]:
+                result.append(stack.pop())
+            else:
+                stack.append(w)
+        else:
+            result.append(w)
+
+    print(result)
