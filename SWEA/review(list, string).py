@@ -597,7 +597,7 @@
 #     card = []
 #     # 각 카드가 13개씩 있어야 한다.
 #     match = {'S': [0]*13, 'D':[0]*13, 'H': [0]*13, 'C':[0]*13}
-#     # input을 입력받으면 3자리씩 잘라서 card 라는 리스트에 넣는다.
+#     # input 을 입력받으면 3자리씩 잘라서 card 라는 리스트에 넣는다.
 #     for i in range(len(cards)//3):
 #         card.append(cards[i*3:(i+1)*3])
 #     # card 리스트의 원소의 0 인덱스는 카드의 모양, 뒤 두자리는 카드의 번호이기 때문에 딕셔너리에서 해당 카드 번호에 1을 더해준다.
@@ -878,4 +878,74 @@
 #                     max_size = width * height
 #     print('#{} {}'.format(tc, max_size))
 
+# 현주의 상자 바꾸기
+# T= int(input())
+# for tc in range(1, T+1):
+#     N, Q = map(int, input().split())
+#     box = [0]*N
+#     for i in range(1, Q+1):
+#         L, R = map(int, input().split())
+#         for j in range(L-1, R):
+#             box[j] = i
+#     box = list(map(str, box))
+#     box = ' '.join(box)
+#     print('#{} {}'.format(tc, box))
+
 # 진기의 최고급 붕어빵
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M, K = map(int, input().split())
+#     cnt = 0
+#     counting = [0] * 11112
+#     customer = list(map(int, input().split()))
+#     customer.sort()
+#     for c in customer:
+#         counting[c] += 1
+#     ans = 'Possible'
+#
+#     if customer[0] < M:
+#         ans = 'Impossible'
+#     else:
+#         for i in range(M, 11112):
+#             cnt -= counting[i]
+#             if i % M == 0:
+#                 cnt += K
+#             if cnt < 0:
+#                 ans = 'Impossible'
+#                 break
+#     print('#{} {}'.format(tc, ans))
+
+# 농작물 수확하기
+
+# 고대 유적
+
+# 어디에 단어가 들어갈 수 있을까
+T = int(input())
+for tc in range(1, T+1):
+    N, K = map(int, input().split())
+    arr = [[0]*(N+2)]
+    for _ in range(N):
+        arr.append([0]+list(map(int, input().split()))+[0])
+    arr.append([0]*(N+2))
+
+    ans = 0
+    for i in range(1, N+1):
+        cnt = 0
+        cnt2 = 0
+        for j in range(1, N+1):
+            if arr[i][j] == 1:
+                cnt += 1
+                if cnt == K and arr[i][j+1] == 0:
+                    ans += 1
+            else:
+                cnt = 0
+
+            if arr[j][i] == 1:
+                cnt2 += 1
+                if cnt2 == K and arr[j+1][i] == 0:
+                    ans += 1
+            else:
+                cnt2 = 0
+    print('#{} {}'.format(tc, ans))
+
+
