@@ -28,3 +28,5 @@
 #             if lis[i]+lis[j]+lis[l] <= M and lis[i]+lis[j]+lis[l] > max_sum:
 #                 max_sum = lis[i]+lis[j]+lis[l]
 # print(max_sum)
+
+#
