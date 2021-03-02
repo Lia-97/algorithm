@@ -177,12 +177,47 @@
 
 
 # 길 찾기 _ 런타임 에러를 없애보자.
+# def dfs(node):
+#     global ans
+#     if node == 99:
+#         ans = 1
+#         return
+#     else:
+#         visited[node] = 1
+#         if node in arr:
+#             for i in arr[node]:
+#                 if visited[i] != 1:
+#                     dfs(i)
+#     return
+#
 # for tc in range(11):
 #     tc, N = map(int, input().split())
-#     arr = [[]*100]
-#     nums = input()
+#     arr = {}
+#     nums = list(map(int, input().split()))
+#     visited = [0] * 100
+#     ans = 0
 #     for i in range(N):
-#         arr[nums[i*2]] = nums[(i*2)+1]
+#         if nums[i*2] in arr:
+#             arr[nums[i * 2]].append(nums[(i*2)+1])
+#         else:
+#             arr[nums[i * 2]] = [nums[(i*2)+1]]
+#     dfs(0)
+#     print(f'#{tc} {ans}')
+
+
+# 길찾기 _ 스택으로 풀어보기
+# for tc in range(11):
+#     tc, N = map(int, input().split())
+#     arr = {}
+#     nums = list(map(int, input().split()))
+#     visited = [0] * 100
+#     ans = 0
+#     for i in range(N):
+#         if nums[i*2] in arr:
+#             arr[nums[i * 2]].append(nums[(i*2)+1])
+#         else:
+#             arr[nums[i * 2]] = [nums[(i*2)+1]]
+#     print(f'#{tc} {ans}')
 
 # 그래프 경로 _ 혼자서 풀어보기
 # def graph(s, g, v):
@@ -364,24 +399,3 @@
 #
 #     print(f'#{tc} {ans}')
 
-# 계산기2
-operator = {'+': 1,
-            '-': 1,
-            '*': 2,
-            '/': 2}
-
-for tc in range(1, 11):
-    long = input()
-    words = input()
-    result = []
-    stack = []
-    for w in words:
-        if w in operator:
-            if operator[w] <= operator[stack[-1]]:
-                result.append(stack.pop())
-            else:
-                stack.append(w)
-        else:
-            result.append(w)
-
-    print(result)
