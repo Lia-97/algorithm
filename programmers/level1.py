@@ -305,3 +305,77 @@
 # def solution(n):
 #     return n % sum([int(c) for c in str(n)]) == 0
 
+# 체육복
+# def solution(n, lost, reserve):
+#     for i in list(lost):
+#         if i in reserve:
+#             lost.remove(i)
+#             reserve.remove(i)
+#
+#     for i in list(lost):
+#         if i not in reserve:
+#             if i-1 in reserve:
+#                 reserve.remove(i-1)
+#                 lost.remove(i)
+#             elif i+1 in reserve:
+#                 reserve.remove(i+1)
+#                 lost.remove(i)
+#         else:
+#             lost.remove(i)
+#             reserve.remove(i)
+#     answer = n - len(lost)
+#     return answer
+
+# 행렬의 덧셈
+# def solution(arr1, arr2):
+#     arr = []
+#     for i in range(len(arr1)):
+#         sub = []
+#         for j in range(len(arr1[0])):
+#             sub.append(arr1[i][j] + arr2[i][j])
+#         arr.append(sub)
+#     return arr
+
+# 핸드폰 번호 가리기
+# def solution(phone_number):
+#     answer = ''
+#     for i in range(len(phone_number)-4):
+#         answer += '*'
+#     answer += phone_number[len(phone_number)-4:]
+#
+#     return answer
+
+# 키패드 누르기
+# def solution(numbers, hand):
+#     answer = ''
+#     l = [1, 4, 7]
+#     r = [3, 6, 9]
+#     L = [10]
+#     R = [12]
+#     for n in numbers:
+#         if n in l:
+#             L.append(n)
+#             answer += 'L'
+#         elif n in r:
+#             R.append(n)
+#             answer += 'R'
+#         else:
+#             if n == 0:
+#                 n = 11
+#             left_d = abs(L[-1] - n)//3 + abs(L[-1] - n)%3
+#             right_d = abs(R[-1] - n) // 3 + abs(R[-1] - n)%3
+#             if left_d < right_d:
+#                 answer += 'L'
+#                 L.append(n)
+#             elif left_d > right_d:
+#                 answer += 'R'
+#                 R.append(n)
+#             else:
+#                 if hand == 'right':
+#                     answer += 'R'
+#                     R.append(n)
+#                 else:
+#                     answer += 'L'
+#                     L.append(n)
+#
+#     return answer

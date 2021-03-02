@@ -175,7 +175,6 @@
 #
 #     print('#{} {}'.format(tc, find()))
 
-
 # 길 찾기 _ 런타임 에러를 없애보자.
 # def dfs(node):
 #     global ans
@@ -203,7 +202,6 @@
 #             arr[nums[i * 2]] = [nums[(i*2)+1]]
 #     dfs(0)
 #     print(f'#{tc} {ans}')
-
 
 # 길찾기 _ 스택으로 풀어보기
 # for tc in range(11):
@@ -398,4 +396,71 @@
 #     dfs(S)
 #
 #     print(f'#{tc} {ans}')
+
+# Forth
+# def check(a, b, i):
+#     if i == '+':
+#         return b + a
+#     elif i == '-':
+#         return b - a
+#     elif i == '*':
+#         return b* a
+#     elif i == '/':
+#         return b //a
+#
+# def forth(lis):
+#     global ans
+#     operator = ['+', '-', '*', '/']
+#     stack = []
+#     for l in lis:
+#         if l not in operator and l != '.':
+#             stack.append(int(l))
+#         elif l in operator:
+#             if len(stack) > 1:
+#                 stack.append(check(stack.pop(), stack.pop(), l))
+#             else:
+#                 ans = 'error'
+#                 return
+#         elif l == '.':
+#             if len(stack) != 1:
+#                 ans = 'error'
+#                 return
+#             else:
+#                 ans = stack.pop()
+#                 return
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     lis = input().split()
+#     ans = 0
+#     forth(lis)
+#     print(f'#{tc} {ans}')
+
+# 미로
+# def dfs(x, y):
+#     global ans
+#     if arr[x][y] == 3:
+#         ans = 1
+#         return
+#     arr[x][y] = 1
+#     for i in range(4):
+#         nx = x + dir[i][0]
+#         ny = y + dir[i][1]
+#         if 0 <= nx < N and 0 <= ny < N and arr[nx][ny] != 1:
+#             dfs(nx, ny)
+#
+#     return
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     arr = [list(map(int, input())) for _ in range(N)]
+#     dir = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+#     stack = []
+#     ans = 0
+#     for i in range(N):
+#         for j in range(N):
+#             if arr[i][j] == 2:
+#                 dfs(i,j)
+#     print('#{} {}'.format(tc, ans))
 
