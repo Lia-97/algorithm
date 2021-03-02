@@ -464,3 +464,81 @@
 #                 dfs(i,j)
 #     print('#{} {}'.format(tc, ans))
 
+# 배열 최소 합
+# def dfs(idx, sub):
+#     global min_sum
+#     if idx == N:
+#         if sub <= min_sum:
+#             min_sum = sub
+#             return
+#
+#     if sub >= min_sum:
+#         return
+#
+#     for i in range(N):
+#         if visited[i] == 0:
+#             visited[i] = 1
+#             dfs(idx+1, sub + arr[idx][i])
+#             visited[i] = 0
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     arr = [list(map(int, input().split())) for _ in range(N)]
+#     visited = [0] * N
+#     min_sum = float('inf')
+#     dfs(0,0)
+#     print(f'#{tc} {min_sum}')
+
+# 토너먼트 카드게임 _ 버려
+# def rsp(A,B):
+#     # (번호, 가위,바위,보)
+#     if A[1] > B[1]:
+#         A,B=B,A
+#     # 비기면
+#     if A[1] == B[1]:
+#         return A if A[0] < B[0] else B
+#     elif A[1] < B[1]:
+#         #  A가 가위, B가 보로 커진건 B가 진것
+#         if A[1] == 1 and B[1] == 3:
+#             return A
+#         return B
+#
+# def check(N, cards):
+#     global ans
+#     lis = []
+#     if N < 1:
+#         return
+#     if N%2:
+#         for i in range(N//2):
+#             lis.append(rsp(cards[i*2], cards[i*2 + 1]))
+#         lis.append(cards[-1])
+#         if len(lis) == 1:
+#             ans = lis.pop()[0]
+#             return
+#         check(N//2 + 1, lis)
+#     else:
+#         for i in range(N//2):
+#             lis.append(rsp(cards[i*2], cards[i*2 + 1]))
+#         if len(lis) == 1:
+#             ans = lis.pop()[0]
+#             return
+#         check(N//2, lis)
+#     return
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     cards = list(map(int, input().split()))
+#     cards = list(enumerate(cards, start=1))
+#     ans = 0
+#     check(N, cards)
+#     print(f'#{tc} {ans}')
+#
+# # lis = [1, 1, 3, 4]
+# # lis = list(enumerate(lis))
+# #
+# # print(lis[0][1] == lis[1][1])
+# # print(type(lis[0][1]))
+
+#
