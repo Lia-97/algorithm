@@ -379,3 +379,40 @@
 #                     L.append(n)
 #
 #     return answer
+
+# 나누어 떨어지는 숫자 배열
+# def solution(arr, divisor):
+#     answer = []
+#     for i in arr:
+#         if i % divisor == 0:
+#             answer.append(i)
+#     answer.sort()
+#     if not answer:
+#         answer.append(-1)
+#     return answer
+
+# 모의고사
+# def solution(answers):
+#     answer = [] # 반환할 리스트
+#     # 각 학생들이 답을 찍는 규칙
+#     student1 = [1, 2, 3, 4, 5]
+#     student2 = [2, 1, 2, 3, 2, 4, 2, 5]
+#     student3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
+#     # 1, 2, 3 학생이 맞은 문제의 갯수가 담길 리스트
+#     score = [0, 0, 0]
+#     # answers 의 원소가 학생들이 찍은 답과 일치한다면 score 에 +1
+#     for i in range(len(answers)):
+#         if answers[i] == student1[i % len(student1)]:
+#             score[0] += 1
+#         if answers[i] == student2[i % len(student2)]:
+#             score[1] += 1
+#         if answers[i] == student3[i % len(student3)]:
+#             score[2] += 1
+#     for i in range(len(score)):
+#         if score[i] == max(score):
+#             answer.append(i + 1)
+#     # 오름차순으로 정렬해야 하니까 sort 해서 return
+#     answer.sort()
+#     return answer
+
+# 두 개 뽑아서 더하기

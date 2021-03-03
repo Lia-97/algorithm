@@ -541,4 +541,114 @@
 # # print(lis[0][1] == lis[1][1])
 # # print(type(lis[0][1]))
 
+# # queue
+# Q_SIZE = 10
+# q = [0] * Q_SIZE
+# front = -1
+# rear = -1
 #
+# rear += 1
+# q[rear] = 10
+# rear += 1
+# q[rear] = 20
+# rear += 1
+# q[rear] = 30
+# while front != rear:
+#     front += 1
+#     tmp = q[front]
+#     print(tmp)
+#
+#
+# # queue
+# from queue import Queue
+#
+# q = Queue()
+# q.put(10)
+# q.put(20)
+# q.put(30)
+# while not q.empty():
+#     print(q.get())
+#
+# # 연습문제2 _ 마이쮸
+# N = 20 # 마이쮸의 개수
+#
+# queue = [(1,0)] # 초기화
+# # (0,0) [0] : 사람 번호, [1] : 직전까지 받았던 마이쮸의 개수
+#
+# new_people = 1
+# last_people = 0
+#
+# while N > 0:
+#     num, cnt = queue.pop(0)
+#
+#     last_people = num # 마지막으로 받으러 온 사람
+#     cnt += 1 # 저번 보다 하나 더 챙기기
+#
+#     N -= cnt # num 이라는 친구가 cnt 개수만큼 가져감
+#     new_people += 1
+#
+#     queue.append((num, cnt)) # 맨 뒤로 가서 다시 줄을 섬
+#     queue.append((new_people, 0)) # 새로운 사람도 줄섬
+# print(last_people)
+#
+# # bfs 연습문제3 (교재)
+# # 7 8
+# # 1 2 1 3 2 4 2 5 4 6 5 6 6 7 3 7
+#
+# # 리스트 사용
+# def bfs(s, V):           # 너비우선 탐색
+#     q = []               # 큐 생성
+#     visited = [0]*(V+1)  # visited 생성
+#     q.append(s)          # 시작점 인큐
+#     visited[s] = 1       # 시작점 처리 표시
+#     while q:             # 대기중인 번호가 있으면
+#         n = q.pop(0)     # 빠른 순으로 꺼내서
+#         print(n)         # do(n)
+#         for i in range(1, V+1):  # 바로 뒤에 연결된 번호가 있으면 (인접 노드 중 표시안된 노드 i가 있으면)
+#             if adj[n][i] and visited[i] == 0:  # 아직 대기중이 아니면
+#                 q.append(i)
+#                 visited[i] = 1
+#
+# # 행렬 사용
+# def bfs2(s, V):           # 너비우선 탐색
+#     q = []               # 큐 생성
+#     visited = [0]*(V+1)  # visited 생성
+#     q.append(s)          # 시작점 인큐
+#     visited[s] = 1       # 시작점 처리 표시
+#     while q:             # 대기중인 번호가 있으면
+#         n = q.pop(0)     # 빠른 순으로 꺼내서
+#         print(n)         # do(n)
+#         for i in adjlist[n]:  # 바로 뒤에 연결된 번호가 있으면 (인접 노드 중 표시안된 노드 i가 있으면)
+#             if visited[i] == 0:  # 아직 대기중이 아니면
+#                 q.append(i)
+#                 visited[i] = 1
+#
+# V, E = map(int, input().split())
+# edge = list(map(int, input().split()))
+#
+# adj = [[0]*(V+1) for _ in range(V+1)] # 인접행렬
+# for i in range(E):
+#     adj[edge[i*2]][edge[i*2+1]] = 1
+#     adj[edge[i*2+1]][edge[i*2]] = 1 # 무향 그래프
+#
+# adjlist = [[] for _ in range(V+1)] # 인접리스트인 경우
+# for i in range(0, E*2, 2):
+#     adjlist[edge[i]].append(edge[i+1])
+#     adjlist[edge[i+1]].append(edge[i]) # 무향 그래프
+#
+# bfs(1, V)
+
+# 암호생성기
+# for tc in range(1, 11):
+#     tc = int(input())
+#     nums = list(map(int, (input().split())))
+#     while nums[-1] > 0:
+#         for i in range(1, 6):
+#             pw = nums.pop(0)
+#             if pw - i > 0:
+#                 nums.append(pw-i)
+#             else:
+#                 nums.append(0)
+#                 break
+#     nums = ' '.join(map(str, nums))
+#     print('#{} {}'.format(tc, nums))
