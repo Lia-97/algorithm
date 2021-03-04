@@ -541,7 +541,7 @@
 # # print(lis[0][1] == lis[1][1])
 # # print(type(lis[0][1]))
 
-# # queue
+# queue
 # Q_SIZE = 10
 # q = [0] * Q_SIZE
 # front = -1
@@ -557,9 +557,8 @@
 #     front += 1
 #     tmp = q[front]
 #     print(tmp)
-#
-#
-# # queue
+
+# queue
 # from queue import Queue
 #
 # q = Queue()
@@ -568,8 +567,8 @@
 # q.put(30)
 # while not q.empty():
 #     print(q.get())
-#
-# # 연습문제2 _ 마이쮸
+
+# 연습문제2 _ 마이쮸
 # N = 20 # 마이쮸의 개수
 #
 # queue = [(1,0)] # 초기화
@@ -590,8 +589,8 @@
 #     queue.append((num, cnt)) # 맨 뒤로 가서 다시 줄을 섬
 #     queue.append((new_people, 0)) # 새로운 사람도 줄섬
 # print(last_people)
-#
-# # bfs 연습문제3 (교재)
+
+# bfs 연습문제3 (교재)
 # # 7 8
 # # 1 2 1 3 2 4 2 5 4 6 5 6 6 7 3 7
 #
@@ -652,3 +651,155 @@
 #                 break
 #     nums = ' '.join(map(str, nums))
 #     print('#{} {}'.format(tc, nums))
+
+# 미로의 거리
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     maze = [input() for _ in range(N)]
+#     visited = [[0]*N for _ in range(N)] # 방문여부 확인. 방문했으면 1로 바꿀 예정
+#     dir = [(-1, 0), (1, 0), (0, -1), (0, 1)] # 이동 방향 (상, 하, 좌, 우)
+#     q = [] # 큐 생성
+#     ans = 0
+#
+#     # 시작노드와 도착 노드를 구한다.
+#     for i in range(N):
+#         for j in range(N):
+#             if maze[i][j] == '2':
+#                 q.append((i,j,0)) # 시작노드를 q에 더하고
+#                 visited[i][j] = 1 # 해당 노드의 visited 도 1로 바꿔준다.
+#             if maze[i][j] == '3':
+#                 end = (i, j)
+#
+#     while q:
+#         x, y, move = q.pop(0)
+#
+#         # 도착하면 움직인 거리 move 에 1 을 빼서 ans에 저장한다.
+#         if x == end[0] and y == end[1]:
+#             ans = move - 1
+#             break
+#
+#         # 위에서 pop 한 maze[x][y] 가 갈 수 있는 칸을 찾는다.
+#         for k in range(4):
+#             nx = x + dir[k][0]
+#             ny = y + dir[k][1]
+#             # 상하좌우 중에 이동 가능한 칸을 q 에 더하고, 방문 처리한다.
+#             if 0 <= nx < N and 0 <= ny < N:
+#                 if maze[nx][ny] != '1' and visited[nx][ny] == 0:
+#                     q.append((nx, ny, move+1))
+#                     visited[nx][ny] = 1
+#
+#     print(f'#{tc} {ans}')
+
+# 회전
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split())
+#     nums = list(input().split())
+#     while M > 0:
+#         first = nums.pop(0)
+#         nums.append(first)
+#         M -= 1
+#
+#     print(f'#{tc} {nums[0]}')
+
+# 노드의 거리
+# T = int(input())
+# for tc in range(1, T+1):
+#     V, E = map(int, input().split())
+#     graph = {}
+#     # 방향이 없는 그래프를 만든다.
+#     for _ in range(E):
+#         start, end = map(int, input().split())
+#         if start in graph:
+#             graph[start].append(end)
+#             if end in graph:
+#                 graph[end].append(start)
+#             else:
+#                 graph[end] = [start]
+#         else:
+#             graph[start] = [end]
+#             graph[end] = [start]
+#
+#     S, G = map(int, input().split()) # 출발, 도착
+#
+#     visited = [0] * (V+1) # 방문 여부 체크
+#     q = []
+#     q.append((S, 0)) # 시작하는 노드를 일단 q에 넣는다.
+#     visited[S] = 1 # 시작하는 노드 방문 처리
+#     ans = 0
+#
+#     flag = False
+#     while q:
+#         node, move = q.pop(0)
+#         if node in graph:
+#             for i in graph[node]:
+#                 if i == G:
+#                     ans = move + 1
+#                     flag = True
+#                     break
+#                 if visited[i] == 0:
+#                     q.append((i, move+1))
+#                     visited[i] = 1
+#             if flag: break
+#     print(f'#{tc} {ans}')
+
+# 피자 굽기 _ 미완
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split()) # 화덕 크기, 피자 개수
+#     cheese = list(map(int, input().split()))
+#     q = []
+#     ans = 0
+#     for i in range(N):
+#         q.append(cheese[i])
+#     cheese = cheese[N:]
+#     cheese = cheese[::-1]
+#
+#     while cheese:
+#         while q:
+#             print(q)
+#             check = q.pop(0)
+#             if check <= 1:
+#                 print('지금')
+#                 break
+#             else:
+#                 if check//2 > 0:
+#                     q.append(check//2)
+#                     print(q)
+#                     if len(q) == 1:
+#                         ans = q.pop()
+#
+#         q.append(cheese.pop())
+#
+#     print(ans)
+
+# 미로1
+# for tc in range(1, 11):
+#     tc = int(input())
+#     maze = [input() for _ in range(16)]
+#     visited = [[0] * 16 for _ in range(16)]
+#     q = []
+#     dir = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+#     ans = 0
+#     for i in range(16):
+#         for j in range(16):
+#             if maze[i][j] == '2':
+#                 start = (i, j)
+#                 visited[i][j] = 1
+#                 q.append((i, j))
+#
+#     while q:
+#         i, j = q.pop(0)
+#         if maze[i][j] == '3':
+#             ans = 1
+#
+#         for k in range(4):
+#             ni, nj = i + dir[k][0], j + dir[k][1]
+#             if 0 <= ni < 16 and 0 <= nj < 16:
+#                 if maze[ni][nj] != '1' and visited[ni][nj] == 0:
+#                     q.append((ni, nj))
+#                     visited[ni][nj] = 1
+#
+#     print(f'#{tc} {ans}')
+

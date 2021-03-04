@@ -238,3 +238,66 @@
 #         if score[i] < 40:
 #             score[i] = 40
 #     print(f'#{tc} {int(sum(score)/len(score))}')
+
+# 직사각형 길이 찾기
+# T = int(input())
+# for tc in range(1, T+1):
+#     lis = list(map(int, input().split()))
+#     s_lis = set(lis)
+#     ans = 0
+#
+#     if len(s_lis) == 1:
+#         ans = s_lis.pop()
+#     else:
+#         if lis.count(max(lis)) == 2:
+#             s_lis.remove(max(lis))
+#             ans = s_lis.pop()
+#         else:
+#             ans = max(lis)
+#     print(f'#{tc} {ans}')
+
+# 민석이의 과제 체크하기
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, K = map(int, input().split())
+#     submit = list(map(int, input().split()))
+#     student = []
+#     for i in range(1, N+1):
+#         student.append(i)
+#     answer = list(set(student) - set(submit))
+#     answer = ' '.join(map(str, answer))
+#
+#     print(f'#{tc} {answer}')
+
+# 홀수일까 짝수일까
+# T = int(input())
+# for tc in range(1, T+1):
+#     num = int(input())
+#     ans = 'Even'
+#     if num % 2:
+#         ans = 'Odd'
+#     print(f'#{tc} {ans}')
+
+# 최대 성적표 만들기 _ 부분집합으로 풀었더니 제한시간 초과가 뜸
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, K = map(int, input().split())
+#     scores = list(map(int, input().split()))
+#     result = []
+#
+#     for i in range(1 << N):
+#         sub = []
+#         for j in range(N):
+#             if i & (1 << j):
+#                 sub.append(scores[j])
+#
+#         if len(sub) == K:
+#             result.append(sub)
+#
+#     max_score = 0
+#     for i in result:
+#         if sum(i) > max_score:
+#             max_score = sum(i)
+#     print('#{} {}'.format(tc, max_score))
+
+# 최대 성적표 만들기

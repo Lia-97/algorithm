@@ -416,3 +416,47 @@
 #     return answer
 
 # 두 개 뽑아서 더하기
+# def solution(numbers):
+#     answer = []
+#     numbers_copy = numbers[::]
+#     for i in numbers:
+#         numbers_copy.remove(i)
+#         for j in numbers_copy:
+#             answer.append(i + j)
+#         numbers_copy.append(i)
+#     return sorted(list(set(answer)))
+
+# 2016년
+# def solution(a, b):
+#     days = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+#     d = ['FRI', 'SAT', 'SUN', 'MON', 'TUE', 'WED', 'THU']
+#     diff_mon = a - 1
+#     diff_day = 0
+#     if a == 1:
+#         diff_day += b
+#     elif a > 1:
+#         for i in range(diff_mon):
+#             diff_day += days[i]
+#         diff_day += b
+#     answer = d[diff_day % 7 - 1]
+#
+#     return answer
+
+# 문자열 내 마음대로 정렬하기 _ 딕셔너리로 풀기
+# def solution(strings, n):
+#     answer = []
+#     dic = {}
+#     for word in strings:
+#         if word[n] not in dic:
+#             dic[word[n]] = [word]
+#         else:
+#             dic[word[n]].append(word)
+#     for i in dic:
+#         dic[i].sort()
+#     alpha = sorted(dic)
+#     for a in alpha:
+#         answer.extend(dic[a])
+#
+#     return answer
+
+# 문자열 내 마음대로 정렬하기 _ 람다 함수를 써보자!
