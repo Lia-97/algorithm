@@ -803,3 +803,65 @@
 #
 #     print(f'#{tc} {ans}')
 
+# 러시아 국기 같은 깃발
+# from itertools import combinations
+# T=int(input())
+# for tc in range(1,T+1):
+#     N,M=map(int,input().split())
+#     flag=[]
+#     ans=2500
+#     # 각 행에 해당 색으로 칠할 때 비용계산
+#     for _ in range(N):
+#         W,B,R=0,0,0
+#         for s in input():
+#             if s == 'W':
+#                 W+=1
+#             elif s == 'B':
+#                 B+=1
+#             else:
+#                 R+=1
+#         flag.append({'W':M-W,'B':M-B,'R':M-R})
+#
+#     # 모든 경우의 수 check
+#     for start,end in combinations(range(1,N),2):
+#         result=0
+#         # W, B, R 순서로 채워지는 것이므로
+#         for i in range(N):
+#             if i < start:
+#                 result += flag[i]['W']
+#             elif  i >= end:
+#                 result += flag[i]['R']
+#             else:
+#                 result += flag[i]['B']
+#         ans=min(ans,result)
+#
+#     print(f'#{tc} {ans}')
+
+# 햄버거 다이어트
+T = int(input())
+for tc in range(1, T+1):
+    N, L = map(int, input().split())
+    burger = [list(map(int, input().split())) for _ in range(N)]
+    part = []
+
+    for i in range(1 << N):
+        sub = []
+        for j in range(N):
+            if i & (1 << j):
+                sub.append(burger[j])
+        sub_sum = 0
+        for s in sub:
+            sub_sum += s[1]
+        if sub_sum <= L:
+            part.append(sub)
+
+    ans = 0
+
+    for sub_part in part:
+        taste = 0
+        for sub in sub_part:
+            taste += sub[0]
+        if taste > ans:
+            ans = taste
+
+    print(f'#{tc} {taste}')
