@@ -837,31 +837,31 @@
 #
 #     print(f'#{tc} {ans}')
 
-# 햄버거 다이어트
-T = int(input())
-for tc in range(1, T+1):
-    N, L = map(int, input().split())
-    burger = [list(map(int, input().split())) for _ in range(N)]
-    part = []
-
-    for i in range(1 << N):
-        sub = []
-        for j in range(N):
-            if i & (1 << j):
-                sub.append(burger[j])
-        sub_sum = 0
-        for s in sub:
-            sub_sum += s[1]
-        if sub_sum <= L:
-            part.append(sub)
-
-    ans = 0
-
-    for sub_part in part:
-        taste = 0
-        for sub in sub_part:
-            taste += sub[0]
-        if taste > ans:
-            ans = taste
-
-    print(f'#{tc} {taste}')
+# 햄버거 다이어트 _ 집합으로 풀었더니 시간초과
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, L = map(int, input().split())
+#     burger = [list(map(int, input().split())) for _ in range(N)]
+#     part = []
+#
+#     for i in range(1 << N):
+#         sub = []
+#         for j in range(N):
+#             if i & (1 << j):
+#                 sub.append(burger[j])
+#         sub_sum = 0
+#         for s in sub:
+#             sub_sum += s[1]
+#         if sub_sum <= L:
+#             part.append(sub)
+#
+#     ans = 0
+#
+#     for sub_part in part:
+#         taste = 0
+#         for sub in sub_part:
+#             taste += sub[0]
+#         if taste > ans:
+#             ans = taste
+#
+#     print(f'#{tc} {taste}')
