@@ -39,24 +39,24 @@
 # print(dp[n])
 
 # 2579번 (계단 오르기) _ 원래 쓴 코드
-# n = int(input())
-# stairs = [0]
-# dp = [0] * 301
-# for _ in range(n):
-#     stair = int(input())
-#     stairs.append(stair)
-# dp[1] = stairs[1]
-# dp[2] = stairs[1]+stairs[2]
-# dp[3] = max(stairs[1], stairs[2]) + stairs[3]
-# for i in range(4, n+1):
-#     dp[i] = max(dp[i-2]+stairs[i], dp[i-3] + stairs[i-1] + stairs[i])
-#
-# print(dp[n])
+n = int(input())
+stairs = [0]
+dp = [0] * 301
+for _ in range(n):
+    stair = int(input())
+    stairs.append(stair)
+dp[1] = stairs[1]
+dp[2] = stairs[1]+stairs[2]
+dp[3] = max(stairs[1], stairs[2]) + stairs[3]
+for i in range(4, n+1):
+    dp[i] = max(dp[i-2]+stairs[i], dp[i-3] + stairs[i-1] + stairs[i])
 
-# 10844번 (쉬운 계단 수)
+print(dp[n])
 
-# 9251번 (LCS)
-
+# 11053번 (가장 긴 증가하는 부분 수열)
+# N = int(input())
+# A = list(map(int, input().split()))
+# dp = [0] * N
 
 # 1912번 (연속합) _ 시간초과...
 # n = int(input())
