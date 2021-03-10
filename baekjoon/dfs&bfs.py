@@ -52,3 +52,37 @@
 # print(cnt)
 # for i in nums:
 #     print(i)
+
+# 1012번 (유기농 배추)
+# import sys
+# sys.setrecursionlimit(100000)
+#
+# def dfs(x, y):
+#     visited[x][y] = 1
+#     for k in range(4):
+#         nx, ny = x + dir[k][0], y + dir[k][1]
+#         if 0 <= nx < N and 0 <= ny < M:
+#             if arr[nx][ny] == 1 and visited[nx][ny] == 0:
+#                 dfs(nx, ny)
+#
+# T = int(input())
+# for _ in range(T):
+#     M, N, K = map(int, input().split()) # 가로, 세로, 배추위치
+#     arr = [[0]*M for _ in range(N)]
+#     for _ in range(K):
+#         X, Y = map(int, input().split())
+#         i, j = Y, X
+#         arr[i][j] = 1
+#
+#     visited = [[0]*M for _ in range(N)]
+#     dir = [(-1,0),(1,0),(0,-1),(0,1)] # 상하좌우
+#
+#     cnt = 0
+#
+#     for i in range(N):
+#         for j in range(M):
+#             if arr[i][j] == 1 and visited[i][j] == 0:
+#                 dfs(i,j)
+#                 cnt += 1
+#     print(cnt)
+

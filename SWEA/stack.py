@@ -865,3 +865,20 @@
 #             ans = taste
 #
 #     print(f'#{tc} {taste}')
+
+# 러시아 국기 같은 깃ㅂ발
+T = int(input())
+for tc in range(1, T+1):
+    N, M = map(int, input().split())
+    flag = []
+    for _ in range(N):
+        W, B, R = 0, 0, 0
+        for color in input():
+            if color == 'W':
+                W += 1
+            elif color == 'B':
+                B += 1
+            else:
+                R += 1
+        flag.append({'W': M-W, 'B': M-B, 'R': M-R})
+
