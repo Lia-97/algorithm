@@ -126,3 +126,26 @@
 # answer()
 #
 # print(ans)
+
+# 1697번 (숨바꼭질)
+# from collections import deque
+#
+# N, K = map(int, input().split())  # 수빈 위치, 동생 위치
+# q = deque()
+# q.append((N, 0))
+# visited = [0]*100001
+#
+# while True:
+#     node, time = q.popleft()
+#     dir = [node*2, node-1, node+1]
+#     if node != K:
+#         for d in dir:
+#             if 0 <= d <= 100000 and visited[d] == 0:
+#                 q.append((d, time+1))
+#                 visited[d] = 1
+#         time += 1
+#     else:
+#         ans = time
+#         break
+#
+# print(ans)

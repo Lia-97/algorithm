@@ -44,3 +44,28 @@
 #             answer[-1] += 1
 #
 #     return answer
+
+# 큰 수 만들기 _ recursive 에러.. 스택으로 풀기!
+# def large_num(lis, start, end):
+#     global answer
+#     max_v = 0
+#     idx = start
+#     for i in range(start, end):
+#         if lis[i] > max_v:
+#             max_v = lis[i]
+#             idx = i + 1
+#     answer.append(max_v)
+#     if end + 1 <= len(lis):
+#         large_num(lis, idx, end + 1)
+#
+# def solution(number, k):
+#     global answer
+#     answer = []
+#     number = list(map(int, number))
+#
+#     large_num(number, 0, k+1)
+#     answer = list(map(str, answer))
+#     answer = ''.join(answer)
+#     return answer
+
+# 큰 수 만들기
