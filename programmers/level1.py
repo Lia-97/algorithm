@@ -459,4 +459,71 @@
 #
 #     return answer
 
-# 문자열 내 마음대로 정렬하기 _ 람다 함수를 써보자!
+# 직사각형 별찍기
+# a, b = map(int, input().strip().split(' '))
+# for _ in range(a):
+#     print('*'*b)
+
+# 크레인 인형뽑기 게임
+# def solution(board, moves):
+#     answer = 0
+#     T_board = list(zip(*board))
+#     dolls = []
+#     for T in T_board:
+#         sub = []
+#         for t in T:
+#             if t != 0:
+#                 sub.append(t)
+#         dolls.append(sub)
+#     stack = [-1]
+#     for i in moves:
+#         if dolls[i-1]:
+#             doll = dolls[i-1].pop(0)
+#             if stack[-1] == doll:
+#                 stack.pop()
+#                 answer += 2
+#             else:
+#                 stack.append(doll)
+#     return answer
+#
+# print(solution([[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]], [1,5,3,5,1,2,1,4]))
+
+# 비밀지도
+# def tentotwo(num, n):
+#     ans = ''
+#     if num == 0:
+#         ans += ' '*n
+#     else:
+#         while num > 1:
+#             spare = num % 2
+#             if spare == 1:
+#                 ans = '#' + ans
+#                 print(ans)
+#             else:
+#                 ans = ' ' + ans
+#                 print(ans)
+#             num = num // 2
+#         ans = '#' + ans
+#
+#     if len(ans) < n:
+#         ans = ' '*(n-len(ans)) + ans
+#     return ans
+#
+# def solution(n, arr1, arr2):
+#     answer = []
+#     lis1 = list(map(lambda x: tentotwo(x, n), arr1))
+#     lis2 = list(map(lambda x: tentotwo(x, n), arr2))
+#
+#     print(lis1)
+#     print(lis2)
+#     for i in range(n):
+#         sub = ''
+#         for j in range(n):
+#             if lis1[i][j] == ' ' and lis2[i][j] == ' ':
+#                 sub += ' '
+#             else:
+#                 sub += '#'
+#         answer.append(sub)
+#
+#     return answer
+
