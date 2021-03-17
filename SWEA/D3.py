@@ -300,4 +300,11 @@
 #             max_score = sum(i)
 #     print('#{} {}'.format(tc, max_score))
 
-# 최대 성적표 만들기
+# 몬스터 사냥 _ 수학적 이해가 부족한가..?
+T = int(input())
+for tc in range(1, T+1):
+    D, L, N = map(int, input().split())
+    total = 0
+    for n in range(N):
+        total += int(D*(1+n*L*(1/100)))
+    print(f'#{tc} {total}')
