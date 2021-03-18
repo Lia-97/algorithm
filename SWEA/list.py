@@ -860,8 +860,6 @@ for tc in range(1, T+1):
 #                     size=sub_size
 #     print(f'#{tc} {size}')
 
-# 사각형 찾기 - 다시 풀기
-
 # 색칠하기
 # T=int(input())
 # for tc in range(1,T+1):

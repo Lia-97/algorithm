@@ -541,4 +541,18 @@
 #             answer = len(d)
 #     return answer
 
-#
+# 프로그래밍
+# def solution(v):
+#     answer = []
+#     x_point= []
+#     y_point = []
+#     for point in v:
+#         x_point.append(point[0])
+#         y_point.append(point[1])
+#     for x in x_point:
+#         if x_point.count(x) == 1:
+#             answer.append(x)
+#     for y in y_point:
+#         if y_point.count(y) == 1:
+#             answer.append(y)
+#     return answer
