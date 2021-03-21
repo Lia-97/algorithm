@@ -103,76 +103,76 @@
 # print(max_cnt)
 
 # 2468번 (안전 영역) _ 메모리 줄이기 (벡터연산)
-import sys
-sys.setrecursionlimit(100000)
-
-def dfs(x, y, z):
-    land[x][y] = z
-    for d in dir:
-        nx, ny = x + d[0], y + d[1]
-        if 0 <= nx < N and 0 <= ny < N:
-            if land[nx][ny] > z:
-                dfs(nx,ny,z)
-
-N = int(sys.stdin.readline())
-land = []
-max_v = 0
-dir = [(-1,0),(1,0),(0,-1),(0,1)] # 상하좌우
-for _ in range(N):
-    lis = list(map(int, sys.stdin.readline().split()))
-    land.append(lis)
-    if max(lis) > max_v:
-        max_v = max(lis)
-
-ans = 0
-for k in range(max_v-1, -1, -1):
-    cnt = 0
-    for i in range(N):
-        for j in range(N):
-            if land[i][j] > k:
-                cnt += 1
-                dfs(i, j, k)
-    if cnt > ans:
-        ans = cnt
-
-print(ans)
+# import sys
+# sys.setrecursionlimit(100000)
+#
+# def dfs(x, y, z):
+#     land[x][y] = z
+#     for d in dir:
+#         nx, ny = x + d[0], y + d[1]
+#         if 0 <= nx < N and 0 <= ny < N:
+#             if land[nx][ny] > z:
+#                 dfs(nx,ny,z)
+#
+# N = int(sys.stdin.readline())
+# land = []
+# max_v = 0
+# dir = [(-1,0),(1,0),(0,-1),(0,1)] # 상하좌우
+# for _ in range(N):
+#     lis = list(map(int, sys.stdin.readline().split()))
+#     land.append(lis)
+#     if max(lis) > max_v:
+#         max_v = max(lis)
+#
+# ans = 0
+# for k in range(max_v-1, -1, -1):
+#     cnt = 0
+#     for i in range(N):
+#         for j in range(N):
+#             if land[i][j] > k:
+#                 cnt += 1
+#                 dfs(i, j, k)
+#     if cnt > ans:
+#         ans = cnt
+#
+# print(ans)
 
 # 2468번 (안전 영역) _ 메모리 줄이기 (손코딩)
-import sys
-sys.setrecursionlimit(100000)
-
-def dfs(x, y, z):
-    land[x][y] = z
-    if land[x-1][y] > z:
-        dfs(x-1, y, z)
-    if land[x+1][y] > z:
-        dfs(x+1,y,z)
-    if land[x][y-1] > z:
-        dfs(x, y-1,z)
-    if land[x][y+1] > z:
-        dfs(x, y+1,z)
-
-
-N = int(sys.stdin.readline())
-land = [[0]*(N+2)]
-max_v = 0
-
-for _ in range(N):
-    lis = [0]+list(map(int, sys.stdin.readline().split()))+[0]
-    land.append(lis)
-    if max(lis) > max_v:
-        max_v = max(lis)
-land.append([0]*(N+2))
-
-ans = 0
-for k in range(max_v-1, -1, -1):
-    cnt = 0
-    for i in range(1,N+1):
-        for j in range(1,N+1):
-            if land[i][j] > k:
-                cnt += 1
-                dfs(i, j, k)
-    if cnt > ans:
-        ans = cnt
-
-print(ans)
+# import sys
+# sys.setrecursionlimit(100000)
+#
+# def dfs(x, y, z):
+#     land[x][y] = z
+#     if land[x-1][y] > z:
+#         dfs(x-1, y, z)
+#     if land[x+1][y] > z:
+#         dfs(x+1,y,z)
+#     if land[x][y-1] > z:
+#         dfs(x, y-1,z)
+#     if land[x][y+1] > z:
+#         dfs(x, y+1,z)
+#
+#
+# N = int(sys.stdin.readline())
+# land = [[0]*(N+2)]
+# max_v = 0
+#
+# for _ in range(N):
+#     lis = [0]+list(map(int, sys.stdin.readline().split()))+[0]
+#     land.append(lis)
+#     if max(lis) > max_v:
+#         max_v = max(lis)
+# land.append([0]*(N+2))
+#
+# ans = 0
+# for k in range(max_v-1, -1, -1):
+#     cnt = 0
+#     for i in range(1,N+1):
+#         for j in range(1,N+1):
+#             if land[i][j] > k:
+#                 cnt += 1
+#                 dfs(i, j, k)
+#     if cnt > ans:
+#         ans = cnt
+#
+# print(ans)
