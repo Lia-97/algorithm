@@ -71,11 +71,11 @@
 # 큰 수 만들기 _ 스택으로 풀어보기
 
 # 가장 큰 수
-def solution(numbers):
-    numbers = list(map(str, numbers))
-    numbers.sort(key=lambda x: x*3, reverse=True)
-    print(numbers)
-    answer = ''.join(numbers)
-    return answer
-
-print(solution([3, 30, 34, 5, 9]))
+# def solution(numbers):
+#     numbers = list(map(str, numbers))
+#     numbers.sort(key=lambda x: x*3, reverse=True)
+#     print(numbers)
+#     answer = ''.join(numbers)
+#     return answer
+#
+# print(solution([3, 30, 34, 5, 9]))
