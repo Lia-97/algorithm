@@ -490,3 +490,22 @@
 # ans = ' '.join(size)
 # print(cnt)
 # print(ans)
+
+# 1987번 (알파벳)
+# R, C = map(int, input().split()) # 행개수, 열개수
+# board = [input() for _ in range(R)]
+# q = set([(0,0,board[0][0])])
+# dir = [(-1,0),(1,0),(0,-1),(0,1)]
+# answer = 1
+#
+# while q:
+#     x, y, alpha = q.pop()
+#     answer = max(answer, len(alpha))
+#     for d in dir:
+#         nx, ny = x + d[0], y +d[1]
+#         if 0 <= nx < R and 0 <= ny < C:
+#             if board[nx][ny] not in alpha:
+#                 q.add((nx, ny, alpha+board[nx][ny]))
+#
+# print(answer)
+

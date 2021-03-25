@@ -79,3 +79,91 @@
 #     return answer
 #
 # print(solution([3, 30, 34, 5, 9]))
+
+# 대여 시간
+# N= int(input()) # 인원 수
+# times = [input() for _ in range(N)] # 01/34 ~ 89/1112
+# start = []
+# end = []
+# for time in times:
+#     start.append(int(time[0:2])*60 + int(time[3:5]))
+#     end.append(int(time[8:10])*60 + int(time[11:13]))
+#
+# s = max(start)
+# e = min(end)
+# if s > e:
+#     print(-1)
+# else:
+#     print(f'{s//60:#02d}:{s%60:#02d} ~ {e//60:#02d}:{e%60:#02d}')
+
+# 배송 전략
+# N = int(input()) # 경로의 길이
+# load = input() # 경로
+# dp=[0]*51
+# dp[1] = 1
+# dp[2] = 2
+
+# 배치
+# N = int(input()) # 한 변의 길이
+# arr = [input() for _ in range(N)]
+# for k in range(N):
+#     for i in range(N-k):
+#         for j in range(N-k):
+#             if sum(arr[i:i+k]) == k+1
+
+# 콘텐츠
+# A, B, C, D, E = map(float, input().split())
+# grade = {'A': A,
+#          'B': B,
+#          'C': C,
+#          'D': D,
+#          'E': E} # 등급별 점수
+#
+# N, M = map(int, input().split()) # 행 개수, 열 개수
+# watched = [input() for _ in range(N)]
+# point = [input() for _ in range(N)]
+#
+# result = []
+#
+# for i in range(N-1,-1,-1):
+#     for j in range(M-1,-1,-1):
+#         if watched[i][j] != 'W':
+#             result.append((watched[i][j], point[i][j], grade[point[i][j]], i,j)) # 알파벳, 평점, x좌표, y좌표
+#
+# result.sort(key=lambda x:(-ord(x[0]), -x[2], x[3], x[4]))
+#
+# for r in result:
+#     print(' '.join(map(str,r[1:])))
+
+# 시선
+# from collections import deque
+#
+# def bfs():
+#     while q:
+#         x, y, cnt = q.pop()
+#         if arr[x+1][y] == '.' and visited[x+1][y] == 0:
+#             q.appendleft((x+1,y, cnt))
+#             visited[x+1][y] = 1
+#             if x+1 == M-1:
+#                 return cnt
+#         else:
+#             for d in dir:
+#                 nx, ny = x + d[0], y + d[1]
+#                 if 0 <= nx < M and 0 <= ny < N:
+#                     if arr[nx][ny] == '.' and visited[nx][ny] == 0:
+#                         q.appendleft((nx,ny,cnt+1))
+#                         visited[nx][ny] = 1
+#     return -1
+#
+# N, M = map(int, input().split()) # 열 개수, 행 개수
+# arr = [input() for _ in range(M)]
+# q = deque()
+# dir = [(0,-1),(0,1)] # 좌, 우
+# visited = [[0]*N for _ in range(M)]
+#
+# for i in range(N):
+#     if arr[0][i] == 'c':
+#         q.appendleft((0,i,0)) # x좌표, y좌표, 좌우로 이동한 횟수
+#         visited[0][i] = 1
+#
+# print(bfs())
