@@ -299,3 +299,14 @@
 #         if sum(i) > max_score:
 #             max_score = sum(i)
 #     print('#{} {}'.format(tc, max_score))
+
+# 무한 사전
+# T = int(input())
+# for tc in range(1, T+1):
+#     first = input().rstrip()
+#     second = input().rstrip()
+#     if second == first+'a':
+#         ans = 'N'
+#     else:
+#         ans = 'Y'
+#     print(f'#{tc} {ans}')

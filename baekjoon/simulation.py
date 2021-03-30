@@ -64,4 +64,26 @@
 #             q.append((num,idx))
 #     print(cnt)
 
-# 14503번 (로봇 청소기)
+# 14503번 (로봇 청소기) _ 미완
+# N, M = map(int, input().split()) # 행 개수, 열 개수
+# r, c, d = map(int, input().split()) # x좌표, y좌표, 방향
+# clean = [list(map(int,input().split())) for _ in range(N)]
+# stack = []
+# visited = [[0]*M for _ in range(N)]
+# dir = [(-1,0),(0,1),(1,0),(0,-1)] # d의 방향(0부터 순서대로)
+# stack.append((r,c,d))
+# visited[r][c] = 1
+#
+# while True:
+#     x, y, d = stack.pop()
+#     nx, ny = x+dir[d][0], y+dir[d][1]
+#     if 0 <= nx < N and 0 <= ny < M:
+#         if clean[nx][ny] == 0:
+#             stack.append((nx, ny))
+#             visited[nx][ny] = 1
+#         else:
+#             if d == 0:
+#                 d = 3
+#             else:
+#                 d = d-1
+

@@ -77,3 +77,65 @@
 #     dp[i] = max(dp[i-1] + nums[i], nums[i])
 # print(max(dp))
 
+# 11726번 (2xn 타일링)
+# n = int(input())
+# dp=[0]*1001
+# dp[1] = 1
+# dp[2] = 2
+# if n > 2:
+#     for i in range(3,n+1):
+#         dp[i] = dp[i-2] + dp[i-1]
+#
+# print(dp[n] % 10007)
+
+# 1149번 (RGB 거리)
+# N = int(input()) # 집의 개수
+# dp = [list(map(int,input().split())) for _ in range(N)]
+# for i in range(1,len(dp)):
+#     dp[i][0] = min(dp[i-1][1],dp[i-1][2])+dp[i][0]
+#     dp[i][1] = min(dp[i-1][0],dp[i-1][2])+dp[i][1]
+#     dp[i][2] = min(dp[i-1][0],dp[i-1][1])+dp[i][2]
+# print(min(dp[N-1][0],dp[N-1][1],dp[N-1][2]))
+
+# 2839번 (설탕 배달)
+# sugar = int(input())
+# bag = 0
+# while sugar >= 0:
+#     if sugar % 5 == 0: # 5의 배수이면
+#         bag += (sugar // 5)
+#         print(bag)
+#         break
+#     sugar -= 3
+#     bag += 1
+# else:
+#     print(-1)
+
+# 2156번 (포도주 시식)
+# n = int(input())
+# dp = [0]*(n+1)
+# grape = [0]
+# for _ in range(n):
+#     grape.append(int(input()))
+#
+# for i in range(1, n + 1):
+#     if i == 1:
+#         dp[1] = grape[1]
+#     elif i==2:
+#         dp[2] = grape[1] + grape[2]
+#     else:
+#         dp[i] = max(dp[i-2]+grape[i], dp[i-3]+grape[i-1]+grape[i],dp[i-1])
+#
+# print(dp[n])
+
+# 2193번 (이친수)
+# N = int(input())
+# dp = [0] * 91
+# dp[1] = 1
+# dp[2] = 1
+# dp[3] = 2
+# for i in range(4,N+1):
+#     dp[i] = dp[i-1] + dp[i-2]
+#
+# print(dp[N])
+
+#

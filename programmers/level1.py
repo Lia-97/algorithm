@@ -556,3 +556,54 @@
 #         if y_point.count(y) == 1:
 #             answer.append(y)
 #     return answer
+
+# 폰켓몬
+# from collections import defaultdict
+# def solution(nums):
+#     number = defaultdict(int)
+#     for n in nums:
+#         number[n] += 1
+#     print(number)
+#     return
+#
+# solution([3,3,3,2,2,4])
+
+# 물류
+# N, K = map(int, input().split()) # 라인 길이, 부품 집을 수 있는 거리
+# factory = list(input())
+# stack=[factory.pop()]
+# cnt = 0
+# while factory:
+#     ans = factory.pop()
+#     if stack:
+#         if stack[-1] == 'P' and ans == 'H':
+#             stack.append(ans)
+#             stack.clear()
+#             cnt += 1
+#         elif stack[-1] == 'H' and ans == 'P':
+#             stack.append(ans)
+#             stack.clear()
+#             cnt += 1
+#     else:
+#         stack.append(ans)
+#
+# print(cnt)
+
+# 물류 _ 2
+# N, K = map(int, input().split()) # 라인 길이, 부품 집을 수 있는 거리
+# factory = list(input())
+# picked = [0]*N
+# for i in range(N-K):
+#     if factory[i] == 'P':
+#         if 'H' in factory[i:i+K+1]:
+
+
+# 바이러스
+# P, N = map(int, input().split()) # 증가율, 시간
+# virus = list(map(int, input().split()))
+# ans = 0
+#
+# for idx in range(N):
+#     ans += virus[idx] * (P**(N-(idx+1)))
+#
+# print(ans)

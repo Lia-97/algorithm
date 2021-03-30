@@ -99,17 +99,43 @@
 # 배송 전략
 # N = int(input()) # 경로의 길이
 # load = input() # 경로
-# dp=[0]*51
-# dp[1] = 1
-# dp[2] = 2
+# dp=[0]*50
+# dp[0] = 1
+#
+# if load[1] == '1':
+#     dp[1] = 1
+# else:
+#     dp[1] = 0
+#
+# for i in range(2,N):
+#     if load[i] == '0':
+#         dp[i] = 0
+#     else:
+#         dp[i] = dp[i-2] + dp[i-1]
+#
+# print(dp[N-1])
 
 # 배치
-# N = int(input()) # 한 변의 길이
-# arr = [input() for _ in range(N)]
-# for k in range(N):
-#     for i in range(N-k):
-#         for j in range(N-k):
-#             if sum(arr[i:i+k]) == k+1
+# def find_product(i,j,size):
+#     for x in range(i,i+size):
+#         for y in range(j,j+size):
+#             if place[x][y] == '0':
+#                 return False
+#     return True
+#
+# N=int(input())
+# place=[input() for _ in range(N)]
+# product=[0]*(N+1)
+# for size in range(1,N+1):
+#     for i in range(0,N+1-size):
+#         for j in range(0,N+1-size):
+#             if find_product(i,j,size):
+#                 product[size]+=1
+#
+# print('total: {0}'.format(sum(product)))
+# for i in range(1,len(product)):
+#     if product[i] !=0:
+#         print('size[{0}]: {1}'.format(i,product[i]))
 
 # 콘텐츠
 # A, B, C, D, E = map(float, input().split())

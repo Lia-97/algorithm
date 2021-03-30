@@ -509,3 +509,42 @@
 #
 # print(answer)
 
+# 10026번 (적록색약)
+from collections import deque
+def bfs(x, y):
+    q = deque()
+    q.append((x,y))
+    color = arr[x][y]
+    while q:
+        x, y = q.popleft()
+        for d in dir:
+            nx, ny = x + d[0], y +d[1]
+            if 0 <= nx < N and 0 <= ny < N:
+                if arr[nx][ny] == color and visited[nx][ny] == 0:
+                    visited[nx][ny] = 1
+                    q.append((nx,ny))
+
+N = int(input())
+arr = [input() for _ in range(N)]
+copy = [[0]*N for _ in range(N)]
+visited = [[0]*N for _ in range(N)]
+visited_copy = [[0]*N for _ in range(N)]
+dir = [(-1,0),(1,0),(0,-1),(0,1)] # 상하좌우
+cnt = 0
+
+for i in range(N):
+    for j in range(N):
+        if visited[i][j] == 0:
+            visited[i][j] = 1
+            bfs(i, j)
+            cnt += 1
+        if visited_copy[i][j] == 0:
+            visited_copy[i][j] = 1
+            bfs(i,j)
+
+for x in range(N):
+    for y in range(N):
+        if arr[x][y] == 'R' or arr[x][y] == 'G':
+            copy[x][y] = 1
+        else:
+            copy[x][y] = 0
