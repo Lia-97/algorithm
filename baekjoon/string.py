@@ -42,3 +42,59 @@
 #             ans = (N+M) // 12
 #
 #     print(ans)
+
+# 1764번 (듣보잡)
+# N, M = map(int, input().split()) # 듣지못한 사람, 보지 못한 사람
+# unlisten = []
+# unsee = []
+# for _ in range(N):
+#     unlisten.append(input())
+# for _ in range(M):
+#     unsee.append((input()))
+#
+# ans = list(set(unlisten) & set(unsee))
+# ans.sort()
+#
+# print(len(ans))
+# for i in ans:
+#     print(i)
+
+# 4949번 (균형잡힌 세상)
+# tc = []
+# while True:
+#     test = list(input())
+#     if test == ['.']:
+#         break
+#     tc.append(test)
+#
+#
+# for sentence in tc:
+#     check = ['(', ')', '[', ']']
+#     stack = ['*']
+#     while sentence:
+#         string = sentence.pop()
+#         if string in check:
+#             if string == '(' and stack[-1] == ')':
+#                 stack.pop()
+#             elif string == '[' and stack [-1] == ']':
+#                 stack.pop()
+#             else:
+#                 stack.append(string)
+#     if len(stack) == 1:
+#         ans = 'yes'
+#     else:
+#         ans = 'no'
+#
+#     print(ans)
+
+# 1874번 (스택 수열)
+n = int(input())
+nums = []
+for _ in range(n):
+    nums.append(int(input()))
+real_nums = nums[::-1]
+print(real_nums)
+
+stack = []
+while len(stack) != n:
+    while

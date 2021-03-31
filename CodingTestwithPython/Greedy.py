@@ -35,28 +35,28 @@
 입력으로 주어지는 K는 항상 M보다 작거나 같다.
 """
 
-N, M, K = map(int, input().split())
-data = list(map(int, input().split()))
-data.sort()
-first = data[-1]
-second = data[-2]
-result = 0
-
-if first == second:
-    result = first * M
-else:
-    while True:
-        if M == 0:
-            break
-        for _ in range(K):
-            result += first
-            M -= 1
-            if M == 0:
-                break
-        result += second
-        M -= 1
-
-print(result)
+# N, M, K = map(int, input().split())
+# data = list(map(int, input().split()))
+# data.sort()
+# first = data[-1]
+# second = data[-2]
+# result = 0
+#
+# if first == second:
+#     result = first * M
+# else:
+#     while True:
+#         if M == 0:
+#             break
+#         for _ in range(K):
+#             result += first
+#             M -= 1
+#             if M == 0:
+#                 break
+#         result += second
+#         M -= 1
+#
+# print(result)
 
 
 
