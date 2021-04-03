@@ -320,9 +320,7 @@
 #             elif i+1 in reserve:
 #                 reserve.remove(i+1)
 #                 lost.remove(i)
-#         else:
-#             lost.remove(i)
-#             reserve.remove(i)
+#
 #     answer = n - len(lost)
 #     return answer
 
@@ -561,12 +559,16 @@
 # from collections import defaultdict
 # def solution(nums):
 #     number = defaultdict(int)
+#     # 각 종류 별 폰켓몬 : 폰켓몬 개수
 #     for n in nums:
 #         number[n] += 1
-#     print(number)
-#     return
 #
-# solution([3,3,3,2,2,4])
+#     if len(number) >= len(nums)//2:
+#         ans = len(nums)//2
+#     else:
+#         ans = len(number)
+#
+#     return ans
 
 # 물류
 # N, K = map(int, input().split()) # 라인 길이, 부품 집을 수 있는 거리
@@ -597,7 +599,6 @@
 #     if factory[i] == 'P':
 #         if 'H' in factory[i:i+K+1]:
 
-
 # 바이러스
 # P, N = map(int, input().split()) # 증가율, 시간
 # virus = list(map(int, input().split()))
@@ -607,3 +608,211 @@
 #     ans += virus[idx] * (P**(N-(idx+1)))
 #
 # print(ans)
+
+# 스마트 물류
+# N, K = map(int,input().split())
+# factory = [0]*K + list(input()) + [0]*K
+# cnt = 0
+# for idx in range(len(factory)):
+#     if factory[idx] == 'P':
+#         for i in range(idx-K, idx+K+1):
+#             if factory[i] == 'H':
+#                 factory[i] = 0
+#                 cnt += 1
+#                 break
+#
+# print(cnt)
+
+# 완주하지 못한 선수
+# from collections import defaultdict
+# def solution(participant, completion):
+#     runner = defaultdict(int)
+#     complete = defaultdict(int)
+#     for p in participant:
+#         runner[p] += 1
+#
+#     for c in completion:
+#         complete[c] += 1
+#     print(runner)
+#     print(complete)
+#     for r in runner:
+#         runner[r] = runner[r] - complete[r]
+#         if runner[r] != 0:
+#             return r
+
+# 실패율 _ 런타임 에러
+# from collections import defaultdict
+#
+# def solution(N, stages):
+#     answer = []
+#     game = defaultdict(int)
+#     for s in stages:
+#         game[s] += 1
+#     i = 1
+#     M = len(stages)
+#     while i <= N:
+#         answer.append((i, game[i]/M))
+#         print((i, game[i]/M))
+#         M -= game[i]
+#         i += 1
+#
+#     answer.sort(key=lambda x:-x[1])
+#
+#     result = []
+#
+#     for ans in answer:
+#         result.append(ans[0])
+#
+#     return result
+#
+# print(solution(5,[2, 1, 2, 6, 2, 4, 3, 3]))
+
+# 실패율
+# def solution(N, stages):
+#     answer = []
+#     i = 1
+#     M = len(stages)
+#     while i <= N:
+#         answer.append((i,stages.count(i)/M))
+#         M -= stages.count(i)
+#         i += 1
+#         if M == 0:
+#             break
+#
+#     answer.sort(key=lambda x:-x[1])
+#     result = []
+#     for a in answer:
+#         result.append(a[0])
+#
+#     if len(result) < N:
+#         for num in range(result[0]+1, N+1):
+#             result.append(num)
+#     return result
+#
+# print(solution(4,[2,2,2,2,2]))
+
+# 자연수 뒤집어 배열로 만들기
+# def solution(n):
+#     answer = []
+#     num = str(n)
+#     for i in range(len(num)-1,-1,-1):
+#         answer.append(int(num[i]))
+#     return answer
+
+# 로또
+# def solution(lottos, win_nums):
+#     answer = []
+#     grade = [6,6,5,4,3,2,1]
+#     # 최고 순위
+#     least = len(list(set(lottos) & set(win_nums)))
+#     plus = lottos.count(0)
+#     answer.append(grade[least+plus])
+#     # 최저 순위
+#     answer.append(grade[least])
+#     return answer
+
+# 행렬 이동 _ 시간 초과
+# import copy
+# def solution(rows, columns, queries):
+#     # 배열 생성
+#     arr = [[0]*(columns+2)]
+#     for i in range(1, rows+1):
+#         sub = []
+#         for j in range(columns-1,-1,-1):
+#             sub.append(i*columns-j)
+#         arr.append([0]+sub+[0])
+#     arr.append([0]*(columns+2))
+#
+#     # 번호 이동
+#     min_v = []
+#     for q in queries:
+#         arr_copy = copy.deepcopy(arr)
+#         minimal = 10000
+#         a = q[0]
+#         b = q[1]
+#         c = q[2]
+#         d = q[3]
+#         points = [(a,b),(a,d),(c,d),(c,b)]
+#         dir = [(0,1),(1,0),(0,-1),(-1,0)] # 이동방향
+#         x, y = a, b
+#         for d in dir:
+#             while True:
+#                 nx, ny = x + d[0], y + d[1]
+#                 arr[nx][ny] = arr_copy[x][y]
+#                 if arr[nx][ny] < minimal:
+#                     minimal = arr[nx][ny]
+#                 x, y = nx, ny
+#                 if (x,y) in points:
+#                     break
+#         min_v.append(minimal)
+#
+#     return min_v
+#
+#
+# print(solution(6,6,[[2,2,5,4],[3,3,6,6],[5,1,6,3]]))
+
+# 행렬 이동2 _ 시간 초과 해결
+# def solution(rows, columns, queries):
+#     # 배열 생성
+#     arr = [[0]*(columns+2)]
+#     for i in range(1, rows+1):
+#         sub = []
+#         for j in range(columns-1,-1,-1):
+#             sub.append(i*columns-j)
+#         arr.append([0]+sub+[0])
+#     arr.append([0]*(columns+2))
+#
+#     # 번호 이동
+#     min_v = []
+#     for q in queries:
+#         arr_copy = []
+#         for a in arr:
+#             arr_copy.append(a[::])
+#
+#         minimal = 10000
+#         a = q[0]
+#         b = q[1]
+#         c = q[2]
+#         d = q[3]
+#         points = [(a,b),(a,d),(c,d),(c,b)]
+#         dir = [(0,1),(1,0),(0,-1),(-1,0)] # 이동방향
+#         x, y = a, b
+#         for d in dir:
+#             while True:
+#                 nx, ny = x + d[0], y + d[1]
+#                 arr[nx][ny] = arr_copy[x][y]
+#                 if arr[nx][ny] < minimal:
+#                     minimal = arr[nx][ny]
+#                 x, y = nx, ny
+#                 if (x,y) in points:
+#                     break
+#         min_v.append(minimal)
+#
+#     return min_v
+#
+#
+# print(solution(6,6,[[2,2,5,4],[3,3,6,6],[5,1,6,3]]))
+
+# 다단계
+# from collections import defaultdict
+# def solution(enroll, referral, seller, amount):
+#     chain = defaultdict(list)
+#     for idx in range(len(enroll)):
+#         if referral[idx] == '-':
+#             chain[enroll[idx]] = [0,0]
+#         else:
+#             chain[enroll[idx]] = [referral[idx],0]
+#
+#     for id in range(len(seller)):
+#         chain[seller[id]][1] = amount[id]*100
+#
+#     for i in chain:
+#         if chain[i][0] == 0:
+#             chain[i][1] = chain[i][1]*0.9
+#         else:
+#             chain[chain[i][0]][1] += chain[i][1]*0.1
+#             chain[i][1] = chain[i][1]*0.9
+#     print(chain)
+#     return
+#
+# print(solution(["john", "mary", "edward", "sam", "emily", "jaimie", "tod", "young"],["-", "-", "mary", "edward", "mary", "mary", "jaimie", "edward"],["young", "john", "tod", "emily", "mary"],[12, 4, 2, 5, 10]))

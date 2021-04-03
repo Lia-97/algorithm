@@ -87,14 +87,14 @@
 #
 #     print(ans)
 
-# 1874번 (스택 수열)
-n = int(input())
-nums = []
-for _ in range(n):
-    nums.append(int(input()))
-real_nums = nums[::-1]
-print(real_nums)
-
-stack = []
-while len(stack) != n:
-    while
+# 1874번 (스택 수열) _ 미완
+# n = int(input())
+# nums = []
+# for _ in range(n):
+#     nums.append(int(input()))
+# real_nums = nums[::-1]
+# print(real_nums)
+#
+# stack = []
+# while len(stack) != n:
+#     while
