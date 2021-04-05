@@ -795,24 +795,63 @@
 
 # 다단계
 # from collections import defaultdict
+# # def solution(enroll, referral, seller, amount):
+# #     chain = defaultdict(list)
+# #     for idx in range(len(enroll)):
+# #         if referral[idx] == '-':
+# #             chain[enroll[idx]] = [0,0]
+# #         else:
+# #             chain[enroll[idx]] = [referral[idx],0]
+# #
+# #     print(chain)
+# #
+# #     for id in range(len(seller)):
+# #         chain[seller[id]][1] = amount[id]*100
+# #
+# #     print(chain)
+# #     for i in chain:
+# #         print(chain[i])
+# #         if chain[i][0] == 0:
+# #             chain[i][1] = chain[i][1]*0.9
+# #         else:
+# #             chain[chain[i][0]][1] += chain[i][1]*0.1
+# #             chain[i][1] = chain[i][1]*0.9
+# #     print(chain)
+# #     return
+# #
+# # print(solution(["john", "mary", "edward", "sam", "emily", "jaimie", "tod", "young"],["-", "-", "mary", "edward", "mary", "mary", "jaimie", "edward"],["young", "john", "tod", "emily", "mary"],[12, 4, 2, 5, 10]))
+#
+# #
+# from collections import defaultdict
 # def solution(enroll, referral, seller, amount):
 #     chain = defaultdict(list)
 #     for idx in range(len(enroll)):
 #         if referral[idx] == '-':
-#             chain[enroll[idx]] = [0,0]
+#             chain[enroll[idx]] = [0,0,0]
 #         else:
-#             chain[enroll[idx]] = [referral[idx],0]
+#             chain[enroll[idx]] = [referral[idx],0,chain[referral[idx]][2]+1]
 #
 #     for id in range(len(seller)):
 #         chain[seller[id]][1] = amount[id]*100
 #
-#     for i in chain:
-#         if chain[i][0] == 0:
-#             chain[i][1] = chain[i][1]*0.9
+#     sorted_chain = sorted(chain.items(), key=lambda x:-x[1][2])
+#     print(sorted_chain)
+#
+#     check = {}
+#     for sc in sorted_chain:
+#         check[sc[0]] = sc[1]
+#     print(check)
+#
+#     for i in check:
+#         print(i)
+#         if check[i][0] == 0:
+#             check[i][1] = check[i][1]*0.9
 #         else:
-#             chain[chain[i][0]][1] += chain[i][1]*0.1
-#             chain[i][1] = chain[i][1]*0.9
-#     print(chain)
+#             check[check[i][0]][1] += check[i][1]*0.1
+#             check[i][1] = check[i][1]*0.9
+#     print(check)
 #     return
 #
 # print(solution(["john", "mary", "edward", "sam", "emily", "jaimie", "tod", "young"],["-", "-", "mary", "edward", "mary", "mary", "jaimie", "edward"],["young", "john", "tod", "emily", "mary"],[12, 4, 2, 5, 10]))
+
+
