@@ -193,3 +193,55 @@
 #         visited[0][i] = 1
 #
 # print(bfs())
+
+# 스킬트리 _ 시간초과
+# def solution(skill, skill_trees):
+#     checks = []
+#     cnt = 0
+#     for sk in skill_trees:
+#         sub = ''
+#         for s in sk:
+#             if s in skill:
+#                 sub += s
+#         checks.append(sub)
+#     print(checks)
+#
+#     for check in checks:
+#         for i in range(len(skill)):
+#             if skill[i] == check[0]:
+#                 if skill[i:i+len(check)+1] == check:
+#                     cnt += 1
+#     return cnt
+#
+# print(solution('CBD', ["BACDE", "CBADF", "AECB", "BDA"]))
+
+# 스킬트리_ 실패
+# def solution(skill, skill_trees):
+#     cnt = len(skill_trees)
+#     for skills in skill_trees:
+#         if skill[0] not in skills:
+#             cnt -= 1
+#             continue
+#         sub = ''
+#         for s in skills:
+#             if s in skill:
+#                 sub += s
+#             if sub not in skill:
+#                 cnt -= 1
+#                 break
+#     return cnt
+#
+# print(solution('D', ["GQWR"]))
+
+# 스킬트리 _ 미완
+# def solution(skill, skill_trees):
+#     skill_val = {}
+#     i = 1
+#     for s in skill:
+#         skill_val[s] = i
+#         i += 1
+#     for st in skill_trees:
+#         for s in st:
+#             if s != skill[0]:
+#                 cnt -= 1
+#                 break

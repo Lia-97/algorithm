@@ -265,3 +265,46 @@ par[c] = p
 #         tree[int(c[0])] = solve(tree[int(c[2])],c[1] ,tree[int(c[3])])
 #
 #     print(f'#{tc} {int(tree[1])}')
+
+# 이진 힙
+# def heap(idx):
+#     if val[idx//2] > val[idx]:
+#         val[idx//2], val[idx] = val[idx], val[idx//2]
+#     return
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     val = [0] + list(map(int, input().split()))
+#
+#     for i in range(2, N+1):
+#         heap(i)
+#
+#     last = N
+#     ans = 0
+#
+#     while last != 1:
+#         ans += val[last//2]
+#         last = last//2
+#
+#     print(f'#{tc} {ans}')
+
+# 이진 힙 _ 원재
+# T=int(input())
+# for tc in range(1,T+1):
+#     N=int(input())
+#     nodes=list(map(int,input().split()))
+#     tree=[0]*(N+1)
+#
+#     for curr in range(1,len(nodes)+1):
+#         tree[curr]=nodes[curr-1]
+#         while curr != 1 and tree[curr//2] >= tree[curr]:
+#             tree[curr],tree[curr//2]=tree[curr//2],tree[curr]
+#             curr//=2
+#
+#     ans=0
+#     curr=N
+#     while curr!=1:
+#         curr //= 2
+#         ans += tree[curr]
+#     print(f'#{tc} {ans}')

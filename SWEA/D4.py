@@ -138,4 +138,11 @@
 #         tunnel.append(list(map(int,input().split())))
 #     print(f'#{tc} {bfs(R,C,L)}')
 
-# 요리사
+# 보급로 : 다익스트라
+
+# 보급로 : 힙큐
+
+# 보급로 : 우선순위큐
+
+
+

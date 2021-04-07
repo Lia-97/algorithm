@@ -510,41 +510,60 @@
 # print(answer)
 
 # 10026번 (적록색약)
-from collections import deque
-def bfs(x, y):
-    q = deque()
-    q.append((x,y))
-    color = arr[x][y]
-    while q:
-        x, y = q.popleft()
-        for d in dir:
-            nx, ny = x + d[0], y +d[1]
-            if 0 <= nx < N and 0 <= ny < N:
-                if arr[nx][ny] == color and visited[nx][ny] == 0:
-                    visited[nx][ny] = 1
-                    q.append((nx,ny))
+# from collections import deque
+# def bfs(arr, visited, x, y):
+#     q = deque()
+#     q.append((x,y))
+#     color = arr[x][y]
+#     while q:
+#         x, y = q.popleft()
+#         for d in dir:
+#             nx, ny = x + d[0], y +d[1]
+#             if 0 <= nx < N and 0 <= ny < N:
+#                 if arr[nx][ny] == color and visited[nx][ny] == 0:
+#                     visited[nx][ny] = 1
+#                     q.append((nx,ny))
+#
+# N = int(input())
+# color = [list(input()) for _ in range(N)] # 적록색약 x
+# colorless = [] # 적록색약
+# for c in color:
+#     colorless.append(c[::])
+# for c in colorless:
+#     for idx in range(len(c)):
+#         if c[idx] == 'R':
+#             c[idx] = 'G'
+# # print(colorless)
+# visited = [[0]*N for _ in range(N)] # 적록색약 x
+# visited_copy = [[0]*N for _ in range(N)] # 적록색약
+# dir = [(-1,0),(1,0),(0,-1),(0,1)] # 상하좌우
+# cnt1 = 0 # 적록색약 x
+# cnt2 = 0 # 적록색약
+#
+# for i in range(N):
+#     for j in range(N):
+#         if visited[i][j] == 0:
+#             visited[i][j] = 1
+#             bfs(color, visited, i, j)
+#             cnt1 += 1
+#         if visited_copy[i][j] == 0:
+#             visited_copy[i][j] = 1
+#             bfs(colorless, visited_copy, i,j)
+#             cnt2 += 1
+#
+# print(cnt1, cnt2)
 
-N = int(input())
-arr = [input() for _ in range(N)]
-copy = [[0]*N for _ in range(N)]
-visited = [[0]*N for _ in range(N)]
-visited_copy = [[0]*N for _ in range(N)]
-dir = [(-1,0),(1,0),(0,-1),(0,1)] # 상하좌우
-cnt = 0
-
-for i in range(N):
-    for j in range(N):
-        if visited[i][j] == 0:
-            visited[i][j] = 1
-            bfs(i, j)
-            cnt += 1
-        if visited_copy[i][j] == 0:
-            visited_copy[i][j] = 1
-            bfs(i,j)
-
-for x in range(N):
-    for y in range(N):
-        if arr[x][y] == 'R' or arr[x][y] == 'G':
-            copy[x][y] = 1
-        else:
-            copy[x][y] = 0
+# 2644번 (촌수계산) _ 미완
+# from collections import defaultdict
+# n = int(input())
+# person1, person2 = map(int, input().split())
+# m = int(input())
+# family = defaultdict(list)
+# for _ in range(m):
+#     pa, ch = map(int, input().split()) # 부모, 자식
+#     family[pa].append(ch)
+#     # if ch == person1:
+#     #     pass
+#
+# while True:
+#     pass
