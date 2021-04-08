@@ -233,15 +233,22 @@
 #
 # print(solution('D', ["GQWR"]))
 
-# 스킬트리 _ 미완
-# def solution(skill, skill_trees):
-#     skill_val = {}
-#     i = 1
-#     for s in skill:
-#         skill_val[s] = i
-#         i += 1
-#     for st in skill_trees:
-#         for s in st:
-#             if s != skill[0]:
-#                 cnt -= 1
-#                 break
+#
+def three(k):
+    double = k
+    total = 0
+    while double >= 1:
+        total += 3 ** double
+        double -= 1
+    return total
+
+def solution(n):
+    for N in range(1, 1000):
+        if three(N-1) < n <= three(N):
+            break
+    # N의 자리 숫자임
+
+
+print(solution(10))
+
+

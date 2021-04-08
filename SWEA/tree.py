@@ -308,3 +308,22 @@ par[c] = p
 #         curr //= 2
 #         ans += tree[curr]
 #     print(f'#{tc} {ans}')
+
+# subtree
+def inorder():
+    pass
+
+T = int(input())
+for tc in range(1, T+1):
+    E, N = map(int, input().split()) # 간선 개수, 루트로 할 노드 번호
+    ch1 = [0]*(E+2)
+    ch2 = [0]*(E+2)
+    pairs = list(map(int, input().split()))
+
+    for i in range(E):
+        pa = pairs[i*2]
+        child = i*2+1
+        if ch1[pa] != 0:
+            ch2[pa] = pairs[child]
+        else:
+            ch1[pa] = pairs[child]

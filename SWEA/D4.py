@@ -138,11 +138,158 @@
 #         tunnel.append(list(map(int,input().split())))
 #     print(f'#{tc} {bfs(R,C,L)}')
 
-# 보급로 : 다익스트라
+# 보급로 _ 다익스트라로 풀기
+# import heapq
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     roads = [list(map(int, input())) for _ in range(N)]
+#     times = [[float('inf')]*N for _ in range(N)]
+#     times[0][0] = 0
+#     dir = [(-1,0), (1,0), (0,-1), (0,1)] # 상하좌우
+#     queue = []
+#     heapq.heappush(queue, (0, 0, times[0][0])) # x좌표, y좌표, 복구에 걸리는 시간
+#
+#     while queue:
+#         x, y, time = heapq.heappop(queue)
+#         if times[x][y] < time:
+#             continue
+#
+#         for d in dir:
+#             nx, ny = x + d[0], y + d[1]
+#             setting = time
+#             if 0 <= nx < N and 0 <= ny < N:
+#                 setting += roads[nx][ny]
+#
+#                 if setting < times[nx][ny]:
+#                     times[nx][ny] = setting
+#                     heapq.heappush(queue, (nx, ny, setting))
+#
+#     print(f'#{tc} {times[N-1][N-1]}')
 
-# 보급로 : 힙큐
+# 보급로 _ dfs로 풀기 (실행시간 빠른 코드 참고)
+# from collections import deque
+#
+# dx = [0, 0, 1, -1]
+# dy = [1, -1, 0, 0]
+#
+# def dfs(x, y):
+#     q = deque()
+#     q.append((x, y))
+#     d[x][y] = 0
+#     while q:
+#         x, y = q.popleft()
+#         for k in range(4):
+#             nx, ny = x + dx[k], y + dy[k]
+#             if 0 <= nx < n and 0 <= ny < n:
+#                 if d[nx][ny] == -1:
+#                     d[nx][ny] = d[x][y] + a[nx][ny]
+#                     q.append((nx, ny))
+#                 else:
+#                     if d[nx][ny] > d[x][y] + a[nx][ny]:
+#                         d[nx][ny] = d[x][y] + a[nx][ny]
+#                         q.append((nx, ny))
+#                     else:
+#                         continue
+#
+# for t in range(int(input())):
+#     n = int(input())
+#     a = [list(map(int, list(input()))) for _ in range(n)]
+#     d = [[-1] * (n) for _ in range(n)]
+#     dfs(0, 0)
+#     print('#{} {}'.format(t + 1, d[n - 1][n - 1]))
 
-# 보급로 : 우선순위큐
+# Ladder1 _ ???
+# from collections import deque
+# for tc in range(1, 11):
+#     num = input()
+#     x = 0
+#     y = 0 # 2의 위치
+#     visited = [[0]*102 for _ in range(102)]
+#
+#     # 0을 테두리로 가진 이차원 배열 만들기
+#     ladder = [[0]*102]
+#     for i in range(100):
+#         lad = list(map(int, input().split()))
+#         ladder.append([0]+lad+[0])
+#         ladder.append([0]*102)
+#         # 2의 위치 찾기
+#         if 2 in lad:
+#             x = i+1
+#             y = lad.index(2)
+#
+#     q = deque()
+#     q.append((x,y))
+#
+#     while q:
+#         x, y = q.popleft()
+#
+#         if x == 1:
+#             break
+#
+#         if ladder[x][y-1] == 1 and visited[x][y-1] == 0:
+#             nx, ny = x, y-1
+#         elif ladder[x][y+1] == 1 and visited[x][y+1] == 0:
+#             nx, ny = x, y+1
+#         else:
+#             nx, ny = x-1, y
+#
+#         visited[nx][ny] = 1
+#         q.append((nx, ny))
+#
+#     print(y-1)
 
+# 최장 경로 _ 실패
+# def dfs(node, cnt):
+#     global ans
+#     visited[node] = 1
+#     ans = max(ans, cnt)
+#     for n in graph[node]:
+#         if visited[n] == 0:
+#             dfs(n, cnt+1)
+#
+# from collections import defaultdict
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split()) # 노드개수, 간선정보 개수
+#     graph = defaultdict(list)
+#     nodes = []
+#     for _ in range(M):
+#         node1, node2 = map(int, input().split())
+#         graph[node1].append(node2)
+#         graph[node2].append(node1)
+#
+#     ans = 0
+#     for keys in graph:
+#         visited = [0] * (N + 1)
+#         if visited[keys] == 0:
+#             dfs(keys, 1)
+#
+#     print(f'#{tc} {ans}')
 
+# 괄호 짝짓기
+# table = {'(':1, ')':-1, '<':2, '>':-2, '[':3, ']':-3, '{':4, '}':-4}
+# for tc in range(1, 11):
+#     all = int(input())
+#     bracket = list(input())
+#     stack = []
+#     stack.append(bracket.pop())
+#     while bracket:
+#         last = bracket.pop()
+#         if len(stack) == 0 and table[last]>0:
+#             break
+#         elif len(stack) == 0 and table[last]<0:
+#             stack.append(last)
+#         else:
+#             if table[last]+table[stack[-1]] == 0:
+#                 stack.pop()
+#             else:
+#                 stack.append(last)
+#
+#     if stack:
+#         ans = 0
+#     else:
+#         ans = 1
+#     print(f'#{tc} {ans}')
 
+# 
