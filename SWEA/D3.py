@@ -310,3 +310,139 @@
 #     else:
 #         ans = 'Y'
 #     print(f'#{tc} {ans}')
+
+# 최장 경로 _ 실패(dfs)
+# def dfs(node, cnt):
+#     global ans
+#     visited[node] = 1
+#     ans = max(ans, cnt)
+#     for n in graph[node]:
+#         if visited[n] == 0:
+#             dfs(n, cnt+1)
+#
+# from collections import defaultdict
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split()) # 노드개수, 간선정보 개수
+#     graph = defaultdict(list)
+#     nodes = []
+#     for _ in range(M):
+#         node1, node2 = map(int, input().split())
+#         graph[node1].append(node2)
+#         graph[node2].append(node1)
+#
+#     ans = 0
+#     for keys in graph:
+#         visited = [0] * (N + 1)
+#         if visited[keys] == 0:
+#             dfs(keys, 1)
+#
+#     print(f'#{tc} {ans}')
+
+# 최장 경로 _ 실패(bfs)
+# from collections import defaultdict
+# from collections import deque
+#
+# def bfs(q):
+#     global max_cnt
+#     while q:
+#         node, cnt = q.popleft()
+#         for n in nodes[node]:
+#             if visited[n] == 0:
+#                 visited[n] = 1
+#                 q.append((n, cnt+1))
+#         if cnt > max_cnt:
+#             max_cnt = cnt
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split()) # N개 정점, M개 간선
+#     nodes = defaultdict(list)
+#     q = deque()
+#     max_cnt = 1
+#
+#     for _ in range(M):
+#         node1, node2 = map(int, input().split()) # 노드 관계
+#         nodes[node1].append(node2)
+#         nodes[node2].append(node1)
+#
+#     min_length = 21
+#     for node in nodes:
+#         visited = [0] * (N + 1)
+#         if len(nodes[node]) < min_length:
+#             min_length = len(nodes[node])
+#             q.clear()
+#             q.append((node, 1))
+#             visited[node] = 1
+#
+#     bfs(q)
+#     print(f'#{tc} {max_cnt}')
+
+# 최장 경로 _ dfs로 다시 풀기
+# from collections import defaultdict
+#
+# def dfs(node, cnt):
+#     global ans
+#     cnt += 1
+#     visited[node] = 1
+#     if cnt > ans:
+#         ans = cnt
+#     for n in graph[node]:
+#         if visited[n] == 0:
+#             dfs(n, cnt)
+#     visited[node] = 0
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split()) # N개의 정점, M개의 간선
+#     graph = defaultdict(list)
+#     ans = 0
+#     visited = [0] * (N + 1)
+#
+#     for _ in range(M):
+#         node1, node2 = map(int, input().split())
+#         graph[node1].append(node2)
+#         graph[node2].append(node1)
+#
+#     for node in graph:
+#         dfs(node, 0)
+#
+#     print(f'#{tc} {ans}')
+
+# D3 2814 최장경로
+# def dfs(idx, ans):
+#     global answer
+#     # 탐색한 노드는 체크하고
+#     visited[idx] = 0
+#     # 이동횟수 증가
+#     ans += 1
+#     # 최댓값 갱신
+#     if answer < ans: answer = ans
+#     # 이동가능 노드 확인
+#     for i in graph[idx]:
+#         # 이동가능하면 이동
+#         if visited[i]: dfs(i, ans)
+#     # 사용 해제
+#     visited[idx] = 1
+#
+#
+# for t in range(1, int(input()) + 1):
+#     # 노드와 간선 정보를 받고
+#     N, M = map(int, input().split())
+#     # 방문 배열 만들고
+#     visited = [1 for _ in range(N + 1)]
+#     # 입력받아서
+#     temp = [list(map(int, input().split())) for _ in range(M)]
+#     # 쉽게 사용하기위한 데이터 편집하기
+#     graph = [[] for _ in range(N + 1)]
+#     answer = 0
+#     # 노드간 이동 경로 표시
+#     for a, b, in temp:
+#         graph[a].append(b)
+#         graph[b].append(a)
+#     print(graph)
+#     # 시작노드를 다르게해서 최대 길이 찾기
+#     for i in range(N): dfs(i, 0)
+#     print('#{} {}'.format(t, answer))
+
+#

@@ -239,33 +239,6 @@
 #
 #     print(y-1)
 
-# 최장 경로 _ 실패
-# def dfs(node, cnt):
-#     global ans
-#     visited[node] = 1
-#     ans = max(ans, cnt)
-#     for n in graph[node]:
-#         if visited[n] == 0:
-#             dfs(n, cnt+1)
-#
-# from collections import defaultdict
-# T = int(input())
-# for tc in range(1, T+1):
-#     N, M = map(int, input().split()) # 노드개수, 간선정보 개수
-#     graph = defaultdict(list)
-#     nodes = []
-#     for _ in range(M):
-#         node1, node2 = map(int, input().split())
-#         graph[node1].append(node2)
-#         graph[node2].append(node1)
-#
-#     ans = 0
-#     for keys in graph:
-#         visited = [0] * (N + 1)
-#         if visited[keys] == 0:
-#             dfs(keys, 1)
-#
-#     print(f'#{tc} {ans}')
 
 # 괄호 짝짓기
 # table = {'(':1, ')':-1, '<':2, '>':-2, '[':3, ']':-3, '{':4, '}':-4}
@@ -291,5 +264,3 @@
 #     else:
 #         ans = 1
 #     print(f'#{tc} {ans}')
-
-# 

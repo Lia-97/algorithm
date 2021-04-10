@@ -233,22 +233,4 @@
 #
 # print(solution('D', ["GQWR"]))
 
-#
-def three(k):
-    double = k
-    total = 0
-    while double >= 1:
-        total += 3 ** double
-        double -= 1
-    return total
-
-def solution(n):
-    for N in range(1, 1000):
-        if three(N-1) < n <= three(N):
-            break
-    # N의 자리 숫자임
-
-
-print(solution(10))
-
 
