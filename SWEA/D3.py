@@ -445,4 +445,61 @@
 #     for i in range(N): dfs(i, 0)
 #     print('#{} {}'.format(t, answer))
 
+# 부분 수열의 합 _ combinations
+# from itertools import combinations
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, K = map(int, input().split()) # 원소 개수, 합이 K
+#     nums = list(map(int, input().split()))
+#     nums.sort()
+#     ans = 0
+#     search = nums[::]
+#
+#     for idx in range(N):
+#         if nums[idx] > K:
+#             search = nums[:idx]
+#             break
+#
+#     for i in range(1, N+1):
+#         lis = list(combinations(search, i))
+#         for l in lis:
+#             if sum(l) ==  K:
+#                 ans += 1
+#     print(f'#{tc} {ans}')
+
+# 부분 수열의 합 _ 재귀(아마도 백트래킹..?)
+
+# 재미있는 오셀로 게임 _ 문제 이해가 아직도 안됨;;
+# T = int(input())
+# for _ in range(1, T+1):
+#     N, M = map(int, input().split()) # 한변의 길이 N, 돌을 놓는 횟수 M
+#     board = [[0]*N for _ in range(N)]
+#     dir = [(-2,0),(2,0),(0,-2),(0,2),(-2,-2),(-2,2),(2,-2),(2,2)] # 좌상,우상,좌하,우하 대각선
+#     change_dir = [(-1,0),(1,0),(0,-1),(0,1),(-1,-1),(-1,1),(1,-1),(1,1)] # 상하좌우
+#     a = N//2 - 1
+#     b = N//2
+#     board[a][a], board[b][b] = 1, 1 # 백돌
+#     board[a][b], board[b][a] = 2, 2 # 흑돌
+#     for _ in range(M):
+#         i, j, color = map(int, input().split()) # x좌표, y좌표, 놓을 돌 색깔
+#         x, y = i-1, j-1
+#         board[x][y] = color
+#         for k in range(8):
+#             nx, ny = x+dir[k][0], y+dir[k][1]
+#             cx, cy = x + change_dir[k][0], y + change_dir[k][1]
+#             if 0 <= nx < N and 0 <= ny < N and board[nx][ny] != 0:
+#                 print('1')
+#                 print(x, y)
+#                 print('nx,ny', nx, ny)
+#                 print('cx,cy', cx, cy)
+#                 print('color', color)
+#                 if board[nx][ny] == color:
+#                     print('2')
+#                     if board[cx][cy] != 0 and board[cx][cy] != color:
+#                         print('3')
+#                         board[cx][cy] = color
+#                         break
+#     print(board)
+
 #

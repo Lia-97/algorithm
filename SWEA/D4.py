@@ -239,7 +239,6 @@
 #
 #     print(y-1)
 
-
 # 괄호 짝짓기
 # table = {'(':1, ')':-1, '<':2, '>':-2, '[':3, ']':-3, '{':4, '}':-4}
 # for tc in range(1, 11):
@@ -264,3 +263,40 @@
 #     else:
 #         ans = 1
 #     print(f'#{tc} {ans}')
+
+# 길찾기
+# from collections import deque
+#
+# def bfs(q):
+#     global ans
+#     while q:
+#         node = q.popleft()
+#         if node == 99:
+#             ans = 1
+#             break
+#         if road1[node] != 0:
+#             q.append(road1[node])
+#         if road2[node] != 0:
+#             q.append(road2[node])
+#
+#
+# for tc in range(1, 11):
+#     tc, N = map(int, input().split()) # 테케 번호, 길의 총 개수
+#     road1 = [0]*100
+#     road2 = [0]*100
+#     pairs = list(map(int, input().split())) # 순서쌍
+#     ans = 0
+#     for i in range(N):
+#         idx = pairs[2*i]
+#         val = pairs[2*i+1]
+#         if road1[idx] == 0:
+#             road1[idx] = val
+#         else:
+#             road2[idx] = val
+#     q = deque()
+#     q.append(1)
+#     bfs(q)
+#
+#     print(f'#{tc} {ans}')
+
+# 미로2
