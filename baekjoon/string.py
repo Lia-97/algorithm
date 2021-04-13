@@ -98,3 +98,27 @@
 # stack = []
 # while len(stack) != n:
 #     while
+
+# OX 퀴즈
+# T = int(input())
+# for _ in range(T):
+#     result = input()
+#     add = 1
+#     total = 0
+#     for i in range(len(result)):
+#         if result[i] == 'O':
+#             total += add
+#             add += 1
+#         elif result[i] == 'X':
+#             add = 1
+#     print(total)
+
+# 그대로 출력하기
+# while True:
+#     try:
+#         sentence = input()
+#     except:
+#         break
+#     print(sentence)
+
+#

@@ -84,33 +84,33 @@
 #     print(a[1])
 
 # 11725번 (트리의 부모 찾기)
-from collections import defaultdict, deque
-import sys
-
-def bfs(q):
-    global answer
-    while q:
-        node, parent = q.popleft()
-        answer.append((node, parent))
-        for i in tree[node]:
-            if visited[i] == 0:
-                visited[i] = 1
-                q.append((i, node))
-
-T = int(sys.stdin.readline())
-tree = defaultdict(list)
-visited = [0]*(T+1)
-ans = []
-q = deque()
-answer = []
-for _ in range(T-1):
-    node1, node2 = map(int, sys.stdin.readline().split()) # 연결된 두 정점
-    tree[node1].append(node2)
-    tree[node2].append(node1)
-
-q.append((1, 0))
-visited[1] = 1
-bfs(q)
-answer.sort(key=lambda x:x[0])
-for a in answer[1:]:
-    print(a[1])
+# from collections import defaultdict, deque
+# import sys
+#
+# def bfs(q):
+#     global answer
+#     while q:
+#         node, parent = q.popleft()
+#         answer.append((node, parent))
+#         for i in tree[node]:
+#             if visited[i] == 0:
+#                 visited[i] = 1
+#                 q.append((i, node))
+#
+# T = int(sys.stdin.readline())
+# tree = defaultdict(list)
+# visited = [0]*(T+1)
+# ans = []
+# q = deque()
+# answer = []
+# for _ in range(T-1):
+#     node1, node2 = map(int, sys.stdin.readline().split()) # 연결된 두 정점
+#     tree[node1].append(node2)
+#     tree[node2].append(node1)
+#
+# q.append((1, 0))
+# visited[1] = 1
+# bfs(q)
+# answer.sort(key=lambda x:x[0])
+# for a in answer[1:]:
+#     print(a[1])

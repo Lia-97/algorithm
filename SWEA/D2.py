@@ -64,3 +64,44 @@
 #         ans = 0
 #     print(f'#{tc} {ans}')
 
+# 이진수
+# T = int(input())
+# change = {'A':10, 'B':11, 'C':12, 'D':13, 'E':14, 'F':15}
+# for tc in range(1, T+1):
+#     N, nums = input().split()
+#     ans = ''
+#     for n in nums:
+#         sub = ''
+#         if n.isdigit():
+#             x = int(n)
+#             for _ in range(4):
+#                 sub = str(x % 2) + sub
+#                 x = x // 2
+#         else:
+#             x = change[n]
+#             for _ in range(4):
+#                 sub = str(x % 2) + sub
+#                 x = x // 2
+#         ans += sub
+#     print(f'#{tc} {ans}')
+
+# 이진수2
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = float(input())
+#     ans = ''
+#     std = 0.5
+#     while N > 0:
+#         if len(ans) >= 13:
+#             ans = 'overflow'
+#             break
+#
+#         if N >= std:
+#             ans += '1'
+#             N -= std
+#             std /= 2
+#         else:
+#             ans += '0'
+#             std /= 2
+#     print(f'#{tc} {ans}')
+
