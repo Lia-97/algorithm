@@ -299,4 +299,43 @@
 #
 #     print(f'#{tc} {ans}')
 
+# 미로2
+# from collections import deque
+#
+# def bfs(q):
+#     global ans
+#
+#     while q:
+#         x, y = q.popleft()
+#         for d in dir:
+#             nx, ny = x+d[0], y+d[1]
+#             if 0 <= nx < 100 and 0 <= ny <100:
+#                 if maze[nx][ny] != '1' and visited[nx][ny] == 0:
+#                     if maze[nx][ny] == '3':
+#                         ans = 1
+#                         return
+#                     visited[nx][ny] = 1
+#                     q.append((nx, ny))
+#
+#
+# for tc in range(1, 11):
+#     input()
+#     maze = [input() for _ in range(100)]
+#     visited = [[0] * 100 for _ in range(100)]
+#     dir = [(-1, 0), (1, 0), (0, -1), (0, 1)]  # 상하좌우
+#     start = (0,0)
+#     ans = '0'
+#     for i in range(100):
+#         for j in range(100):
+#             if maze[i][j] == '2':
+#                 start = (i, j)
+#                 visited[i][j] = 1
+#                 break
+#
+#     q = deque()
+#     q.append(start)
+#     bfs(q)
+#     print(f'#{tc} {ans}')
+
+
 

@@ -502,4 +502,12 @@
 #                         break
 #     print(board)
 
-#
+# 최대 상금
+T = int(input())
+for tc in range(1, T+1):
+    nums, cnt = input().split()
+    nums = list(map(int, nums))
+    if nums == sorted(nums, reverse=True):
+        for _ in range(int(cnt)):
+            nums[-1], nums[-2] = nums[-2], nums[-1]
+    print(nums)
