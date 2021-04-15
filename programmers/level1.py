@@ -854,4 +854,137 @@
 #
 # print(solution(["john", "mary", "edward", "sam", "emily", "jaimie", "tod", "young"],["-", "-", "mary", "edward", "mary", "mary", "jaimie", "edward"],["young", "john", "tod", "emily", "mary"],[12, 4, 2, 5, 10]))
 
+# 1
+# def solution(absolutes, signs):
+#     total = 0
+#     for idx in range(len(absolutes)):
+#         if signs[idx] == 'true':
+#             total += int(absolutes[idx])
+#         else:
+#             total -= int(absolutes[idx])
+#     return total
+#
+# print(solution([4,7,12], ['true','false','true']))
 
+# 2
+# from collections import deque
+# def bracket(lis):
+#     global cnt
+#     q = deque()
+#     s = lis.copy()
+#     while s:
+#         if q:
+#             component = s.pop()
+#             if component=='[' and q[-1]== ']':
+#                 q.pop()
+#             elif component=='(' and q[-1]== ')':
+#                 q.pop()
+#             elif component=='{' and q[-1]== '}':
+#                 q.pop()
+#             else:
+#                 q.append(component)
+#         else:
+#             q.append(s.pop())
+#     if len(q) == 0:
+#         cnt += 1
+#
+# def solution(s):
+#     q = deque(s)
+#     global cnt
+#     cnt = 0
+#     for _ in range(len(q)-1):
+#         bracket(q)
+#         move = q.popleft()
+#         q.append(move)
+#     return cnt
+#
+# print(solution("[](){}"))
+
+# 3
+# from collections import defaultdict
+# def to_zero(node, a, tree):
+#     global answer
+#     for idx in tree[node]:
+#         if a[node] > 0:
+#             while a[node] > 0:
+#                 a[node] -= 1
+#                 a[idx] += 1
+#                 answer += 1
+#
+#         elif a[node] < 0:
+#             while a[node] < 0:
+#                 a[node] += 1
+#                 a[idx] -= 1
+#                 answer += 1
+#     for i in tree:
+#         if node in tree[i]:
+#             tree[i].remove(node)
+#     del tree[node]
+#
+# def solution(a, edges):
+#     global answer
+#     answer = 0
+#     if sum(a) != 0:
+#         answer = -1
+#         return answer
+#     tree = defaultdict(list)
+#     for edge in edges:
+#         tree[edge[0]].append(edge[1])
+#         tree[edge[1]].append(edge[0])
+#     copy_tree = tree.copy()
+#
+#     while len(copy_tree) != 1:
+#         for t in copy_tree:
+#             if len(copy_tree[t]) == 1:
+#                 to_zero(t, a, tree)
+#         copy_tree = tree.copy()
+#
+#     return answer
+#
+# print(solution([0,1,0], [[0,1],[1,2]]))
+
+# 3
+from collections import defaultdict
+def solution(a, edges):
+    answer = 0
+    if sum(a) != 0:
+        answer = -1
+        return answer
+    nums = defaultdict(int)
+    nodes = []
+    for edge in edges:
+        nums[edge[0]] += 1
+        nums[edge[1]] += 1
+    for k,v in nums.items():
+        nodes.append((k,v))
+    nodes.sort(key=lambda x:-x[1])
+
+    for idx in range(len(nodes)-1,0,-1):
+        if a[nodes[idx][0]] > 0:
+            while a[nodes[idx][0]] > 0:
+                a[nodes[idx][0]] -= 1
+                for edge in edges:
+                    if nodes[idx][0] == edge[0]:
+                        next_node = edge[1]
+                        edges.remove(edge)
+                    elif nodes[idx][0] == edge[1]:
+                        next_node = edge[0]
+                        edges.remove(edge)
+                a[next_node] += 1
+                answer += 1
+        elif a[nodes[idx][0]] < 0:
+            while a[nodes[idx][0]] < 0:
+                a[nodes[idx][0]] += 1
+                for edge in edges:
+                    if nodes[idx][0] == edge[0]:
+                        next_node = edge[1]
+                        edges.remove(edge)
+                    elif nodes[idx][0] == edge[1]:
+                        next_node = edge[0]
+                        edges.remove(edge)
+                a[next_node] -= 1
+                answer += 1
+    return answer
+
+
+print('answer', solution([-5,0,2,1,2],[[0,1],[3,4],[2,3],[0,3]]))

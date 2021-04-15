@@ -105,3 +105,40 @@
 #             std /= 2
 #     print(f'#{tc} {ans}')
 
+# 컨테이너 운반 _ 문제 잘못이해
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split()) # 컨테이너 N개, 트럭 M대
+#     containers = list(map(int, input().split()))
+#     trucks = list(map(int, input().split()))
+#     visited = [0]*N
+#     total = 0
+#     for truck_idx in range(M):
+#         weight = trucks[truck_idx]
+#         for container_idx in range(N):
+#             if visited[container_idx] == 0:
+#                 if containers[container_idx] <= weight:
+#                     total += containers[container_idx]
+#                     visited[container_idx] = 1
+#                     weight -= containers[container_idx]
+#     print(total)
+
+# 컨테이너 운반
+T = int(input())
+for tc in range(1, T+1):
+    N, M = map(int, input().split()) # 컨테이너 N개, 트럭 M대
+    containers = list(map(int, input().split()))
+    trucks = list(map(int, input().split()))
+    total = 0
+    for truck in trucks:
+        max_container = 0
+        for container in containers:
+            if container <= truck:
+                if container > max_container:
+                    max_container = container
+
+        if max_container != 0:
+            containers.remove(max_container)
+            total += max_container
+
+    print(f'#{tc} {total}')

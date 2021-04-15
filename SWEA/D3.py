@@ -469,6 +469,7 @@
 #     print(f'#{tc} {ans}')
 
 # 부분 수열의 합 _ 재귀(아마도 백트래킹..?)
+pass
 
 # 재미있는 오셀로 게임 _ 문제 이해가 아직도 안됨;;
 # T = int(input())
@@ -502,12 +503,136 @@
 #                         break
 #     print(board)
 
-# 최대 상금
-T = int(input())
-for tc in range(1, T+1):
-    nums, cnt = input().split()
-    nums = list(map(int, nums))
-    if nums == sorted(nums, reverse=True):
-        for _ in range(int(cnt)):
-            nums[-1], nums[-2] = nums[-2], nums[-1]
-    print(nums)
+# 최소합 _ 완전 검색으로 풀기
+# def dfs(x, y, total):
+#     global min_total
+#     if total > min_total:
+#         return
+#
+#     if x == n-1 and y == n-1:
+#         if total < min_total:
+#             min_total = total
+#         return
+#
+#     for d in dir:
+#         nx, ny = x + d[0], y + d[1]
+#         if 0 <= nx < n and 0 <= ny < n:
+#                 dfs(nx, ny, total+int(board[nx][ny]))
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     n = int(input())
+#     board = [input().split() for _ in range(n)]
+#     dir = [(0,1),(1,0)]
+#     min_total = 16900
+#     dfs(0,0,int(board[0][0]))
+#     print(f'#{tc} {min_total}')
+
+# 최소합 _ 최단경로(heapq) 이용해서 풀기
+pass
+
+# 전자카트
+# def dfs(row):
+#     global min_energy, energy
+#
+#     if energy < min_energy:
+#         visited[row] = 1
+#
+#         if 0 not in visited:
+#             energy += int(office[row][0])
+#             if energy < min_energy:
+#                 min_energy = energy
+#             energy -= int(office[row][0])
+#
+#     for j in range(n): # 방문할 열
+#         if row == j:
+#             continue
+#         else:
+#             if visited[j] == 0:
+#                 energy += int(office[row][j])
+#                 visited[j] = 1
+#                 dfs(j)
+#                 energy -= int(office[row][j])
+#     visited[row] = 0
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     n = int(input())
+#     office = [input().split() for _ in range(n)]
+#     visited = [0]*n
+#     min_energy = 100000
+#     energy = 0
+#     dfs(0)
+#     print(f'#{tc} {min_energy}')
+
+# 전자카트 _ 원재의 솔루션
+# def patrol(node,battery,cnt):
+#     global ans
+#     if ans < battery:
+#         return
+#
+#     if cnt== N:
+#         ans=min(ans,battery+cart[node][0])
+#         return
+#
+#     for next_node,cost in enumerate(cart[node]):
+#         if visited[next_node] ==0:
+#             visited[next_node]=1
+#             patrol(next_node,battery+cost,cnt+1)
+#             visited[next_node]=0
+#
+# T=int(input())
+# for tc in range(1,T+1):
+#     N=int(input())
+#     visited=[0]*N
+#     cart=[list(map(int,input().split())) for _ in range(N)]
+#     ans=10000
+#     visited[0]=1
+#     patrol(0,0,1)
+#     print(f'#{tc} {ans}')
+
+# 화물 도크 _ 시간 초과
+# def freight(schedules, start, cnt):
+#     global sub
+#     for idx in range(len(schedules)):
+#         if schedules[idx][0] >= start:
+#             freight(schedules[idx+1:], schedules[idx][1], cnt+1)
+#     if cnt > sub:
+#         sub = cnt
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     schedules = []
+#     for _ in range(N):
+#         start, end = map(int, input().split())
+#         schedules.append((start, end))
+#     schedules.sort()
+#     ans = 0
+#     for idx in range(N):
+#         if len(schedules[idx:]) > ans:
+#             sub = 0
+#             freight(schedules[idx:], 0, 0)
+#         if ans < sub:
+#             ans = sub
+#     print(f'#{tc} {ans}')
+
+# 화물 도크
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     schedules = []
+#     for _ in range(N):
+#         s, e = map(int, input().split())
+#         schedules.append((s,e))
+#     schedules.sort(key=lambda x:x[1])
+#
+#     start = schedules[0][1]
+#     cnt = 1
+#     for schedule in schedules[1:]:
+#         if schedule[0] >= start:
+#             cnt += 1
+#             start = schedule[1]
+#     print(f'#{tc} {cnt}')
+
+# 베이비진 게임
