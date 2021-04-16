@@ -529,7 +529,7 @@ pass
 #     print(f'#{tc} {min_total}')
 
 # 최소합 _ 최단경로(heapq) 이용해서 풀기
-pass
+
 
 # 전자카트
 # def dfs(row):

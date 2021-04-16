@@ -337,5 +337,92 @@
 #     bfs(q)
 #     print(f'#{tc} {ans}')
 
+# 격자판의 숫자 이어붙이기
+# def dfs(x, y, nums):
+#     if len(nums) >7:
+#         return
+#
+#     if len(nums) == 7:
+#         if nums not in unique_nums:
+#             unique_nums.add(nums)
+#         return
+#
+#     for d in dir:
+#         nx, ny = x+d[0], y+d[1]
+#         if 0 <= nx < 4 and 0 <= ny < 4:
+#             dfs(nx, ny, nums + board[nx][ny])
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     board = [input().split() for _ in range(4)]
+#     dir = [(-1,0),(1,0),(0,-1),(0,1)]
+#     unique_nums = set()
+#     for i in range(4):
+#         for j in range(4):
+#             dfs(i,j,board[i][j])
+#     print(f'#{tc} {len(unique_nums)}')
 
+# 정식이의 은행업무 _ 시간초과
+# def Change(num, cnt):
+#     ans = ''
+#     while True:
+#         if num < cnt:
+#             ans = str(num) + ans
+#             break
+#         ans = str(num % cnt) + ans
+#         num = num // cnt
+#     return ans
+#
+# def overlap(str1, str2):
+#     cnt = 0
+#     if len(str1) != len(str2):
+#         return cnt
+#     for idx in range(len(str1)):
+#         if str1[idx] == str2[idx]:
+#             cnt += 1
+#     return cnt
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     binary = input()
+#     ternary = input()
+#     n = len(binary)
+#     m = len(ternary)
+#     for number in range(2**(n-1), 2**n):
+#         if overlap(binary, Change(number, 2)) == n-1:
+#             if overlap(ternary, Change(number, 3)) == m-1:
+#                 print(f'#{tc} {number}')
+#                 break
+
+# 정사각형 방
+# def dfs(x, y, cnt):
+#     global sub
+#     if cnt >= sub:
+#         sub = cnt
+#     for d in dir:
+#         nx, ny = x+d[0], y+d[1]
+#         if 0 <= nx < N and 0 <= ny < N:
+#             if room[x][y] + 1 == room[nx][ny]:
+#                 dfs(nx, ny, cnt+1)
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input()) # 방의 크기
+#     room = [list(map(int, input().split())) for _ in range(N)]
+#     dir = [(-1,0),(1,0),(0,-1),(0,1)] # 상하좌우
+#     ans = 0
+#     val = 0
+#     for i in range(N):
+#         for j in range(N):
+#             sub = 0
+#             dfs(i, j, 1)
+#             if sub > ans:
+#                 ans = sub
+#                 val = room[i][j]
+#             elif sub == ans:
+#                 if val > room[i][j]:
+#                     val = room[i][j]
+#     print(f'#{tc} {val} {ans}')
+
+# 장훈이의 높은 선반
 

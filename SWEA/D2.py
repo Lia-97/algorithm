@@ -124,21 +124,33 @@
 #     print(total)
 
 # 컨테이너 운반
-T = int(input())
-for tc in range(1, T+1):
-    N, M = map(int, input().split()) # 컨테이너 N개, 트럭 M대
-    containers = list(map(int, input().split()))
-    trucks = list(map(int, input().split()))
-    total = 0
-    for truck in trucks:
-        max_container = 0
-        for container in containers:
-            if container <= truck:
-                if container > max_container:
-                    max_container = container
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split()) # 컨테이너 N개, 트럭 M대
+#     containers = list(map(int, input().split()))
+#     trucks = list(map(int, input().split()))
+#     total = 0
+#     for truck in trucks:
+#         max_container = 0
+#         for container in containers:
+#             if container <= truck:
+#                 if container > max_container:
+#                     max_container = container
+#
+#         if max_container != 0:
+#             containers.remove(max_container)
+#             total += max_container
+#
+#     print(f'#{tc} {total}')
 
-        if max_container != 0:
-            containers.remove(max_container)
-            total += max_container
-
-    print(f'#{tc} {total}')
+# 쉬운 거스름돈
+# change = [50000, 10000, 5000, 1000, 500, 100, 50, 10]
+# T = int(input())
+# for tc in range(1, T+1):
+#     money = int(input())
+#     ans = []
+#     for i in change:
+#         ans.append(money // i)
+#         money = money % i
+#     print(f'#{tc}')
+#     print(*ans)

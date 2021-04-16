@@ -944,47 +944,77 @@
 # print(solution([0,1,0], [[0,1],[1,2]]))
 
 # 3
+# from collections import defaultdict
+# def solution(a, edges):
+#     answer = 0
+#     if sum(a) != 0:
+#         answer = -1
+#         return answer
+#     nums = defaultdict(int)
+#     nodes = []
+#     for edge in edges:
+#         nums[edge[0]] += 1
+#         nums[edge[1]] += 1
+#     for k,v in nums.items():
+#         nodes.append((k,v))
+#     nodes.sort(key=lambda x:-x[1])
+#
+#     for idx in range(len(nodes)-1,0,-1):
+#         if a[nodes[idx][0]] > 0:
+#             while a[nodes[idx][0]] > 0:
+#                 a[nodes[idx][0]] -= 1
+#                 for edge in edges:
+#                     if nodes[idx][0] == edge[0]:
+#                         next_node = edge[1]
+#                         edges.remove(edge)
+#                     elif nodes[idx][0] == edge[1]:
+#                         next_node = edge[0]
+#                         edges.remove(edge)
+#                 a[next_node] += 1
+#                 answer += 1
+#         elif a[nodes[idx][0]] < 0:
+#             while a[nodes[idx][0]] < 0:
+#                 a[nodes[idx][0]] += 1
+#                 for edge in edges:
+#                     if nodes[idx][0] == edge[0]:
+#                         next_node = edge[1]
+#                         edges.remove(edge)
+#                     elif nodes[idx][0] == edge[1]:
+#                         next_node = edge[0]
+#                         edges.remove(edge)
+#                 a[next_node] -= 1
+#                 answer += 1
+#     return answer
+#
+#
+# print('answer', solution([-5,0,2,1,2],[[0,1],[3,4],[2,3],[0,3]]))
+
+# 3 _ 원재의 솔루션
+import sys
 from collections import defaultdict
+sys.setrecursionlimit(10 ** 9)
+
+def dfs(cur, check, node, a):
+    global answer
+    check[cur] = False
+
+    for i in node[cur]:
+        if check[i]:
+            dfs(i, check, node, a)
+            a[cur] += a[i]
+            answer += abs(a[i])
+
+answer = 0
 def solution(a, edges):
-    answer = 0
-    if sum(a) != 0:
-        answer = -1
-        return answer
-    nums = defaultdict(int)
-    nodes = []
-    for edge in edges:
-        nums[edge[0]] += 1
-        nums[edge[1]] += 1
-    for k,v in nums.items():
-        nodes.append((k,v))
-    nodes.sort(key=lambda x:-x[1])
+    max_pos = (0, 0)
+    check = [True for _ in range(len(a))]
+    for i, val in enumerate(a):
+        if abs(val) > abs(max_pos[1]):
+            max_pos = (i, val)
 
-    for idx in range(len(nodes)-1,0,-1):
-        if a[nodes[idx][0]] > 0:
-            while a[nodes[idx][0]] > 0:
-                a[nodes[idx][0]] -= 1
-                for edge in edges:
-                    if nodes[idx][0] == edge[0]:
-                        next_node = edge[1]
-                        edges.remove(edge)
-                    elif nodes[idx][0] == edge[1]:
-                        next_node = edge[0]
-                        edges.remove(edge)
-                a[next_node] += 1
-                answer += 1
-        elif a[nodes[idx][0]] < 0:
-            while a[nodes[idx][0]] < 0:
-                a[nodes[idx][0]] += 1
-                for edge in edges:
-                    if nodes[idx][0] == edge[0]:
-                        next_node = edge[1]
-                        edges.remove(edge)
-                    elif nodes[idx][0] == edge[1]:
-                        next_node = edge[0]
-                        edges.remove(edge)
-                a[next_node] -= 1
-                answer += 1
-    return answer
-
-
-print('answer', solution([-5,0,2,1,2],[[0,1],[3,4],[2,3],[0,3]]))
+    node = defaultdict(list)
+    for u, v in edges:
+        node[u].append(v)
+        node[v].append(u)
+    dfs(max_pos[0], check, node, a)
+    return -1 if a[max_pos[0]] else answer
