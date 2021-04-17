@@ -50,3 +50,29 @@
 #     numbers.sort()
 #     check(numbers)
 #     print(ans)
+
+# 1026번 (보물)
+# N = int(input())
+# A = list(map(int, input().split()))
+# B = list(map(int, input().split()))
+# A.sort()
+# B.sort(reverse=True)
+# ans = 0
+# for idx in range(len(A)):
+#     ans += A[idx]*B[idx]
+# print(ans)
+
+# 10815번 (숫자 카드) _ 시간 초과
+# import sys
+# N = int(sys.stdin.readline())
+# cards = list(map(int, sys.stdin.readline().split()))
+# M = int(sys.stdin.readline())
+# judges = list(map(int, sys.stdin.readline().split()))
+# for idx in range(M):
+#     if judges[idx] in cards:
+#         judges[idx] = 1
+#     else:
+#         judges[idx] = 0
+# print(' '.join(list(map(str, judges))))
+
+# 10815번 (숫자 카드) _ 이분탐색으로 풀기

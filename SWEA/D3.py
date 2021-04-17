@@ -528,7 +528,30 @@ pass
 #     dfs(0,0,int(board[0][0]))
 #     print(f'#{tc} {min_total}')
 
-# 최소합 _ 최단경로(heapq) 이용해서 풀기
+# 최소합 _ 최단경로 이용해서 풀기
+# from collections import deque
+# def navigate(q):
+#     while q:
+#         x, y = q.popleft()
+#         for d in dir:
+#             nx, ny = x+d[0], y+d[1]
+#             if 0 <= nx < n and 0 <= ny < n:
+#                 if weight[x][y]+road[nx][ny] < weight[nx][ny]:
+#                     weight[nx][ny] = weight[x][y]+road[nx][ny]
+#                     q.append((nx, ny))
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     n = int(input())
+#     road = [list(map(int, input().split())) for _ in range(n)]
+#     # 비용 초기화
+#     weight = [[float('inf')]*n for _ in range(n)]
+#     weight[0][0] = road[0][0]
+#     dir = [(1,0),(0,1)] # 하, 우
+#     q = deque()
+#     q.append((0,0))
+#     navigate(q)
+#     print(f'#{tc} {weight[n - 1][n - 1]}')
 
 
 # 전자카트
