@@ -76,3 +76,10 @@
 # print(' '.join(list(map(str, judges))))
 
 # 10815번 (숫자 카드) _ 이분탐색으로 풀기
+
+# 11004번 (K번째 수)
+# import sys
+# N, K = map(int, sys.stdin.readline().split())
+# A = list(map(int, sys.stdin.readline().split()))
+# A.sort()
+# print(A[K-1])
