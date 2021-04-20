@@ -658,4 +658,117 @@ pass
 #             start = schedule[1]
 #     print(f'#{tc} {cnt}')
 
-# 베이비진 게임
+# 전기버스2
+# def dfs(idx):
+#     global charge, min_charge
+#
+#     if idx + stop_info[idx] >= stop_leng-1:
+#         if charge < min_charge:
+#             min_charge = charge
+#         return
+#
+#     if charge >= min_charge-1:
+#         return
+#
+#     for i in range(idx+stop_info[idx], idx, -1):
+#         charge += 1
+#         dfs(i)
+#         charge -= 1
+#
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     lis = list(map(int, input().split()))
+#     stop_leng = lis[0]
+#     stop_info = lis[1:]
+#     min_charge = 100
+#     charge = 0
+#     dfs(0)
+#     print(f'#{tc} {min_charge}')
+
+# 5207. 이진탐색
+# def search(lis, num):
+#     global ans
+#     start = 0
+#     end = N-1
+#     flag = 0
+#     while start <= end:
+#         mid = (start+end) // 2
+#         if lis[mid] == num:
+#             ans += 1
+#             return
+#         elif lis[mid] < num:
+#             start = mid+1
+#             if flag == 1:
+#                 return
+#             flag = 1
+#         elif lis[mid] > num:
+#             end = mid-1
+#             if flag == -1:
+#                 return
+#             flag = -1
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split())
+#     A = list(map(int, input().split()))
+#     B = list(map(int, input().split()))
+#     A.sort()
+#     ans = 0
+#     for b in B:
+#         search(A, b)
+#     print(f'#{tc} {ans}')
+
+# 5209. 최소 생산 비용
+# def Calc(row, cost):
+#     global min_cost
+#     if row == N:
+#         if cost < min_cost:
+#             min_cost = cost
+#         return
+#
+#     if cost >= min_cost:
+#         return
+#
+#     for i in range(N):
+#         if used[i] == 0:
+#             used[i] = 1
+#             Calc(row+1, cost + factory[row][i])
+#             used[i] = 0
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     factory = [list(map(int, input().split())) for _ in range(N)]
+#     used = [0]*N # 컬럼의 선택 여부 0,1 로 표시
+#     min_cost = 1500
+#     Calc(0, 0)
+#     print(f'#{tc} {min_cost}')
+
+# 퀵소트
+# def quick_sort(A, l, r):
+#     if l < r:
+#         p = partition(A, l, r)
+#         quick_sort(A, l, p-1)
+#         quick_sort(A, p+1, r)
+#
+# def partition(A, l, r):
+#     pivot = (l+r) // 2
+#     while l < r :
+#         while(A[l] < A[pivot] and l < r):
+#             l += 1
+#         while(A[r] >= A[pivot] and l < r):
+#             r -= 1
+#         if l < r:
+#             if l == pivot:
+#                 pivot = r
+#             A[l], A[r] = A[r], A[l]
+#     A[pivot], A[r] = A[r], A[pivot]
+#     return r
+#
+# T = int(input())
+# for tc in range(1, 1+T):
+#     N = int(input())
+#     A = list(map(int, input().split()))
+#     quick_sort(A, 0, N - 1)
+#     print(f'#{tc} {A[N//2]}')

@@ -83,3 +83,25 @@
 # A = list(map(int, sys.stdin.readline().split()))
 # A.sort()
 # print(A[K-1])
+
+# 5205. 퀵 정렬
+# def quick_sort(arr):
+#     if len(arr) <= 1:
+#         return arr
+#
+#     left, right = [], []
+#     pivot = arr[0]
+#
+#     for idx in range(1, len(arr)):
+#         if arr[idx] < pivot:
+#             left.append(arr[idx])
+#         else:
+#             right.append(arr[idx])
+#
+#     return quick_sort(left) + [pivot] + quick_sort(right)
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     arr = list(map(int, input().split()))
+#     print(f'#{tc} {quick_sort(arr)[N//2]}')
