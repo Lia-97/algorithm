@@ -468,9 +468,6 @@
 #                 ans += 1
 #     print(f'#{tc} {ans}')
 
-# 부분 수열의 합 _ 재귀(아마도 백트래킹..?)
-pass
-
 # 재미있는 오셀로 게임 _ 문제 이해가 아직도 안됨;;
 # T = int(input())
 # for _ in range(1, T+1):
@@ -849,3 +846,60 @@ pass
 #     print(f'#{tc}', arr[N // 2])
 
 # 전자카트 _ enumerate 써서 풀어보기
+pass
+
+# 그래프 경로2 _ 연습용
+# def f(start):
+#     global ans
+#
+#     if G in tree[start]:
+#         ans = 1
+#
+#     visited[start] = 1
+#
+#     for i in tree[start]:
+#         if visited[i] == 0:
+#             f(i)
+#
+# from collections import defaultdict
+# T = int(input())
+# for tc in range(1, T+1):
+#     V, E = map(int, input().split()) # 노드 개수, 간선 개수
+#     tree = defaultdict(list)
+#     ans = 0
+#     visited = [0]*(V+1)
+#     for _ in range(E):
+#         start, end = map(int, input().split()) # 출발, 도착 노드
+#         tree[start].append(end)
+#         tree[end].append(start)
+#     S, G = map(int, input().split())  # 출발, 도착 노드(경로 확인)
+#     f(S)
+#     print(f'#{tc} {ans}')
+
+# 그래프 경로2 _ 제출용
+# def check(x):
+#     global ans
+#
+#     if x == G:
+#         ans = 1
+#
+#     visited[x] = 1
+#
+#     for i in range(1, V+1):
+#         if visited[i] == 0 and arr[x][i] == 0:
+#             check(i)
+#
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     V, E = map(int, input().split())
+#     arr = [[0]*(V+1) for _ in range(V+1)]
+#     visited = [0]*(V+1)
+#     ans = 0
+#     for _ in range(E):
+#         i, j = map(int, input().split())
+#         arr[i][j] = 1
+#         arr[j][i] = 1
+#     S, G = map(int, input().split()) # 출발, 도착
+#     check(S)
+#     print(f'#{tc} {ans}')
