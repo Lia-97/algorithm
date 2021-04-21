@@ -553,7 +553,6 @@ pass
 #     navigate(q)
 #     print(f'#{tc} {weight[n - 1][n - 1]}')
 
-
 # 전자카트
 # def dfs(row):
 #     global min_energy, energy
@@ -745,23 +744,45 @@ pass
 #     Calc(0, 0)
 #     print(f'#{tc} {min_cost}')
 
-# 퀵소트
+# 부분 수열의 합
+# def backtracking(idx, sub):
+#     ans = 0
+#     if sum(sub) > K:
+#         return 0
+#
+#     if sum(sub) == K:
+#         return 1
+#
+#     for i in range(idx, N):
+#         if used[i] == 0:
+#             used[i] = 1
+#             ans += backtracking(i, sub + [nums[i]])
+#             used[i] = 0
+#
+#     return ans
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, K = map(int, input().split())
+#     nums = list(map(int, input().split()))
+#     used = [0]*N
+#     print(f'#{tc} {backtracking(0, [])}')
+
+# 퀵 정렬 1
 # def quick_sort(A, l, r):
-#     if l < r:
+#     if l <= r:
 #         p = partition(A, l, r)
 #         quick_sort(A, l, p-1)
 #         quick_sort(A, p+1, r)
 #
 # def partition(A, l, r):
-#     pivot = (l+r) // 2
-#     while l < r :
-#         while(A[l] < A[pivot] and l < r):
+#     pivot = l
+#     while l <= r :
+#         while(l <= r and A[l] <= A[pivot]):
 #             l += 1
-#         while(A[r] >= A[pivot] and l < r):
+#         while(l <= r and A[r] >= A[pivot]):
 #             r -= 1
 #         if l < r:
-#             if l == pivot:
-#                 pivot = r
 #             A[l], A[r] = A[r], A[l]
 #     A[pivot], A[r] = A[r], A[pivot]
 #     return r
@@ -772,3 +793,59 @@ pass
 #     A = list(map(int, input().split()))
 #     quick_sort(A, 0, N - 1)
 #     print(f'#{tc} {A[N//2]}')
+
+# 퀵 정렬 2 _ 메모리 크게 나옴
+# def quick_sort(arr):
+#     if len(arr) <= 1:
+#         return arr
+#
+#     left, right = [], []
+#     pivot = arr[0]
+#
+#     for idx in range(1, len(arr)):
+#         if arr[idx] < pivot:
+#             left.append(arr[idx])
+#         else:
+#             right.append(arr[idx])
+#
+#     return quick_sort(left) + [pivot] + quick_sort(right)
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     arr = list(map(int, input().split()))
+#     print(f'#{tc} {quick_sort(arr)[N//2]}')
+
+# 퀵 정렬 3 _ 수업에서 설명한 quick sort
+# def partition(arr, start, end):
+#     pivot = start
+#     L = start
+#     R = end
+#     while L <= R:
+#         # pivot index 보다 작은 인덱스 찾기
+#         while L <= R and arr[L] <= arr[pivot]:
+#             L += 1
+#         while L <= R and arr[pivot] <= arr[R]:
+#             R -= 1
+#
+#         if L < R:
+#             arr[L], arr[R] = arr[R], arr[L]
+#     arr[start], arr[R] = arr[R], arr[start]
+#     return R
+#
+#
+# def quick_sort(arr, start, end):
+#     if start < end:
+#         pivot = partition(arr, start, end)
+#         quick_sort(arr, start, pivot - 1)
+#         quick_sort(arr, pivot + 1, end)
+#     return arr
+#
+# T = int(input())
+# for tc in range(1, T + 1):
+#     N = int(input())
+#     arr = list(map(int, input().split()))
+#     arr = quick_sort(arr, 0, N - 1)
+#     print(f'#{tc}', arr[N // 2])
+
+# 전자카트 _ enumerate 써서 풀어보기
