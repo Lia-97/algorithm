@@ -886,7 +886,7 @@ pass
 #     visited[x] = 1
 #
 #     for i in range(1, V+1):
-#         if visited[i] == 0 and arr[x][i] == 0:
+#         if visited[i] == 0 and arr[x][i] == 1:
 #             check(i)
 #
 #
@@ -899,7 +899,106 @@ pass
 #     for _ in range(E):
 #         i, j = map(int, input().split())
 #         arr[i][j] = 1
-#         arr[j][i] = 1
 #     S, G = map(int, input().split()) # 출발, 도착
 #     check(S)
 #     print(f'#{tc} {ans}')
+
+# 5248. 그룹 나누기
+# def f(idx):
+#     for i in tree[idx]:
+#         if visited[i] == 0:
+#             visited[i] = 1
+#             f(i)
+#
+# from collections import defaultdict
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split()) # 1~N까지 번호, M장의 신청서
+#     tree = defaultdict(list)
+#     pairs = list(map(int, input().split()))
+#     for i in range(M):
+#         x = pairs[2*i]
+#         y = pairs[2*i+1]
+#         tree[x].append(y)
+#         tree[y].append(x)
+#     visited = [0]*(N+1) # 방문여부
+#     ans = 0 # 트리의 개수
+#     for i in range(1, N+1):
+#         if visited[i] == 0: # 방문안한 노드가 있으면
+#             ans += 1 # 트리의 개수를 추가하고, 방문처리한 후
+#             visited[i] = 1
+#             f(i) # 함수 실행해서 연결된 노드를 모두 방문처리 함
+#     print(f'#{tc} {ans}')
+
+# 5249. 최소 신장 트리 _ 크루스칼
+# def find_set(x):
+#     while x != p[x]:
+#         x = p[x]
+#     return x
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     V, E = map(int, input().split()) # 노드번호(0~V), 간선 개수
+#     edge = []
+#     for _ in range(E):
+#         n1, n2, w = map(int, input().split())
+#         edge.append((w, n1, n2))
+#     edge.sort()
+#     p = [i for i in range(V+1)]
+#     cnt = 0
+#     total = 0
+#     for w, n1, n2 in edge:
+#         if find_set(n1) != find_set(n2):
+#             cnt += 1
+#             total += w
+#             if n1 < n2:
+#                 n1, n2 = n2, n1
+#             p[find_set(n1)] = find_set(n2)
+#             if cnt == V:
+#                 break
+#     print(f'#{tc} {total}')
+
+# 5249. 최소 신장 트리 _ 프림
+from collections import defaultdict
+T = int(input())
+for tc in range(1, T+1):
+    V, E = map(int, input().split()) # 노드버호(0~V), 간선 개수
+    edge = defaultdict(list)
+    for _ in range(E):
+        n1, n2, w = map(int, input().split())
+        edge[n1].append
+
+# 5247. 연산
+# def calc(num, operator):
+#     if operator == 1:
+#         return num+1
+#     elif operator == 2:
+#         return num-1
+#     elif operator == 3:
+#         return num*2
+#     elif operator == 4:
+#         return num-10
+#
+# def f(q):
+#     while q:
+#         num, cnt = q.popleft()
+#         if num == M:
+#             return cnt
+#         if num > 1000000:
+#             continue
+#         for d in dir:
+#             if visited[calc(num, d)] == 0:
+#                 visited[calc(num, d)] = 1
+#                 q.append(calc(num, d))
+#
+# from collections import deque
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split())
+#     dir = [1, 2, 3, 4]
+#     q = deque()
+#     min_cnt = 1000000
+#     visited = [0]*1000001
+#     q.append((N, 0))
+#     print(q)
+#     f(q)

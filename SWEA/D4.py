@@ -424,5 +424,63 @@
 #                     val = room[i][j]
 #     print(f'#{tc} {val} {ans}')
 
-# 장훈이의 높은 선반
+# 5251. 최소 이동 거리 _ heapq 없이 풀기
+# from collections import defaultdict, deque
+#
+# def f(q):
+#     while q:
+#         current_node = q.popleft()
+#
+#         for next_node, weight in graph[current_node]:
+#             price = weight + cost[current_node]
+#             if price < cost[next_node]:
+#                 cost[next_node] = price
+#                 q.append(next_node)
+#     return
+#
+# T = int(input())
+# INF = 10000
+# for tc in range(1, T+1):
+#     N, E = map(int, input().split()) # 연결지점 번호(0~N), 도로의 개수
+#     graph = defaultdict(list)
+#     for _ in range(E):
+#         s, e, w = map(int, input().split()) # 구간 시작, 구간 끝, 구간 거리
+#         graph[s].append((e, w))
+#     cost = [INF]*(N+1)
+#     cost[0] = 0
+#     q = deque()
+#     q.append(0)
+#     f(q)
+#     print(f'#{tc} {cost[-1]}')
 
+# 5251. 최소 이동 거리 _ heapq 로 풀기
+# from collections import defaultdict
+# import heapq
+#
+# def f(q):
+#     while q:
+#         current_node, current_weight = heapq.heappop(q)
+#
+#         if cost[current_node] < current_weight:
+#             continue
+#
+#         for next_node, weight in graph[current_node]:
+#             if current_weight + weight < cost[next_node]:
+#                 cost[next_node] = current_weight + weight
+#                 heapq.heappush(q, (next_node, current_weight + weight))
+#     return
+#
+# T = int(input())
+# INF = 10000
+# for tc in range(1, T + 1):
+#     N, E = map(int, input().split())  # 연결지점 번호(0~N), 도로의 개수
+#     graph = defaultdict(list)
+#     for _ in range(E):
+#         s, e, w = map(int, input().split())  # 구간 시작, 구간 끝, 구간 거리
+#         graph[s].append((e, w))
+#     cost = [INF] * (N + 1)
+#     cost[0] = 0
+#     q = []
+#     heapq.heappush(q, (0, 0))
+#     f(q)
+#     print(f'#{tc} {cost[-1]}')
