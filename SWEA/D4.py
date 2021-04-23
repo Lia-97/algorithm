@@ -484,3 +484,152 @@
 #     heapq.heappush(q, (0, 0))
 #     f(q)
 #     print(f'#{tc} {cost[-1]}')
+
+# 창용 마을 무리의 개수 _ dfs
+# def f(idx):
+#     for point in graph[idx]:
+#         if visited[point] == 0:
+#             visited[point] = 1
+#             f(point)
+#
+# from collections import defaultdict
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split())
+#     graph = defaultdict(list)
+#     for _ in range(M):
+#         person1, person2 = map(int, input().split())
+#         graph[person1].append(person2)
+#         graph[person2].append(person1)
+#     visited = [0]*(N+1)
+#     cnt = 0
+#     for idx in range(1, N+1):
+#         if visited[idx] == 0:
+#             visited[idx] = 1
+#             cnt += 1
+#             f(idx)
+#     print(f'#{tc} {cnt}')
+
+# 창용 마을 무리의 개수 _ union-find
+# def find_set(x):
+#     while x != key[x]:
+#         x = key[x]
+#     return x
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = map(int, input().split())
+#     key = [i for i in range(N+1)]
+#     graph = []
+#     for _ in range(M):
+#         person1, person2 = map(int, input().split())
+#         graph.append((person1, person2))
+#     cnt = 0
+#     for pairs in graph:
+#         node1 = find_set(pairs[0])
+#         node2 = find_set(pairs[1])
+#         if node1 !=  node2:
+#             cnt += 1
+#             key[node2] = node1
+#             if cnt == N:
+#                 break
+#     ans = 0
+#     for i in range(1, N+1):
+#         if key[i] == i:
+#             ans += 1
+#     print(f'#{tc} {ans}')
+
+# 1251. 하나로
+# from collections import defaultdict
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input()) # 섬의 개수
+#     x = list(map(int, input().split()))
+#     y = list(map(int, input().split()))
+#     tax = float(input()) # 세율
+#     graph = defaultdict(list)
+#     for i in range(N):
+#         for j in range(N):
+#             if i != j:
+#                 dis = ((x[j] - x[i]) ** 2 + (y[j] - y[i]) ** 2)**(1/2)
+#                 graph[i].append((j, dis))
+#                 graph[j].append((i, dis))
+#     key = [float('inf')]*(N)
+#     p = [None]*(N) # 부모 정점 초기화
+#     visited = [0]*N
+#     key[0] = 0 # 임의의 정점 0번을 0을 설정(여기서 출발)
+#
+#     for _ in range(N):
+#         min_idx = -1
+#         min_val = float('inf')
+#         for i in range(N):
+#             if not visited[i] and key[i] < min_val:
+#                 min_val = key[i]
+#                 min_idx = i
+#         visited[min_idx] = 1
+#
+#         for v, val in graph[min_idx]:
+#             if not visited[v] and val < key[v]:
+#                 key[v] = val
+#                 p[v] = min_idx
+#     ans = 0
+#     for k in key:
+#         ans += tax*(k**2)
+#     print(f'#{tc} {round(ans)}')
+
+# 1865. 동철이의 일 분배 _ 시간 초과
+# def f(row, total, sub):
+#     global ans, result
+#
+#     if row == N:
+#         if total > ans:
+#             ans = total
+#             result = sub
+#         return
+#
+#     for i in range(N):
+#         if visited[i] == 0:
+#             visited[i] = 1
+#             total += tasks[row][i]
+#             f(row+1, total, sub+[tasks[row][i]])
+#             visited[i] = 0
+#             total -= tasks[row][i]
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input()) # 1~N 직원, 일
+#     tasks = [list(map(int, input().split())) for _ in range(N)]
+#     visited = [0]*N
+#     ans = float('-inf')
+#     result = []
+#     f(0, 0, []) # tasks 라는 이차원 배열의 0행부터 시작, 확률의 합은 0
+#
+#     answer = 1
+#     for i in result:
+#         answer *= i/100
+#     print(f'#{tc} {round(100 * answer, 6) :.6f}')
+
+# 1486. 장훈이의 높은 선반 _ 시간초과
+# def backtracking(idx, sub):
+#     global ans
+#     if sum(sub) > ans:
+#         return
+#
+#     if sum(sub) >= B and sum(sub) < ans:
+#         ans = sum(sub)
+#
+#     for i in range(idx, N): # 현재 idx 보다 앞에 있는 idx에 대해서는 이미 고려했기 때문에 조합을 만들때 포함할 필요가 없음
+#         if used[i] == 0:
+#             used[i] = 1
+#             backtracking(i, sub+[heights[i]])
+#             used[i] = 0
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, B = map(int, input().split())
+#     heights = list(map(int, input().split()))
+#     heights.sort()
+#     used = [0]*N
+#     ans = 200000
+#     backtracking(0, [])
+#     print(f'#{tc} {ans-B}')

@@ -966,9 +966,9 @@ for tc in range(1, T+1):
     edge = defaultdict(list)
     for _ in range(E):
         n1, n2, w = map(int, input().split())
-        edge[n1].append
+        edge[n1].append((n2, w))
 
-# 5247. 연산
+# 5247. 연산 _ 시간초과
 # def calc(num, operator):
 #     if operator == 1:
 #         return num+1
@@ -987,9 +987,10 @@ for tc in range(1, T+1):
 #         if num > 1000000:
 #             continue
 #         for d in dir:
-#             if visited[calc(num, d)] == 0:
-#                 visited[calc(num, d)] = 1
-#                 q.append(calc(num, d))
+#             next = calc(num, d)
+#             if visited[next] == 0 and next < min_cnt:
+#                 visited[next] = 1
+#                 q.append((next, cnt+1))
 #
 # from collections import deque
 # T = int(input())
@@ -1000,5 +1001,4 @@ for tc in range(1, T+1):
 #     min_cnt = 1000000
 #     visited = [0]*1000001
 #     q.append((N, 0))
-#     print(q)
-#     f(q)
+#     print(f'#{tc} {f(q)}')
