@@ -121,3 +121,58 @@
 # used_dig=[0]*(2*N-1)
 # used_rdig=[0]*(2*N-1)
 # print(back_tracking(0))
+
+# 14889번 (스타트와 링크) _ 실패
+# def make_team(idx, team):
+#     global used, min_diff
+#
+#     if len(team) == N//2:
+#         print(team)
+#         used = [0]*N
+#
+#         else_team = []
+#         for i in range(N):
+#             if i not in team:
+#                 else_team.append(i)
+#
+#         total = calc_power(team, 0, [])
+#         else_total = calc_power(else_team, 0, [])
+#         print(total, else_total)
+#
+#         print('total',total)
+#         if abs(total - else_total) < min_diff:
+#             min_diff = abs(total - else_total)
+#
+#     for i in range(idx, N):
+#         if visited[i] == 0:
+#             visited[i] = 1
+#             make_team(i+1, team+[i])
+#             visited[i] = 0
+#
+# def calc_power(team, idx, sub):
+#     global used
+#     total = 0
+#     if len(sub) == 2:
+#         x, y = sub[0], sub[1]
+#         total += powers[x][y] + powers[y][x]
+#         print('total2',total)
+#
+#     for i in range(idx, N//2):
+#         if used[i] == 0:
+#             used[i] = 1
+#             calc_power(team, i+1, sub+[i])
+#
+#     return total
+#
+#
+# N = int(input())
+# powers = [list(map(int, input().split())) for _ in range(N)]
+# sum_powers = 0
+# for i in range(N):
+#     sum_powers += sum(powers[i])
+# visited = [0]*N
+# min_diff = float('inf')
+# make_team(0, [])
+# print(min_diff)
+
+# 

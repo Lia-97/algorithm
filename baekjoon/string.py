@@ -94,7 +94,6 @@
 #     nums.append(int(input()))
 # real_nums = nums[::-1]
 # print(real_nums)
-#
 # stack = []
 # while len(stack) != n:
 #     while
@@ -120,5 +119,14 @@
 #     except:
 #         break
 #     print(sentence)
+
+# 9093번 (단어 뒤집기)
+# T = int(input())
+# for _ in range(T):
+#     lis = input().split()
+#     ans = []
+#     for l in lis:
+#         ans.append(l[::-1])
+#     print(' '.join(ans))
 
 #
