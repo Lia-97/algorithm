@@ -27,5 +27,48 @@
 #     answer = dfs()
 #     return answer
 
+# 섬 연결하기
+# def find_root(x):
+#     global p
+#     while x != p[x]:
+#         x = p[x]
+#     return x
+#
+# def solution(n, costs):
+#     global p
+#     answer = 0
+#     costs.sort(key=lambda x: x[2])
+#     p = [i for i in range(n)]
+#     cnt = 0
+#     for start, end, weight in costs:
+#         if end > start:
+#             start, end = end, start
+#         if find_root(start) != find_root(end):
+#             cnt += 1
+#             answer += weight
+#             p[find_root(end)] = find_root(start)
+#             if cnt == n-1: # 간선의 개수가 모두 나오면 끝(노드가 n개니까 간선은 n-1개)
+#                 break
+#     return answer
+
 # 네트워크
+# def solution(n, computers):
+#     def dfs(node):
+#         used[node] = 1
+#         for idx in graph[node]:
+#             if used[idx] == 0:
+#                 dfs(idx)
+#
+#     answer = 0
+#     used = [0]*n
+#     graph = [[] for _ in range(n)]
+#     for i in range(n):
+#         for j in range(n):
+#             if i != j and computers[i][j] != 0:
+#                 graph[i].append(j)
+#     for i in range(n):
+#         if used[i] == 0:
+#             answer += 1
+#             dfs(i)
+#     return answer
 

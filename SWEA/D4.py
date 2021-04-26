@@ -637,31 +637,31 @@
 # 7465. 창용 마을 무리의 개수
 
 # 1249. 보급로
-import heapq
-
-def Count_Time(q):
-    while q:
-        x, y, work = heapq.heappop(q)
-        if work > weight[x][y]:
-            continue
-
-        for d in dir:
-            nx, ny = x+d[0], y+d[1]
-            if 0 <= nx < N and 0 <= ny < N:
-                price = work + roads[nx][ny]
-                if price < weight[nx][ny]:
-                    weight[nx][ny] = price
-                    heapq.heappush(q, (nx, ny, price))
-
-T = int(input())
-INF = 10000
-for tc in range(1, T+1):
-    N = int(input())
-    roads = [list(map(int, input())) for _ in range(N)]
-    weight = [[INF]*N for _ in range(N)]
-    weight[0][0] = 0
-    dir = [(1,0),(0,1)] # 하, 우
-    q = []
-    heapq.heappush(q, (0,0,roads[0][0])) # x좌표, y좌표, 복구에 걸린 시간
-    Count_Time(q)
-    print(f'#{tc} {weight[N - 1][N - 1]}')
+# import heapq
+#
+# def Count_Time(q):
+#     while q:
+#         x, y, work = heapq.heappop(q)
+#         if work > weight[x][y]:
+#             continue
+#
+#         for d in dir:
+#             nx, ny = x+d[0], y+d[1]
+#             if 0 <= nx < N and 0 <= ny < N:
+#                 price = work + roads[nx][ny]
+#                 if price < weight[nx][ny]:
+#                     weight[nx][ny] = price
+#                     heapq.heappush(q, (nx, ny, price))
+#
+# T = int(input())
+# INF = 10000
+# for tc in range(1, T+1):
+#     N = int(input())
+#     roads = [list(map(int, input())) for _ in range(N)]
+#     weight = [[INF]*N for _ in range(N)]
+#     weight[0][0] = 0
+#     dir = [(-1,0),(1,0),(0,-1),(0,1)] # 상, 하, 좌, 우
+#     q = []
+#     heapq.heappush(q, (0,0,roads[0][0])) # x좌표, y좌표, 복구에 걸린 시간
+#     Count_Time(q)
+#     print(f'#{tc} {weight[N - 1][N - 1]}')
