@@ -105,3 +105,16 @@
 #     N = int(input())
 #     arr = list(map(int, input().split()))
 #     print(f'#{tc} {quick_sort(arr)[N//2]}')
+
+# 11651번 (좌표 정렬하기 2)
+# import sys
+# N = int(sys.stdin.readline())
+# nums = []
+# for _ in range(N):
+#     i, j = map(int, sys.stdin.readline().split())
+#     nums.append((i, j))
+# nums.sort(key=lambda x:(x[1], x[0]))
+# for num in nums:
+#     print(*num)
+
+#
