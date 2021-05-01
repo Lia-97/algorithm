@@ -175,4 +175,45 @@
 # make_team(0, [])
 # print(min_diff)
 
-# 
+# 6603번 (로또)
+# import sys
+#
+# def k_set(idx, sub):
+#     result = []
+#     if len(sub) == k:
+#         return [sub]
+#     for i in range(idx, len(nums)):
+#         if used_nums[i] == 0:
+#             used_nums[i] = 1
+#             result.extend(k_set(i+1, sub+[nums[i]]))
+#             used_nums[i]= 0
+#     return result
+#
+# def result_set(idx, sub):
+#     result = []
+#     if len(sub) == 6:
+#         return [sub]
+#     for i in range(idx, k):
+#         if used_c[i] == 0:
+#             used_c[i] = 1
+#             result.extend(result_set(i+1, sub+[c[i]]))
+#             used_c[i] = 0
+#     return result
+#
+# while True:
+#     data = sys.stdin.readline().strip()
+#     if data == '0':
+#         break
+#     lis = list(map(int, data.split()))
+#     k = lis[0]
+#     nums = lis[1:]
+#     used_nums = [0]*len(nums)
+#     candidate = k_set(0, [])
+#     answer = []
+#     for c in candidate:
+#         used_c = [0]*len(c)
+#         answer.extend(result_set(0, []))
+#
+#     for a in answer:
+#         print(' '.join(map(str, a)))
+#     print('')

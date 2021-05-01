@@ -125,35 +125,39 @@
 #     print(N-1)
 
 # 1753번 (최단경로)
-import sys
-import heapq
+# import sys
+# import heapq
+#
+# def f(q):
+#     while q:
+#         current_weight, current_node = heapq.heappop(q)
+#
+#         if current_weight > weight[current_node]:
+#             continue
+#
+#         for idx in graph[current_node]:
+#             next_node = idx[1]
+#             cost = current_weight + idx[0]
+#             if cost < weight[next_node]:
+#                 weight[next_node] = cost
+#                 heapq.heappush(q, (cost, next_node))
+#
+# INF = float('inf')
+# V, E = map(int, sys.stdin.readline().split()) # 정점, 간선
+# K = int(sys.stdin.readline()) # 출발지
+# graph = [[] for _ in range(V+1)]
+# for _ in range(E):
+#     u, v, w = map(int, sys.stdin.readline().split())
+#     graph[u].append((w, v))
+# weight = [INF]*(V+1)
+# weight[K] = 0
+# q = []
+# heapq.heappush(q, (0, K))
+# f(q)
+#
+# for w in weight[1:]:
+#     if w == INF:
+#         print('INF')
+#     else:
+#         print(w)
 
-def f(q):
-    while q:
-        current_node, current_weight = heapq.heappop(q)
-
-        if current_weight > weight[current_node]:
-            continue
-
-        for idx in graph[current_node]:
-            next_node = idx[0]
-            cost = current_weight + idx[1]
-            if cost < weight[next_node]:
-                weight[next_node] = cost
-                heapq.heappush(q, (next_node, cost))
-
-INF = float('inf')
-V, E = map(int, sys.stdin.readline().split()) # 정점, 간선
-K = int(sys.stdin.readline()) # 출발지
-graph = [[] for _ in range(V+1)]
-for _ in range(E):
-    u, v, w = map(int, sys.stdin.readline().split())
-    graph[u].append((v, w))
-weight = [INF]*(V+1)
-weight[K] = 0
-q = []
-heapq.heappush(q, (K, 0))
-f(q)
-
-for w in weight[1:]:
-    print(w)
