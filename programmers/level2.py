@@ -233,4 +233,32 @@
 #
 # print(solution('D', ["GQWR"]))
 
+# 타겟넘버
+# def solution(numbers, target):
+#     def calc(val, idx):
+#         if idx == len(numbers) and val == target:
+#             return 1
+#         elif idx > len(numbers):
+#             return 0
+#         elif idx == len(numbers) and val != target:
+#             return 0
+#
+#         result = 0
+#         for o in operator:
+#             num = numbers[idx] * o
+#             if used[idx] == 0:
+#                 used[idx] = 1
+#                 val += num
+#                 result += calc(val, idx+1)
+#                 used[idx] = 0
+#                 val -= num
+#         return result
+#
+#     operator = [1, -1]
+#     used = [0]*len(numbers)
+#
+#     return calc(0, 0)
+#
+# print(solution([1,1,1,1,1], 3))
 
+#
