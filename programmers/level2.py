@@ -261,4 +261,28 @@
 #
 # print(solution([1,1,1,1,1], 3))
 
-#
+# 튜플
+def solution(s):
+    answer = []
+    s = s.split('}')
+    lis = []
+    for i in s:
+        print(i)
+        sub = []
+        for j in i:
+            if j != '{' and j != ',':
+                sub.append(int(j))
+        if sub:
+            lis.append(sub)
+    lis.sort(key=lambda x:len(x))
+
+    for l in lis:
+        for k in l:
+            if k not in answer:
+                answer.append(k)
+    return answer
+
+solution("{{20,111},{111}}")
+
+
+
