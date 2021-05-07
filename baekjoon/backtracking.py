@@ -217,3 +217,29 @@
 #     for a in answer:
 #         print(' '.join(map(str, a)))
 #     print('')
+
+# 10819번 (차이를 최대로)
+# def getSum(lis):
+#     total = 0
+#     for i in range(1, len(lis)):
+#         total += abs(lis[i-1] - lis[i])
+#     return total
+#
+# def getArr(sub):
+#     if len(sub) == N:
+#         return getSum(sub)
+#
+#     ans = float('-inf')
+#
+#     for i in range(N):
+#         if used[i] == 0:
+#             used[i] = 1
+#             ans = max(ans, getArr(sub+[arr[i]]))
+#             used[i] = 0
+#
+#     return ans
+#
+# N = int(input()) # 배열의 길이
+# arr = list(map(int, input().split()))
+# used = [0]*N
+# print(getArr([]))

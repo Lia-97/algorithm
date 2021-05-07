@@ -29,4 +29,4 @@
 #                 max_sum = lis[i]+lis[j]+lis[l]
 # print(max_sum)
 
-# 7568번 (덩치)
+# 2589번 (보물섬)
