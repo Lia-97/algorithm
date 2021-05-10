@@ -29,4 +29,41 @@
 #                 max_sum = lis[i]+lis[j]+lis[l]
 # print(max_sum)
 
+# 2589번 (보물섬) _ 문제를 잘못 이해함
+# from collections import deque
+# import sys
+#
+# def bfs(q):
+#     cnt = 0
+#     while q:
+#         x, y = q.popleft()
+#         print(x,y)
+#         for d in dir:
+#             nx, ny = x+d[0], y+d[1]
+#             if 0 <= nx < N and 0 <= ny < M:
+#                 if gift[nx][ny] == 'L' and visited[nx][ny] == 0:
+#                     visited[nx][ny] = 1
+#                     cnt += 1
+#                     q.append((nx, ny))
+#     return cnt
+#
+# N, M = list(map(int, sys.stdin.readline().split())) # 세로, 가로
+# gift = [sys.stdin.readline() for _ in range(N)]
+# q = deque()
+# dir = [(-1,0),(1,0),(0,-1),(0,1)] # 상하좌우
+# visited = [[0]*M for _ in range(N)] # 방문여부
+# min = float('inf')
+# for i in range(N):
+#     for j in range(M):
+#         if gift[i][j] == 'L' and visited[i][j] == 0:
+#             visited[i][j] = 1
+#             q.append((i, j))
+#             ans = bfs(q)
+#             if ans < min:
+#                 min = ans
+# print(min)
+
 # 2589번 (보물섬)
+lis=[5,2,7,4]
+lis.pop(1)
+print(lis)
