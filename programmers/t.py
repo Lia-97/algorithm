@@ -150,23 +150,6 @@
 # print(solution(4, 1, 4, [[1, 2, 1], [3, 2, 1], [2, 4, 1]], [2, 3]))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # 미로 탈출
 # def solution(n, start, end, roads, traps):
 #     def backtracking(node, weight, graphs):
@@ -193,11 +176,6 @@
 #     return answer
 #
 # solution(4, 1, 4, [[1, 2, 1], [3, 2, 1], [2, 4, 1]], [2, 3])
-
-
-
-
-
 
 # from collections import deque
 # def solution(n, start, end, roads, traps):
@@ -231,26 +209,6 @@
 # print(solution(4, 1, 4, [[1, 2, 1], [3, 2, 1], [2, 4, 1]], [2, 3]))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # 주식
 # def solution(code, day, data):
 #     answer = []
@@ -271,43 +229,163 @@
 
 
 # 스키장
-def solution(t, r):
-    answer = []
-    # 탑승시각, 손님의 번호, 티켓등급을 같이 나타내는 리스트 만들기
-    pair_t = []
-
-    for val in t:
-        pair_t.append([val])
-    for idx, level in enumerate(r):
-        pair_t[idx].extend([level, idx])
-
-    # 같은 시각에 온 손님이 없을 때
-    if len(t) == len(set(t)):
-        pair_t.sort()
-        for p in pair_t:
-            answer.append(p[2])
-
-    else:
-        while True:
-            pair_t.sort(key=lambda x:(x[0],x[1]))
-            order = pair_t.pop(0)
-            answer.append(order[2])
-            for lis in pair_t:
-                if lis[0] == order[0]:
-                    lis[0] += 1
-            if not pair_t:
-                break
-
-    return answer
-
-print(solution([0,1,3,0], [0,1,2,3]))
+# def solution(t, r):
+#     answer = []
+#     # 탑승시각, 손님의 번호, 티켓등급을 같이 나타내는 리스트 만들기
+#     pair_t = []
+#
+#     for val in t:
+#         pair_t.append([val])
+#     for idx, level in enumerate(r):
+#         pair_t[idx].extend([level, idx])
+#
+#     # 같은 시각에 온 손님이 없을 때
+#     if len(t) == len(set(t)):
+#         pair_t.sort()
+#         for p in pair_t:
+#             answer.append(p[2])
+#
+#     else:
+#         while True:
+#             pair_t.sort(key=lambda x:(x[0],x[1]))
+#             order = pair_t.pop(0)
+#             answer.append(order[2])
+#             for lis in pair_t:
+#                 if lis[0] == order[0]:
+#                     lis[0] += 1
+#             if not pair_t:
+#                 break
+#
+#     return answer
+#
+# print(solution([0,1,3,0], [0,1,2,3]))
 
 # print(solution([7,6,8,1], [0,1,2,3]))
 
 
+# 월간코드챌린지(5월)
 
+# 1
+# def solution(left, right):
+#     answer = 0
+#     for num in range(left, right+1):
+#         cnt = 0
+#         for i in range(1, num+1):
+#             if num % i == 0:
+#                 cnt += 1
+#         if cnt % 2 == 0:
+#             answer += num
+#         else:
+#             answer -= num
+#     return answer
 #
+# print(solution(13, 17))
 
+# 2 _ 실패
+# def solution(numbers):
+#     answer = []
+#
+#     def make_bit(x):
+#         ans = ''
+#         while True:
+#             if x == 1:
+#                 ans = '1' + ans
+#                 break
+#             ans = str(x % 2) + ans
+#             x = x // 2
+#
+#         if len(ans) < 16:
+#             ans = '0' * (16 - len(ans)) + ans
+#
+#         return ans
+#
+#     def check_diff(num):
+#         origin = make_bit(num)
+#         start = num+1
+#         while True:
+#             total = 0
+#             changed_start = make_bit(start)
+#             for i in range(16):
+#                 if changed_start[i] != origin[i]:
+#                     total += 1
+#             if total <= 2:
+#                 return start
+#             start += 1
+#
+#     for num in numbers:
+#         answer.append(check_diff(num))
+#
+#     return answer
 
+# 2 _ 실패
+def solution(numbers):
+    answer = []
 
+    def make_binary(val):
+        ans = []
+        while True:
+            if val == 1:
+                ans.append(1)
+                break
+            ans.append(val % 2)
+            val //= 2
+        return ans
 
+    def find_ans(num):
+        bit = make_binary(num)
+        for idx in range(len(bit)):
+            if bit[idx] == 0:
+                for i in range(idx-1, -1, -1):
+                    if bit[i] == 1:
+                        bit[i] = 0
+                        bit[idx] = 1
+                        return bit
+                bit[idx] = 1
+                return bit
+        bit[-1] = 0
+        bit.append(1)
+        return bit
+
+    for num in numbers:
+        sub_ans = 0
+        lis = find_ans(num)
+        for i in range(len(lis)):
+            sub_ans += lis[i]*(2**i)
+        answer.append(sub_ans)
+    return answer
+
+print(solution([2,7]))
+
+# 2
+# def solution(numbers):
+#     answer = []
+#     def binary(num):
+#         ans = ''
+#         for _ in range(15):
+#             if num == 1:
+#                 ans = '1' + ans
+#                 num = 0
+#             elif num == 0:
+#                 ans = '0' + ans
+#             else:
+#                 ans = str(num % 2) + ans
+#                 num //= 2
+#         return ans
+#
+#     def get_ans(num):
+#         origin = binary(num)
+#         for n in range(num+1, num+11):
+#             total = 0
+#             for i in range(15):
+#                 if origin[i] != binary(n)[i]:
+#                     total += 1
+#             if total <= 2:
+#                 answer.append(n)
+#                 return
+#
+#     for num in numbers:
+#         get_ans(num)
+#
+#     return answer
+#
+# print(solution([2,7]))
