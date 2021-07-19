@@ -38,3 +38,16 @@
 #     i += cnt
 #
 # print(cost)
+
+# 1541번 (잃어버린 괄호)
+# import sys
+# expression = sys.stdin.readline()
+# expression = expression.split('-')
+# for idx in range(len(expression)):
+#     if '+' in expression[idx]:
+#         ready_sum = expression[idx].split('+')
+#         expression[idx] = sum(map(int, ready_sum))
+# ans = int(expression[0])
+# for i in range(1, len(expression)):
+#     ans -= int(expression[i])
+# print(ans)

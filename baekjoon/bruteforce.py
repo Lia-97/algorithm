@@ -63,7 +63,50 @@
 #                 min = ans
 # print(min)
 
-# 2589번 (보물섬)
-lis=[5,2,7,4]
-lis.pop(1)
-print(lis)
+# 7568번 (덩치) _ 실패
+# import sys
+# N = int(sys.stdin.readline())
+# points = [0]*N
+# weights = []
+# heights = []
+# for i in range(N):
+#     weight, height = map(int, sys.stdin.readline().split())
+#     weights.append((i, weight))
+#     heights.append((i, height))
+# weights.sort(key=lambda x:-x[1])
+# heights.sort(key=lambda x:-x[1])
+# for i in range(N):
+#     points[weights[i][0]] += i
+#     points[heights[i][0]] += i
+#     print(weights)
+#     print(heights)
+#     print(points)
+# ranks = list(enumerate(points))
+# ranks.sort(key=lambda x:x[1])
+# curr_rank = 1
+# next_rank = 2
+# result = [0]*N
+# result[ranks[0][0]] = 1
+# for n in range(1, N):
+#     if ranks[n][1] != ranks[n-1][1]:
+#         curr_rank = next_rank
+#     next_rank += 1
+#     result[ranks[n][0]] = curr_rank
+#
+# print(*result)
+
+# 7568번 (덩치) _ 위에랑 뭐가 다른지 모르겠음
+# N = int(input())
+# info = []
+# result = []
+# for _ in range(N):
+#     W, H = map(int, input().split())
+#     info.append((W, H))
+# for i in range(N):
+#     count = 0
+#     for j in range(N):
+#         if info[i][0] < info[j][0] and info[i][1] < info[j][1]:
+#             count += 1
+#     result.append(count+1)
+# print(*result)
+

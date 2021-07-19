@@ -97,3 +97,32 @@
 #
 # print(dog)
 
+# 5567번 (결혼식)
+# from collections import defaultdict, deque
+#
+# def bfs(q):
+#     invite = 0
+#     while q:
+#         current_node, step = q.popleft()
+#         if step == 2:
+#             return invite
+#         for next_node in graph[current_node]:
+#             if used[next_node] == 0:
+#                 used[next_node] = 1
+#                 invite += 1
+#                 q.append((next_node, step+1))
+#     return invite
+#
+#
+# n = int(input()) # 친구의 수
+# m = int(input()) # 리스트의 길이
+# graph = defaultdict(list)
+# for _ in range(m):
+#     node1, node2 = map(int, input().split())
+#     graph[node1].append(node2)
+#     graph[node2].append(node1)
+# q = deque()
+# used = [0]*(n+1)
+# q.append((1, 0)) # 상근이의 노드번호, 몇단계 연결인지
+# used[1] = 1
+# print(bfs(q))

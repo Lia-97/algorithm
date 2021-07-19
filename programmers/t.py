@@ -318,43 +318,43 @@
 #     return answer
 
 # 2 _ 실패
-def solution(numbers):
-    answer = []
-
-    def make_binary(val):
-        ans = []
-        while True:
-            if val == 1:
-                ans.append(1)
-                break
-            ans.append(val % 2)
-            val //= 2
-        return ans
-
-    def find_ans(num):
-        bit = make_binary(num)
-        for idx in range(len(bit)):
-            if bit[idx] == 0:
-                for i in range(idx-1, -1, -1):
-                    if bit[i] == 1:
-                        bit[i] = 0
-                        bit[idx] = 1
-                        return bit
-                bit[idx] = 1
-                return bit
-        bit[-1] = 0
-        bit.append(1)
-        return bit
-
-    for num in numbers:
-        sub_ans = 0
-        lis = find_ans(num)
-        for i in range(len(lis)):
-            sub_ans += lis[i]*(2**i)
-        answer.append(sub_ans)
-    return answer
-
-print(solution([2,7]))
+# def solution(numbers):
+#     answer = []
+#
+#     def make_binary(val):
+#         ans = []
+#         while True:
+#             if val == 1:
+#                 ans.append(1)
+#                 break
+#             ans.append(val % 2)
+#             val //= 2
+#         return ans
+#
+#     def find_ans(num):
+#         bit = make_binary(num)
+#         for idx in range(len(bit)):
+#             if bit[idx] == 0:
+#                 for i in range(idx-1, -1, -1):
+#                     if bit[i] == 1:
+#                         bit[i] = 0
+#                         bit[idx] = 1
+#                         return bit
+#                 bit[idx] = 1
+#                 return bit
+#         bit[-1] = 0
+#         bit.append(1)
+#         return bit
+#
+#     for num in numbers:
+#         sub_ans = 0
+#         lis = find_ans(num)
+#         for i in range(len(lis)):
+#             sub_ans += lis[i]*(2**i)
+#         answer.append(sub_ans)
+#     return answer
+#
+# print(solution([2,7]))
 
 # 2
 # def solution(numbers):
@@ -389,3 +389,164 @@ print(solution([2,7]))
 #     return answer
 #
 # print(solution([2,7]))
+
+# 인터파크 1
+# def solution(grade):
+#     N = len(grade)
+#     answer = [0]*N # answer을 0으로 초기화한다.
+#
+#     # 중복되는 점수를 제거하고, 역순으로 정렬한다. (가장 큰 점수부터 순서대로)
+#     grade_set = sorted(list(set(grade)))
+#
+#     cnt = 0 # 자신보다 높은 점수의 학생 수
+#     for idx in range(len(grade_set)-1,-1,-1): # 가장 높은 점수 부터 차례대로 확인해보자
+#         changed_cnt = 0 # 해당 점수를 가진 학생의 수를 changed_cnt 라는 변수에 저장한다.
+#         for i in range(N): # grade를 순회하면서
+#             if grade[i] == grade_set[idx]: # grade_set의 각 원소와 값이 같다면
+#                 answer[i] = cnt+1 # answer 리스트의 i 인덱스 자리에 자신보다 높은 점수의 학생 수+1을 대입한다.
+#                 changed_cnt += 1 # 해당 점수를 가진 학생의 수를 추가한 후,
+#         cnt += changed_cnt # 현재까지의 학생 수에 change_cnt 를 대입한다.
+#
+#     return answer
+#
+# solution([2, 2, 1])
+
+# 인터파크 1
+# from collections import Counter, defaultdict
+# def solution(grade):
+#     answer = []
+#     # 각 점수에 해당하는 사람들이 몇명인지 구하고, 점수가 큰 순으로 정렬한다
+#     grade_dict = Counter(grade)
+#     grade_dict = sorted(grade_dict.items(), key=lambda x: -x[0] )
+#
+#     # 사람 수의 누적합을 구해, 각 점수에 해당한다면 몇 등인지 구한다
+#     grade_chart = defaultdict(int)
+#     rank = 1
+#     for grades in grade_dict:
+#         grade_chart[grades[0]] = rank
+#         rank += grades[1]
+#
+#     # grade를 순회하면서 해당 점수가 key일때, value 값을 answer에 더한다.
+#     for g in grade:
+#         answer.append(grade_chart[g])
+#
+#     return answer
+# #
+# # print(solution([2, 2, 1]))
+
+# 인터파크 2
+# from collections import defaultdict, deque
+# def solution(N, relation):
+#     def bfs(q):
+#         ans = 0 # 본인은 친구의 수에 포함되지 않으므로 ans를 0으로 초기화
+#         while q:
+#             node, cnt = q.popleft()
+#             if cnt == 2: # 이미 2단계를 거쳐서 친구인지 확인했다면 break
+#                 break
+#             for idx in graph[node]:
+#                 if used[idx] == 0: # 방문 안한 노드라면
+#                     used[idx] = 1 # 방문 처리를 해주고
+#                     q.append((idx, cnt+1)) # 다음 노드 idx, 한 단계를 거쳤으므로 cnt+1
+#                     ans += 1 # 친구 수에 +1
+#         return ans
+#
+#     answer = []
+#
+#     # 딕셔너리 형태의 그래프를 만든다.
+#     graph = defaultdict(list)
+#     for rel in relation:
+#         graph[rel[0]].append(rel[1])
+#         graph[rel[1]].append(rel[0])
+#
+#     # 1번 부터 N번까지 노드를 순회하면서, 친구의 수를 센다.
+#     for n in range(1, N+1):
+#         q = deque()
+#         used = [0]*(N+1)
+#         q.append((n, 0)) # 시작노드, 몇 단계 걸쳐 친구인지 나타내는 숫자 0
+#         used[n] = 1
+#         answer.append(bfs(q))
+#
+#     return answer
+#
+# print(solution(5, [[1,2],[4,2],[3,1],[4,5]]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 1
+# N, k = map(int, input().split())
+# foods = list(map(int, input().split()))
+# ans = []
+# while True:
+#     for i in range(k-1, N+k-1):
+#         if foods[i%N] != 0:
+#             foods[i%N] -= 1
+#             if foods[i%N] == 0:
+#                 if (i%N + 1) not in ans:
+#                     ans.append(i%N + 1)
+#
+#     if sum(foods) == 0:
+#         break
+#
+# print(' '.join(list(map(str, ans))))
+
+# 2
+# from collections import deque
+#
+# def bfs(q):
+#     while q:
+#         x, y, i, j, cnt = q.popleft()
+#         for d in dir:
+#             nx, ny, ni, nj = x+d[0], y+d[0], i+d[0], j+d[0]
+#             if (0 <= nx < N and 0 <= ny < N) or (0 <= ni < N and 0 <= nj < N):
+#
+#
+# N = int(input())
+# board = [input() for _ in range(N)]
+# x1, y1, x2, y2 = map(int, input().split())
+# visited = [[0]*N for _ in range(N)]
+# dir = [(-1,0),(1,0),(0,-1),(0,1)] # 상하좌우
+# q = deque()
+# visited[x1][y1] = 1
+# q.append((x1, y1, x2, y2, 0))
+# bfs(q)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
