@@ -472,30 +472,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # 1
 # N, k = map(int, input().split())
 # foods = list(map(int, input().split()))
@@ -534,19 +510,356 @@
 # q.append((x1, y1, x2, y2, 0))
 # bfs(q)
 
+####### 올리브영 경력직 (21.08.15) ##########
+# 1
+# def solution(x, y, r, v):
+#     answer = 0
+#     rec_info = [100000,0,100000,0] # 직사각형의 꼭짓점 (x1, x2, y1, y2)
+#
+#     for i in range(len(x)):
+#         if x[i]-r[i] <= rec_info[0]:
+#             rec_info[0] = x[i]-r[i]
+#         if x[i]+r[i] >= rec_info[1]:
+#             rec_info[1] = x[i]+r[i]
+#         if y[i]-r[i] <= rec_info[0]:
+#             rec_info[2] = y[i]-r[i]
+#         if y[i]+r[i] >= rec_info[0]:
+#             rec_info[3] = y[i]+r[i]
+#
+#     ran_points = [] # 난수를 점으로 생성한 좌표
+#
+#     # v 리스트의 숫자
+#     for i in range(len(v) // 2):
+#         a = rec_info[0] + (2*i)%(rec_info[1]-rec_info[0])
+#         b = rec_info[2]+ (2*i + 1)%(rec_info[3]-rec_info[2])
+#         ran_points.append((a,b))
+#
+#     in_round_cnt = 0 # 원 안에 있는 점의 개수
+#
+#     # 원 내부에 있는지 판별
+#     for m in ran_points:
+#         for n in range(len(x)):
+#             if r[n] ** 2 >= (x[n]- m[0]) ** 2 + (y[n] - m[1]) ** 2:
+#                 in_round_cnt += 1
+#                 print(m[0], m[1])
+#                 break
+#
+#     # 원의 면적 계산
+#     answer = (in_round_cnt / len(ran_points)) * (rec_info[1]-rec_info[0]) * (rec_info[3] - rec_info[2])
+#
+#     return answer
+#
+# print(solution([5], [5], [5], [92, 83, 14, 45, 66, 37, 28, 9, 10, 81])) # 80
+# print(solution([3, 4], [3, 5], [2, 3], [12, 83, 54, 35, 686, 337, 258, 95, 170, 831, 8, 15])) # 28
+
+# 2
+# def solution(subway, start, end):
+#     answer = 0
+#     line = 0
+#     N = len(subway)
+#     SUBWAY = []
+#
+#     # subway를 int 타입으로 변환
+#     for sub in subway:
+#         SUBWAY.append(list(map(int, sub.split())))
+#
+#     # 출발지가 몇호선에 있는지 확인
+#     for n in range(len(SUBWAY)):
+#         if start in SUBWAY[n]:
+#             line = n
+#
+#     ans_list = []
+#     def f(end, line, cnt, visited_line, visited_station):
+#         for i in SUBWAY[line]:
+#             if i == end:
+#                 ans_list.append(cnt)
+#                 return
+#             elif i != end and visited_station[i] == 0:
+#                 for j in range(len(visited_line)):
+#                     if visited_line[j] == 0:
+#                         if i in SUBWAY[j]:
+#                             visited_line[j] = 1
+#                             visited_station[i] = 1
+#                             f(end, j, cnt+1, visited_line, visited_station)
+#                         visited_line[j] = 0
+#                         visited_station[i] = 0
+#
+#     # dfs 호출
+#     visited_line = [0] * N  # 방문한 노선
+#     visited_station = [0] * 200001 # 방문한 역
+#     visited_line[line] = 1 # 출발지가 있는 노선은 방문 처리
+#     visited_station[start] = 1 # 출발역은 방문처리
+#     f(end, line, 0, visited_line, visited_station)
+#
+#     answer = min(ans_list)
+#
+#     return answer
+#
+# solution(["1 2 3 4 5 6 7 8","2 11","0 11 10","3 17 19 12 13 9 14 15 10","20 2 21"], 1, 9) # 1
+# solution(["1 2 3 4 5 6 7 8 9 10","2 8"], 1, 10) # 0
+# solution(["0 1 2 3 4","1 12 13 14"], 2, 12) # 1
 
 
 
+#########  그렙 인턴 ###########
+# 1
+# def solution(arr):
+#     new_arr = sorted(list(set(arr)))
+#     if len(new_arr) == 1:
+#         answer = 0
+#     else:
+#         answer = new_arr[(len(new_arr) // 2)-1] + 1
+#         print(new_arr)
+#
+#     return answer
+#
+# print(solution([1, 1, 1, 1, 1, 5, 7, 10, 10]))
+
+# 2
+# def solution(card_numbers):
+#     answer = []
+#
+#     for l in card_numbers:
+#         if len(l) != 19 and len(l) != 16:
+#             answer.append(0)
+#         else:
+#             lis = l.split('-')
+#             for card in lis:
+#                 if len(card) != 4:
+#                     answer.append(0)
+#                     break
+#             nums = ''.join(lis)
+#             N = len(nums)
+#             number = nums[::-1]
+#             first_ans = 0
+#             second_ans = 0
+#             for i in range(N):
+#                 print(i, number[i])
+#                 if i%2: # 홀수일때, 여기서는 짝수자리수를 의미
+#                     check = int(number[i])*2
+#                     if check >= 10:
+#                         first_ans += (check // 10) + (check %10)
+#                     else:
+#                         first_ans += check
+#                     print('(1)', first_ans)
+#                 else:
+#                     second_ans += int(number[i])
+#                     print('(2)', second_ans)
+#             print('__________________')
+#             if (first_ans + second_ans) % 10 == 0:
+#                 answer.append(1)
+#             else:
+#                 answer.append(0)
+#
+#     return answer
+#
+# print(solution(["3285-3764-9934-2453", "3285376499342453", "3285-3764-99342453", "328537649934245", "3285376499342459", "3285-3764-9934-2452"]))
 
 
 
+######## 월코챌 시즌3 (9월) ##########
+# 1
+# def solution(numbers):
+#     answer = sum(range(0, 10))-sum(numbers)
+#     return answer
+
+# 2
+# def f(grid, x, y, l, cnt):
+#     global arr_answer, cnt_answer, visited
+#
+#     moving = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+#
+#     if x + moving[l][0] >= 0 and y + moving[l][1] >= 0:
+#         next_x, next_y = (x + moving[l][0])%len(grid), (y + moving[l][1])%len(grid[0])
+#     elif x + moving[l][0] >= 0 and y + moving[l][1] < 0:
+#         next_x, next_y = (x + moving[l][0]) % len(grid), len(grid[0])-1
+#     elif x + moving[l][0] < 0 and y + moving[l][1] >= 0:
+#         next_x, next_y = len(grid)-1, (y + moving[l][1])%len(grid[0])
+#     else:
+#         next_x, next_y = len(grid) - 1, len(grid[0])-1
+#
+#     dir = grid[next_x][next_y]
+#
+#     # 앞으로 갈 방향 설정
+#     if (l == 0 and dir == "L") or (l == 1 and dir == "R"):
+#         l = 2
+#     elif (l == 0 and dir == "R") or (l == 1 and dir == "L"):
+#         l = 3
+#     elif (l == 2 and dir == "L") or (l == 3 and dir == "R"):
+#         l = 1
+#     elif (l == 2 and dir == "R") or (l == 3 and dir == "L"):
+#         l = 0
+#     else:
+#         pass
+#
+#     if visited[next_x][next_y][l] == 0:
+#         visited[next_x][next_y][l] = 1
+#         f(grid, next_x, next_y, l, cnt+1)
+#     else:
+#         print("???", visited, arr_answer)
+#         if visited not in arr_answer:
+#             arr_answer.append(visited)
+#             cnt_answer.append(cnt)
+#
+# arr_answer = []
+# cnt_answer = []
+#
+# def solution(grid):
+#     global arr_answer, cnt_answer, visited
+#
+#     N = len(grid)
+#     M = len(grid[0])
+#     visited = []
+#     for _ in range(N):
+#         visited.append([[0, 0, 0, 0] for _ in range(M)])
+#
+#     for i in range(len(grid)):
+#         for j in range(len(grid[0])):
+#             for l in range(4): # 시작하는 방향(상하좌우)
+#                 visited[i][j][l] = 1
+#                 f(grid, i, j, l, 1)
+#
+#     cnt_answer.sort()
+#     return cnt_answer
+#
+# print(solution(["S"]))
 
 
 
+######## 라인 코테 #########
+# 1
+# def solution(student, k):
+#     answer = 0
+#     N = len(student)
+#     for i in range(N):
+#         for j in range(i+k, N+1):
+#             if student[i:j].count(1) == k:
+#                 answer += 1
+#     return answer
+#
+# print(solution([0,1,0,0], 1))
 
+# 2
+# def solution(research, n, k):
+#     answer = ''
+#     all_keywords = ""
+#
+#     # 검색 기간 동안 등장한 모든 키워드 파악
+#     for r in research:
+#         all_keywords += r
+#
+#     unique_keywords = sorted(list(set(all_keywords)))
+#
+#     # 검색어 추출 기간
+#     N = len(research)
+#
+#     # 검색어 현황 파악할 수 있는 테이블 생성
+#     table = []
+#     for _ in range(len(unique_keywords)):
+#         table.append([0]*N)
+#
+#     # 검색어가 등장한 수만큼 일자별로 테이블에 추가
+#     for i in range(len(unique_keywords)):
+#         for j in range(N):
+#             table[i][j] += research[j].count(unique_keywords[i])
+#
+#     # 이슈 검색어가 된 날의 수
+#     issue_day = [0]*len(unique_keywords)
+#
+#     # 기준에 만족하는 검색어 조사
+#     for t in range(len(unique_keywords)):
+#         for x in range(N-n+1):
+#             period = table[t][x:x+n]
+#             flag = False
+#             if sum(period) >= 2*n*k:
+#                 for p in period:
+#                     if p >= k:
+#                         flag = True
+#                     else:
+#                         flag = False
+#                         break
+#             if flag:
+#                 issue_day[t] += 1
+#
+#     print(table)
+#     print(issue_day)
+#
+#     # 결과
+#     max_value = 0
+#     for cnt in range(len(issue_day)):
+#         if issue_day[cnt] > max_value:
+#             answer = unique_keywords[cnt]
+#             max_value = issue_day[cnt]
+#
+#     if answer == '':
+#         answer = "None"
+#
+#
+#     return answer
+#
+# print(solution(["abaaaa","aaa","abaaaaaa","fzfffffffa"], 2, 2))
+# print(solution(["yxxy","xxyyy"], 2, 1))
+# print(solution(["yxxy","xxyyy","yz"], 2, 1))
+# print(solution(["xy","xy"], 1, 1))
 
+# 3
+# def solution(jobs):
+#     copied_jobs = []
+#
+#     for job in jobs:
+#         copied_jobs.append(job)
+#
+#     answer = []
+#     answer.append(jobs[0][2])
+#     time = jobs[0][0] + jobs[0][1] # 현재 시각
+#     part = jobs[0][2]
+#
+#     # answer 목록에 들어갔으면 jobs 에서 삭제
+#     jobs.remove(jobs[0])
+#
+#     next_list = []  # 앞선 작업을 처리하는 동안 쌓인 작업 목록
+#     for job in copied_jobs:
+#         if job[0] <= time and job in jobs:
+#             next_list.append(job)  # 쌓인 작업 목록에 넣고
+#             jobs.remove(job)  # 기존의 작업목록에서 삭제
+#
+#     while jobs or next_list:
+#         if jobs and not next_list:  # 일은 남았지만 쌓인 작업이 없으면
+#             next_list.append(jobs[0])
+#         for job in copied_jobs:
+#             if job[0] <= time and job in jobs:
+#                 next_list.append(job) # 쌓인 작업 목록에 넣고
+#                 jobs.remove(job) # 기존의 작업목록에서 삭제
+#
+#         importance = [0]*102 # 각 분류번호 별 중요도
+#
+#         flag = True
+#
+#         for next in next_list:
+#             if next[2] == part:
+#                 time += next[1]
+#                 next_list.remove(next) # 쌓인 작업 목록에서 삭제
+#                 flag = False
+#                 break
+#             else:
+#                 importance[next[2]] += next[3] # 각 분류번호에 중요도를 더함
+#         if flag:
+#             max_importance = 0
+#             next_part = 0
+#             for im in range(len(importance)):
+#                 if importance[im] > max_importance:
+#                     max_importance = importance[im]
+#                     next_part = im
+#             part = next_part
+#             answer.append(part)
+#             for next in next_list:
+#                 if next[2] == part:
+#                     time += next[1]
+#                     next_list.remove(next)
+#
+#     return answer
+#
+# print(solution([[1, 5, 2, 3], [2, 2, 3, 2], [3, 1, 3, 3], [5, 2, 1, 5], [7, 1, 1, 1], [9, 1, 1, 1], [10, 2, 2, 9]]))
+# print(solution([[0, 2, 3, 1], [5, 3, 3, 1], [10, 2, 4, 1]]))
 
-
-
-
-
+# 5

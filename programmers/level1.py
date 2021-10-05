@@ -990,31 +990,204 @@
 # print('answer', solution([-5,0,2,1,2],[[0,1],[3,4],[2,3],[0,3]]))
 
 # 3 _ 원재의 솔루션
-import sys
-from collections import defaultdict
-sys.setrecursionlimit(10 ** 9)
+# import sys
+# from collections import defaultdict
+# sys.setrecursionlimit(10 ** 9)
+#
+# def dfs(cur, check, node, a):
+#     global answer
+#     check[cur] = False
+#
+#     for i in node[cur]:
+#         if check[i]:
+#             dfs(i, check, node, a)
+#             a[cur] += a[i]
+#             answer += abs(a[i])
+#
+# answer = 0
+# def solution(a, edges):
+#     max_pos = (0, 0)
+#     check = [True for _ in range(len(a))]
+#     for i, val in enumerate(a):
+#         if abs(val) > abs(max_pos[1]):
+#             max_pos = (i, val)
+#
+#     node = defaultdict(list)
+#     for u, v in edges:
+#         node[u].append(v)
+#         node[v].append(u)
+#     dfs(max_pos[0], check, node, a)
+#     return -1 if a[max_pos[0]] else answer
 
-def dfs(cur, check, node, a):
-    global answer
-    check[cur] = False
+# 부족한 금액 계산하기
+# def solution(price, money, count):
+#     answer = 0
+#     total = 0
+#     for n in range(1, count+1):
+#         total += n * price
+#
+#     if money < total:
+#         answer = total - money
+#
+#     return answer
 
-    for i in node[cur]:
-        if check[i]:
-            dfs(i, check, node, a)
-            a[cur] += a[i]
-            answer += abs(a[i])
+# 숫자 문자열과 영단어
+# def solution(s):
+#     numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+#     for n in range(len(numbers)):
+#         if numbers[n] in s:
+#             s = s.replace(numbers[n], str(n))
+#
+#     return int(s)
+#
+# print(solution("23four5six7"))
 
-answer = 0
-def solution(a, edges):
-    max_pos = (0, 0)
-    check = [True for _ in range(len(a))]
-    for i, val in enumerate(a):
-        if abs(val) > abs(max_pos[1]):
-            max_pos = (i, val)
+# 약수의 개수와 덧셈
+# def solution(left, right):
+#     answer = 0
+#     for number in range(left, right+1):
+#         divisor = 0
+#         for i in range(1, int(number**(1/2)) + 1):
+#             x = number % i
+#             y = number // i
+#             if x == 0 and y != i:
+#                 divisor += 2
+#             elif x == 0 and y == i:
+#                 divisor += 1
+#
+#         if not divisor % 2:
+#             answer += number
+#         else:
+#             answer -= number
+#     return answer
 
-    node = defaultdict(list)
-    for u, v in edges:
-        node[u].append(v)
-        node[v].append(u)
-    dfs(max_pos[0], check, node, a)
-    return -1 if a[max_pos[0]] else answer
+# 위클리챌린지_상호 평가
+# def return_grade(score):
+#     if score >= 90:
+#         ans = "A"
+#     elif score >= 80:
+#         ans = "B"
+#     elif score >= 70:
+#         ans = "C"
+#     elif score >= 50:
+#         ans = "D"
+#     else:
+#         ans = "F"
+#     return ans
+#
+# def solution(scores):
+#     answer = ''
+#     scores = list(zip(*scores))
+#     N = len(scores)
+#     for idx in range(N):
+#         max_val = max(scores[idx])
+#         min_val = min(scores[idx])
+#         if (scores[idx][idx] == max_val and scores[idx].count(max_val) == 1) or (scores[idx][idx] == min_val and scores[idx].count(min_val) == 1):
+#             answer += return_grade((sum(scores[idx])-scores[idx][idx])/(N-1))
+#         else:
+#             answer += return_grade(sum(scores[idx])/N)
+#
+#     return answer
+#
+# print(solution([[100,90,98,88,65],[50,45,99,85,77],[47,88,95,80,67],[61,57,100,80,65],[24,90,94,75,65]]	))
+
+# 위클리챌린지_직업군 추천하기
+# from collections import defaultdict
+# def solution(table, languages, preference):
+#     answer = ''
+#
+#     SI = defaultdict(int)
+#     CONTENTS = defaultdict(int)
+#     HARDWARE = defaultdict(int)
+#     PORTAL = defaultdict(int)
+#     GAME = defaultdict(int)
+#
+#     for t in table:
+#         temp = list(t.split())
+#         for i in range(1, 6):
+#             if temp[0] == "SI":
+#                 SI[temp[i]] = 6-i
+#             elif temp[0] == "CONTENTS":
+#                 CONTENTS[temp[i]] = 6-i
+#             elif temp[0] == "HARDWARE":
+#                 HARDWARE[temp[i]] = 6-i
+#             elif temp[0] == "PORTAL":
+#                 PORTAL[temp[i]] = 6-i
+#             elif temp[0] == "GAME":
+#                 GAME[temp[i]] = 6-i
+#
+#     grade = [["SI", 0], ["CONTENTS", 0], ["HARDWARE", 0], ["PORTAL", 0], ["GAME", 0]]
+#
+#     for idx in range(len(languages)):
+#         grade[0][1] += SI[languages[idx]] * preference[idx]
+#         grade[1][1] += CONTENTS[languages[idx]] * preference[idx]
+#         grade[2][1] += HARDWARE[languages[idx]] * preference[idx]
+#         grade[3][1] += PORTAL[languages[idx]] * preference[idx]
+#         grade[4][1] += GAME[languages[idx]] * preference[idx]
+#
+#     grade = sorted(grade, key=lambda x:(-x[1],x[0]))
+#
+#     return grade[0][0]
+#
+# solution(["SI JAVA JAVASCRIPT SQL PYTHON C#", "CONTENTS JAVASCRIPT JAVA PYTHON SQL C++", "HARDWARE C C++ PYTHON JAVA JAVASCRIPT",
+#           "PORTAL JAVA JAVASCRIPT PYTHON KOTLIN PHP", "GAME C++ C# JAVASCRIPT C JAVA"], ["PYTHON", "C++", "SQL"], [7, 5, 5])
+
+# 다른 사람 풀이
+# def solution(table, languages, preference):
+#     score = {}
+#     for t in table:
+#         for lang, pref in zip(languages, preference):
+#             if lang in t.split():
+#                 score[t.split()[0]] = score.get(t.split()[0], 0) + (6 - t.split().index(lang)) * pref
+#     return sorted(score.items(), key=lambda item: [-item[1], item[0]])[0][0]
+
+# 다른 사람의 풀이를 안보고 직접 다시 짜보기
+# from collections import defaultdict
+# def solution(table, languages, preference):
+#     grade = defaultdict(int)
+#     for t in table:
+#         for lang, pref in zip(languages, preference):
+#             if lang in t.split():
+#                 grade[t.split()[0]] += (6-t.split().index(lang))*pref
+#
+#     answer = sorted(grade.items(), key=lambda item:(-item[1], item[0]))
+#
+#     return answer[0][0]
+#
+# solution(["SI JAVA JAVASCRIPT SQL PYTHON C#", "CONTENTS JAVASCRIPT JAVA PYTHON SQL C++", "HARDWARE C C++ PYTHON JAVA JAVASCRIPT",
+#           "PORTAL JAVA JAVASCRIPT PYTHON KOTLIN PHP", "GAME C++ C# JAVASCRIPT C JAVA"], ["PYTHON", "C++", "SQL"], [7, 5, 5])
+
+# 위클리챌린지_복서 정렬하기 (이해 안되는 부분 있음)
+# def solution(weights, head2head):
+#     N = len(weights)
+#     answer = []
+#     for _ in range(N):
+#         answer.append([0]*4) # 번호, 이긴 수,  몸무게 무거운 복서를 이긴 수, 몸무게
+#     for i in range(N):
+#         answer[i][0] = i + 1  # 0번째 인덱스에 번호 부여
+#         answer[i][3] = weights[i] # 3번째 인덱스에 몸무게 부여
+#         for j in range(N):
+#             if i != j:
+#                 # 이겼을 때
+#                 if head2head[i][j] == "W":
+#                     answer[i][1] += 1
+#
+#                 # 자기보다 몸무게가 무거운 선수를 이겼을 때
+#                 if head2head[i][j] == "W" and weights[i] < weights[j]:
+#                     answer[i][2] += 1
+#
+#                 if head2head[i][j] == "N":
+#                     answer[i][1] = 0
+#                     break
+#
+#     answer = sorted(answer, key=lambda x: (-x[1], -x[2], -x[3], x[0]))
+#
+#     result = []
+#     for ans in answer:
+#         result.append(ans[0])
+#
+#     return result
+#
+# solution([50,82,75,120], ["NLWL","WNLL","LWNW","WWLN"])
+
+#

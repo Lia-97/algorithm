@@ -126,3 +126,22 @@
 # q.append((1, 0)) # 상근이의 노드번호, 몇단계 연결인지
 # used[1] = 1
 # print(bfs(q))
+
+# 10818번 (최소, 최대)
+# import sys
+# N = sys.stdin.readline()
+# nums = list(map(int, sys.stdin.readline().split()))
+# answer = [min(nums), max(nums)]
+#
+# print(*answer)
+
+
+# import sys
+# N = int(sys.stdin.readline())
+# nums = list(map(int, sys.stdin.readline().split()))
+# nums.sort()
+# answer = [nums[0], nums[N-1]]
+#
+# print(*answer)
+
+
